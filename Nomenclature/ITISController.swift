@@ -60,6 +60,10 @@ class ITISController: NSObject {
         do {
             let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
             
+            print("### Begin ParsedJSON ###")
+            print(jsonData)
+            print("### End ParsedJSON ###")
+            
             guard let dict = jsonData.object(forKey: "response") as? NSDictionary else {
                 print("JSON conversion error")
                 return nil
@@ -108,10 +112,13 @@ class ITISController: NSObject {
             
             let commonNameDataString = firstNameObject.components(separatedBy: "$")
             
-            guard let firstCommonName = commonNameDataString.first else {
-                print("first common name object missing")
-                return nil
+            for item in commonNameDataString {
+                print("item: \(item)")
             }
+            
+            let firstCommonName = commonNameDataString[1]
+            
+            print("firstCommonName: \(firstCommonName)")
             
             thisRecordArray["commonName"] = firstCommonName
             
