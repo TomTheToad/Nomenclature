@@ -15,48 +15,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        itis.commonNameSearch(commonName: "raven", numberOfRecords: 10, completionHandler: {
+        itis.commonNameSearch(commonName: "owl", numberOfRecords: 10, completionHandler: {
         (error, dict) in
             if error == nil {
-                guard let docArray = dict else {
-                    print("Something wrong")
+                guard let thisDict = dict else {
+                    print("Error dict")
                     return
                 }
                 
-                guard let firstEntry = docArray.first else {
-                    print("first entry missing")
-                    return
+                for record in thisDict {
+                    for item in record {
+                        print("key: \(item.key), value: \(item.value)")
+                    }
                 }
-                
-                guard let hierarchy = firstEntry.object(forKey: "hierarchySoFarWRanks") as? NSArray else {
-                    print("hierarchy not found")
-                    return
-                }
-                
-                guard let firstObject = hierarchy.firstObject as? NSString else {
-                    print("H first object missing")
-                    return
-                }
-                
-                print("firstObject: \(firstObject)")
-                
-                let newString = NSMutableString(string: firstObject).trimmingCharacters(in: CharacterSet(charactersIn: "0123456789")).components(separatedBy: "$")
-                
-                var newArray = [String: String]()
-                for item in newString {
-                    let newItem = item.components(separatedBy: ":")
-                    newArray[newItem.first!] = newItem.last!
-                }
-                
-                let finalArray = newArray.dropFirst()
-                
-                for item in finalArray {
-                    print("key: \(item.key), value: \(item.value)")
-                }
-                
-                
-                
-                
                 
             } else if error != nil {
                 print("error: \(error!.localizedDescription)")
