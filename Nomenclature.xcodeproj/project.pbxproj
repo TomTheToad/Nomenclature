@@ -14,6 +14,7 @@
 		C7957C661F30E3C700C09528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7957C651F30E3C700C09528 /* Assets.xcassets */; };
 		C7957C691F30E3C700C09528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7957C671F30E3C700C09528 /* LaunchScreen.storyboard */; };
 		C7957C741F30E43D00C09528 /* ITISController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C731F30E43D00C09528 /* ITISController.swift */; };
+		C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C7957C681F30E3C700C09528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7957C6A1F30E3C700C09528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7957C731F30E43D00C09528 /* ITISController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITISController.swift; sourceTree = "<group>"; };
+		C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				C7957C5B1F30E3C700C09528 /* AppDelegate.swift */,
 				C7957C5D1F30E3C700C09528 /* ViewController.swift */,
 				C7957C731F30E43D00C09528 /* ITISController.swift */,
+				C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			files = (
 				C7957C741F30E43D00C09528 /* ITISController.swift in Sources */,
 				C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */,
+				C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */,
 				C7957C5E1F30E3C700C09528 /* ViewController.swift in Sources */,
 				C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */,
 			);
@@ -334,6 +338,7 @@
 				C7957C6F1F30E3C700C09528 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
