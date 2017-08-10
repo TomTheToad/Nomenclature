@@ -25,7 +25,6 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("count: \(resultsDict.count)")
         return resultsDict.count
     }
     
