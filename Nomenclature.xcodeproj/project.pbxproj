@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED41F3B232B006F25E1 /* SearchController.swift */; };
+		C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */; };
+		C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */; };
 		C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C5B1F30E3C700C09528 /* AppDelegate.swift */; };
-		C7957C5E1F30E3C700C09528 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C5D1F30E3C700C09528 /* ViewController.swift */; };
 		C7957C611F30E3C700C09528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7957C5F1F30E3C700C09528 /* Main.storyboard */; };
 		C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7957C621F30E3C700C09528 /* Nomenclature.xcdatamodeld */; };
 		C7957C661F30E3C700C09528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7957C651F30E3C700C09528 /* Assets.xcassets */; };
@@ -18,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C738CED41F3B232B006F25E1 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableController.swift; sourceTree = "<group>"; };
+		C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableCell.swift; sourceTree = "<group>"; };
 		C7957C581F30E3C700C09528 /* Nomenclature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nomenclature.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7957C5B1F30E3C700C09528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C7957C5D1F30E3C700C09528 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C7957C601F30E3C700C09528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7957C631F30E3C700C09528 /* Nomenclature.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nomenclature.xcdatamodel; sourceTree = "<group>"; };
 		C7957C651F30E3C700C09528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,9 +76,11 @@
 			isa = PBXGroup;
 			children = (
 				C7957C5B1F30E3C700C09528 /* AppDelegate.swift */,
-				C7957C5D1F30E3C700C09528 /* ViewController.swift */,
 				C7957C731F30E43D00C09528 /* ITISController.swift */,
 				C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */,
+				C738CED41F3B232B006F25E1 /* SearchController.swift */,
+				C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */,
+				C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -171,9 +177,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7957C741F30E43D00C09528 /* ITISController.swift in Sources */,
+				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
+				C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */,
+				C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */,
 				C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */,
 				C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */,
-				C7957C5E1F30E3C700C09528 /* ViewController.swift in Sources */,
 				C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

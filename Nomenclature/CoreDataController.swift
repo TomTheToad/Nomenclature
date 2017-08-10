@@ -18,4 +18,11 @@ class CoreDataController {
         return appDelegate.persistentContainer.viewContext
     }()
     
+    // retrieve all
+    func fetchAll() {
+        
+    }
+    
+    // 
+    
 }

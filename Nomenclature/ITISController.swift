@@ -15,17 +15,14 @@ class ITISController: NSObject {
     
     let baseUrl = "https://services.itis.gov/"
     let methodCall = "?q=vernacular:"
-//    let urlString = "https://services.itis.gov/?q=vernacular:*\(commonName)*&rows=\(numberRows)&wt=\(returnFormat)"
     
     func commonNameSearch(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
         let urlString = baseUrl + methodCall + "*\(commonName)*&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
-        print("urlString: \(urlString)")
         
         guard let url = URL(string: urlString) else {
             print("url failure")
             return
         }
-        print("url: \(String(describing: url))")
         
         let request = URLRequest(url: url)
         
@@ -35,7 +32,6 @@ class ITISController: NSObject {
                 completionHandler(error, nil)
             } else {
                 // TODO: check response
-                print("response: \(response!.description)")
                 
                 guard let returnData = self.ConvertJSONToDict(data: data) else {
                     print("serialization problem")
@@ -60,9 +56,9 @@ class ITISController: NSObject {
         do {
             let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
             
-            print("### Begin ParsedJSON ###")
-            print(jsonData)
-            print("### End ParsedJSON ###")
+//            print("### Begin ParsedJSON ###")
+//            print(jsonData)
+//            print("### End ParsedJSON ###")
             
             guard let dict = jsonData.object(forKey: "response") as? NSDictionary else {
                 print("JSON conversion error")
@@ -73,8 +69,6 @@ class ITISController: NSObject {
                 print("Error locating docs key")
                 return nil
             }
-            
-            print("count = \(docsArray.count)")
             
             guard let returnDict = parseDictInfo(dict: docsArray) else {
                 print("Error: parseDictInfo")
@@ -104,7 +98,7 @@ class ITISController: NSObject {
                 return nil
             }
             
-            print("common name: \(commonNameArray)")
+            // print("common name: \(commonNameArray)")
             guard let firstNameObject = commonNameArray.firstObject as? NSString else {
                 print("commonName string missing")
                 return nil
@@ -117,8 +111,6 @@ class ITISController: NSObject {
             }
             
             let firstCommonName = commonNameDataString[1]
-            
-            print("firstCommonName: \(firstCommonName)")
             
             thisRecordArray["commonName"] = firstCommonName
             
