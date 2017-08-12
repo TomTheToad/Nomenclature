@@ -14,6 +14,12 @@ class SearchController: UIViewController {
     let itis = ITISController()
     var numberOfRecords = 10
     
+    var resultsDict = [NSDictionary]() {
+        didSet {
+            performResultsSeque(sender: self)
+        }
+    }
+    
     // IBOutlets
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -51,7 +57,7 @@ class SearchController: UIViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    self.presentSearchResults(resultsDict: thisDict)
+                    self.resultsDict = thisDict
                 }
                 
             } else if error != nil {
@@ -63,12 +69,14 @@ class SearchController: UIViewController {
         })
     }
     
-    func presentSearchResults(resultsDict: [NSDictionary]) {
-        
-        let searchResultsTableController = storyboard?.instantiateViewController(withIdentifier: "searchResultsTable") as! SearchResultsTableController
-        
-        searchResultsTableController.resultsDict = resultsDict
-        navigationController?.present(searchResultsTableController, animated: false, completion: nil)
+    func performResultsSeque(sender: Any?) {
+        performSegue(withIdentifier: "searchResultsSeque", sender: sender)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchResultsSeque" {
+            let searchResultsController = segue.destination as! SearchResultsTableController
+            searchResultsController.resultsDict = resultsDict
+        }
+    }
 }

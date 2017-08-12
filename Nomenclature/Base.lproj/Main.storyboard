@@ -76,7 +76,7 @@
                     <connections>
                         <outlet property="searchField" destination="m7p-PU-PkO" id="TrK-Ol-213"/>
                         <outlet property="segmentedControl" destination="arA-3c-A3j" id="50p-Ds-VvV"/>
-                        <segue destination="dfW-ss-8oo" kind="show" identifier="searchResultsTable" id="Fc2-yY-4tP"/>
+                        <segue destination="dfW-ss-8oo" kind="show" identifier="searchResultsSeque" id="TTY-yg-amD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
