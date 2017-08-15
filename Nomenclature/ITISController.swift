@@ -13,16 +13,51 @@ class ITISController: NSObject {
     let returnFormat = "json"
     let session = URLSession(configuration: .ephemeral)
     
-    let baseUrl = "https://services.itis.gov/"
-    let methodCall = "?q=vernacular:"
+    let baseURL = "https://services.itis.gov/?q="
+    let methodCall = "vernacular:"
+    
+    
+//    func commonNameSearch2(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
+//        
+//        guard let url = URL(string: (baseURL + methodCall)) else {
+//            print("url failure")
+//            return
+//        }
+//        
+//        var request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadRevalidatingCacheData, timeoutInterval: 3.0)
+//        request.httpMethod = "GET"
+//        request.httpBody = "*\(commonName)*&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
+//    }
     
     func commonNameSearch(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
-        let urlString = baseUrl + methodCall + "*\(commonName)*&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
+        
+        var methodWString = ""
+        
+        // https://services.itis.gov/?q=vernacular:*morning*AND?q=vernacular:*dove*&rows=100&wt=json
+        // http://services.itis.gov/?q=vernacular:*red*%20AND%20vernacular:*fox*&rows=10&wt=json
+        // URL: https://services.itis.gov/?q=vernacular:*red*%20AND%20?q=vernacular:*fox*&rows=100&wt=json
+        if commonName.contains(" ") {
+            let commonNameMultipleWords = commonName.components(separatedBy: " ")
+            for item in commonNameMultipleWords {
+                if item != commonNameMultipleWords.last {
+                    methodWString = methodWString + methodCall + "*\(item)*%20AND%20"
+                } else {
+                    methodWString = methodWString + methodCall + "*\(item)*"
+                }
+            }
+        } else {
+            methodWString = methodCall + "*\(commonName)*"
+        }
+        
+        let urlString = baseURL + methodWString + "&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
+        print("urlString: \(urlString)")
         
         guard let url = URL(string: urlString) else {
             print("url failure")
             return
         }
+        
+        print("URL: \(url)")
         
         let request = URLRequest(url: url)
         

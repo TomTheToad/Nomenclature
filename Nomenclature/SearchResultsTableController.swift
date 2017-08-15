@@ -39,4 +39,21 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
         cell.commonNameLabel.text = commonName
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            
+            guard let indexRow = resultsTableView.indexPathForSelectedRow?.row else {
+                // TODO: error handling
+                print("index error")
+                return
+            }
+            let vc = segue.destination as! DetailViewController
+            vc.organismData = resultsDict[indexRow]
+        }
+    }
 }
