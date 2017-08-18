@@ -12,5 +12,6 @@ class DetailViewCell: UITableViewCell {
     
     // IBOutlets
     @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
 }

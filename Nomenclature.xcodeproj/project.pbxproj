@@ -19,7 +19,6 @@
 		C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */; };
 		C7E8388C1F3F2CBC00A5F88A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */; };
 		C7E8388E1F3F2CD500A5F88A /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */; };
-		C7E838901F3F2D0400A5F88A /* DetailViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8388F1F3F2D0400A5F88A /* DetailViewImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
-		C7E8388F1F3F2D0400A5F88A /* DetailViewImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +129,6 @@
 			children = (
 				C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */,
 				C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */,
-				C7E8388F1F3F2D0400A5F88A /* DetailViewImageCell.swift */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -212,7 +209,6 @@
 				C7957C741F30E43D00C09528 /* ITISController.swift in Sources */,
 				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
 				C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */,
-				C7E838901F3F2D0400A5F88A /* DetailViewImageCell.swift in Sources */,
 				C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */,
 				C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */,
 				C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */,

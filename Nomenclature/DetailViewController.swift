@@ -10,41 +10,35 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // Fields
     var organismData = NSDictionary()
+    let headings = ["Kingdom", "Phylum", "Class", "Order", "Suborder", "Family", "Genus", "Species"]
     
-    // MARK: Required Table Methods
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
+    // IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 1 {
-//            return organismData.count
-//        } else {
-//            return 1
-//        }
-        return organismData.count
+        return headings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: find a better way of comparing keys
-//        if organismData[indexPath.row] as! String == organismData["commonName"] as! String {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewImageCell", for: indexPath) as! DetailViewImageCell
-//            // TODO: setup cell after prototype created
-//            return cell
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell", for: indexPath) as! DetailViewCell
-//            // TODO: setup cell after prototype created
-//            return cell
-//        }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell", for: indexPath) as! DetailViewCell
-        guard let recordData = organismData[indexPath.row] as? [String: String] else {
-            print("record data failure")
-            return cell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell", for: indexPath) as? DetailViewCell else {
+            fatalError("table cell error")
         }
         
-        let recordString = "\(String(describing: recordData.first?.key)): \(String(describing: recordData.first?.value))"        
-        cell.headingLabel.text = recordString
+        let heading = headings[indexPath.row]
+        let name = organismData.value(forKey: heading) ?? "missing data"
+        
+        cell.headingLabel.text = heading
+        cell.nameLabel.text = String(describing: name)
+        
         return cell
     }
 }
