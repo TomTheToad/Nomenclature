@@ -19,10 +19,41 @@ class CoreDataController {
     }()
     
     // retrieve all
-    func fetchAll() {
-        
+    func fetchAll() -> [Organism]? {
+        var results: [Organism]?
+        do {
+            results = try managedObjectContext.fetch(Organism.fetchRequest()) as? [Organism]
+        } catch {
+            return nil
+        }
+        return results
     }
     
-    // 
+    func fetchOneOrganism(species: String) -> Organism? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Organism")
+        let predicate = NSPredicate(format: "species == %@", species)
+        fetchRequest.predicate = predicate
+        
+        do {
+            return try managedObjectContext.fetch(fetchRequest).first as? Organism
+        } catch {
+            return nil
+        }
+    }
     
+    // create
+    func addOrganism(organism: Organism) {
+        var thisOrganism = Organism.init(entity: Organism.entity(), insertInto: managedObjectContext)
+        thisOrganism = organism
+        do {
+            try thisOrganism.managedObjectContext?.save()
+        } catch {
+            // do something
+        }
+    }
+    
+    func removeOrganism(organism: Organism) {
+        managedObjectContext.delete(organism)
+        
+    }
 }
