@@ -42,19 +42,35 @@ class CoreDataController {
     }
     
     // create
-    func addOrganism(organism: Organism) {
-        var thisOrganism = Organism.init(entity: Organism.entity(), insertInto: managedObjectContext)
-        thisOrganism = organism
-        do {
-            try thisOrganism.managedObjectContext?.save()
-        } catch {
-            print("Core Data Error adding organism")
-            // do something
+    func addOrganism(dict: NSDictionary) -> Bool {
+        let organism = Organism(entity: Organism.entity(), insertInto: managedObjectContext)
+        for item in dict {
+            let itemKey = String(describing: item.key)
+            let itemValue = String(describing: item.value)
+            if itemKey == "class" {
+                organism.sciClass = itemValue
+            } else {
+                organism.setValue(itemValue, forKey: itemKey)
+            }
+            
+            return saveData()
         }
+        
+        return true
     }
     
     func removeOrganism(organism: Organism) {
         managedObjectContext.delete(organism)
         
+    }
+    
+    func saveData() -> Bool {
+        do {
+            try managedObjectContext.save()
+            return true
+        } catch {
+            print("Error: Unable to save to core data")
+            return false
+        }
     }
 }

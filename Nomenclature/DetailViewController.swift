@@ -11,8 +11,15 @@ import UIKit
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Fields
+    let coreData = CoreDataController()
     var organismData = NSDictionary()
     let headings = ["vernacular", "kingdom", "phylum", "class", "order", "suborder", "family", "genus", "species"]
+    
+    // IBActions
+    @IBAction func saveAction(_ sender: Any) {
+        saveOrganism()
+    }
+
     
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -40,5 +47,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.nameLabel.text = String(describing: name)
         
         return cell
+    }
+    
+    func saveOrganism() {
+        let isSuccess = coreData.addOrganism(dict: organismData)
+        if isSuccess {
+            print("Organism saved")
+        } else {
+            print("Save failed")
+        }
     }
 }
