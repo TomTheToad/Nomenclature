@@ -14,7 +14,7 @@ class ITISController: NSObject {
     let session = URLSession(configuration: .ephemeral)
     
     let baseURL = "https://services.itis.gov/?q="
-    let methodCall = "vernacular:"
+    let methodCallCommonName = "vernacular:"
     
     
 //    func commonNameSearch2(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
@@ -29,27 +29,36 @@ class ITISController: NSObject {
 //        request.httpBody = "*\(commonName)*&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
 //    }
     
+
+    func anyNameOrTSNSearch(searchString: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
+        // TODO: XML parse from
+        // http://www.itis.gov/ITISWebService/services/ITISService/searchForAnyMatch?srchKey=dolphin
+    }
+
+    
     func commonNameSearch(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
         
-        var methodWString = ""
+        var arguments = "*"
         
-        // https://services.itis.gov/?q=vernacular:*morning*AND?q=vernacular:*dove*&rows=100&wt=json
-        // http://services.itis.gov/?q=vernacular:*red*%20AND%20vernacular:*fox*&rows=10&wt=json
-        // URL: https://services.itis.gov/?q=vernacular:*red*%20AND%20?q=vernacular:*fox*&rows=100&wt=json
         if commonName.contains(" ") {
             let commonNameMultipleWords = commonName.components(separatedBy: " ")
             for item in commonNameMultipleWords {
                 if item != commonNameMultipleWords.last {
-                    methodWString = methodWString + methodCall + "*\(item)*%20AND%20"
+                    arguments = arguments + "\(item)\\ "
                 } else {
-                    methodWString = methodWString + methodCall + "*\(item)*"
+                    arguments = arguments + "\(item)*"
                 }
             }
         } else {
-            methodWString = methodCall + "*\(commonName)*"
+            arguments = arguments + "\(commonName)*"
         }
         
-        let urlString = baseURL + methodWString + "&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
+        guard let escapedArguments = arguments.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            print("query failure: invalid characters")
+            return
+        }
+        
+        let urlString = baseURL + methodCallCommonName + escapedArguments + "&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
         print("urlString: \(urlString)")
         
         guard let url = URL(string: urlString) else {
@@ -91,10 +100,6 @@ class ITISController: NSObject {
         do {
             let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
             
-//            print("### Begin ParsedJSON ###")
-//            print(jsonData)
-//            print("### End ParsedJSON ###")
-            
             guard let dict = jsonData.object(forKey: "response") as? NSDictionary else {
                 print("JSON conversion error")
                 return nil
@@ -133,6 +138,10 @@ class ITISController: NSObject {
                 return nil
             }
             
+            for item in commonNameArray {
+                print("common name: \(item)")
+            }
+            
             // print("common name: \(commonNameArray)")
             guard let firstNameObject = commonNameArray.firstObject as? NSString else {
                 print("commonName string missing")
@@ -141,13 +150,13 @@ class ITISController: NSObject {
             
             let commonNameDataString = firstNameObject.components(separatedBy: "$")
             
-            for item in commonNameDataString {
-                print("item: \(item)")
-            }
+//            for (index, item) in commonNameDataString.enumerated() {
+//                print("\(index): \(item)")
+//            }
             
             let firstCommonName = commonNameDataString[1]
             
-            thisRecordArray["commonName"] = firstCommonName
+            thisRecordArray["vernacular"] = firstCommonName
             
             
             // retrieve object for key "hierarchySoFarWRanks"
@@ -168,7 +177,8 @@ class ITISController: NSObject {
             // last string separation and add key, value to recordsArray
             for item in dataString {
                 let newItem = item.components(separatedBy: ":")
-                thisRecordArray[newItem.first!] = newItem.last!
+                // TODO: test for nil?
+                thisRecordArray[newItem.first!.lowercased()] = newItem.last!
             }
             
             recordsDict.append(thisRecordArray as NSDictionary)
@@ -188,11 +198,3 @@ class ITISController: NSObject {
 enum ITISControllerErrors: Error {
     case noDataReturned
 }
-
-/*
- 
-http://services.itis.gov/?q=vernacular:*lion*&rows=10&wt=json
- 
- hierarchySoFar
- 
- */

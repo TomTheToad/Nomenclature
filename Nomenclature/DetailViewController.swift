@@ -12,7 +12,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Fields
     var organismData = NSDictionary()
-    let headings = ["Kingdom", "Phylum", "Class", "Order", "Suborder", "Family", "Genus", "Species"]
+    let headings = ["vernacular", "kingdom", "phylum", "class", "order", "suborder", "family", "genus", "species"]
     
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!

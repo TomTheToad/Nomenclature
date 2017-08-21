@@ -2,7 +2,7 @@
 //  Organism+CoreDataProperties.swift
 //  Nomenclature
 //
-//  Created by VICTOR ASSELTA on 8/18/17.
+//  Created by VICTOR ASSELTA on 8/21/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
 
@@ -16,14 +16,14 @@ extension Organism {
         return NSFetchRequest<Organism>(entityName: "Organism")
     }
 
-    @NSManaged public var commonName: String?
-    @NSManaged public var kingdom: String?
-    @NSManaged public var phylum: String?
-    @NSManaged public var sciClass: String?
-    @NSManaged public var order: String?
-    @NSManaged public var subOrder: String?
+    @NSManaged public var vernacular: String?
     @NSManaged public var family: String?
     @NSManaged public var genus: String?
+    @NSManaged public var kingdom: String?
+    @NSManaged public var order: String?
+    @NSManaged public var phylum: String?
+    @NSManaged public var sciClass: String?
     @NSManaged public var species: String?
+    @NSManaged public var subOrder: String?
 
 }

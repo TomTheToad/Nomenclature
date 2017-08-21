@@ -48,6 +48,7 @@ class CoreDataController {
         do {
             try thisOrganism.managedObjectContext?.save()
         } catch {
+            print("Core Data Error adding organism")
             // do something
         }
     }

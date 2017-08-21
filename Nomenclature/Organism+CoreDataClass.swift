@@ -2,7 +2,7 @@
 //  Organism+CoreDataClass.swift
 //  Nomenclature
 //
-//  Created by VICTOR ASSELTA on 8/18/17.
+//  Created by VICTOR ASSELTA on 8/21/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
 

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C70C9E981F47AFDE00856E40 /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70C9E961F47AFDE00856E40 /* Organism+CoreDataClass.swift */; };
-		C70C9E991F47AFDE00856E40 /* Organism+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70C9E971F47AFDE00856E40 /* Organism+CoreDataProperties.swift */; };
 		C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED41F3B232B006F25E1 /* SearchController.swift */; };
 		C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */; };
 		C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */; };
+		C7787E351F4B00B500051FBB /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7787E331F4B00B500051FBB /* Organism+CoreDataClass.swift */; };
+		C7787E361F4B00B500051FBB /* Organism+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7787E341F4B00B500051FBB /* Organism+CoreDataProperties.swift */; };
 		C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C5B1F30E3C700C09528 /* AppDelegate.swift */; };
 		C7957C611F30E3C700C09528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7957C5F1F30E3C700C09528 /* Main.storyboard */; };
 		C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7957C621F30E3C700C09528 /* Nomenclature.xcdatamodeld */; };
@@ -24,11 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C70C9E961F47AFDE00856E40 /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C70C9E971F47AFDE00856E40 /* Organism+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C738CED41F3B232B006F25E1 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableController.swift; sourceTree = "<group>"; };
 		C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableCell.swift; sourceTree = "<group>"; };
+		C7787E331F4B00B500051FBB /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C7787E341F4B00B500051FBB /* Organism+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7957C581F30E3C700C09528 /* Nomenclature.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nomenclature.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7957C5B1F30E3C700C09528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7957C601F30E3C700C09528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				C7957C621F30E3C700C09528 /* Nomenclature.xcdatamodeld */,
-				C70C9E961F47AFDE00856E40 /* Organism+CoreDataClass.swift */,
-				C70C9E971F47AFDE00856E40 /* Organism+CoreDataProperties.swift */,
+				C7787E331F4B00B500051FBB /* Organism+CoreDataClass.swift */,
+				C7787E341F4B00B500051FBB /* Organism+CoreDataProperties.swift */,
 				C7957C6A1F30E3C700C09528 /* Info.plist */,
 			);
 			name = Model;
@@ -221,8 +221,8 @@
 				C7E8388E1F3F2CD500A5F88A /* DetailViewCell.swift in Sources */,
 				C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */,
 				C7E8388C1F3F2CBC00A5F88A /* DetailViewController.swift in Sources */,
-				C70C9E981F47AFDE00856E40 /* Organism+CoreDataClass.swift in Sources */,
-				C70C9E991F47AFDE00856E40 /* Organism+CoreDataProperties.swift in Sources */,
+				C7787E351F4B00B500051FBB /* Organism+CoreDataClass.swift in Sources */,
+				C7787E361F4B00B500051FBB /* Organism+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

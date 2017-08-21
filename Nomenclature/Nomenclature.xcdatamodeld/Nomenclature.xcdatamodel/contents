@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Organism" representedClassName="Organism" syncable="YES">
-        <attribute name="commonName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="family" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kingdom" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,6 +9,7 @@
         <attribute name="sciClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="species" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subOrder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vernacular" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Organism" positionX="-63" positionY="-18" width="128" height="180"/>
