@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C702F2E71F4CEA7E002598D3 /* MCTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F2E61F4CEA7E002598D3 /* MCTableController.swift */; };
 		C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED41F3B232B006F25E1 /* SearchController.swift */; };
 		C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */; };
 		C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C702F2E61F4CEA7E002598D3 /* MCTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTableController.swift; sourceTree = "<group>"; };
 		C738CED41F3B232B006F25E1 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableController.swift; sourceTree = "<group>"; };
 		C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableCell.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C702F2E51F4CEA3F002598D3 /* MyCollection */ = {
+			isa = PBXGroup;
+			children = (
+				C702F2E61F4CEA7E002598D3 /* MCTableController.swift */,
+			);
+			name = MyCollection;
+			sourceTree = "<group>";
+		};
 		C7957C4F1F30E3C700C09528 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 				C7E838931F3F2D3500A5F88A /* Detail */,
 				C7E838921F3F2D2B00A5F88A /* SearchResults */,
 				C7E838911F3F2D1C00A5F88A /* Search */,
+				C702F2E51F4CEA3F002598D3 /* MyCollection */,
 				C7957C5B1F30E3C700C09528 /* AppDelegate.swift */,
 				C7957C731F30E43D00C09528 /* ITISController.swift */,
 				C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */,
@@ -214,6 +225,7 @@
 			files = (
 				C7957C741F30E43D00C09528 /* ITISController.swift in Sources */,
 				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
+				C702F2E71F4CEA7E002598D3 /* MCTableController.swift in Sources */,
 				C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */,
 				C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */,
 				C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */,
