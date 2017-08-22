@@ -44,6 +44,7 @@
                                             <segment title="10"/>
                                             <segment title="50"/>
                                             <segment title="100"/>
+                                            <segment title="500"/>
                                         </segments>
                                         <connections>
                                             <action selector="selectNumberRecordsAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dci-kM-X3b"/>

@@ -48,7 +48,7 @@ class SearchController: UIViewController {
             return
         }
         
-        itis.commonNameSearch2(commonName: searchText, numberOfRecords: numberOfRecords, completionHandler: {
+        itis.commonNameSearch(commonName: searchText, numberOfRecords: numberOfRecords, completionHandler: {
             (error, dict) in
             if error == nil {
                 guard let thisDict = dict else {

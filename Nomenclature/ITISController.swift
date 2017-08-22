@@ -17,7 +17,7 @@ class ITISController: NSObject {
     let methodCallCommonName = "vernacular:"
     
     
-    func commonNameSearch2(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
+    func commonNameSearch(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
         
         let baseString = "services.itis.gov"
         let method = "vernacular:"
@@ -148,9 +148,7 @@ class ITISController: NSObject {
             }
             
             let commonNameDataString = firstNameObject.components(separatedBy: "$")
-            
             let firstCommonName = commonNameDataString[1]
-            
             thisRecordArray["vernacular"] = firstCommonName
             
             
