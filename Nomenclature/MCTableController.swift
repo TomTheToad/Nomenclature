@@ -22,8 +22,13 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         if let collectionData = coreData.fetchAll() {
             myCollection = collectionData
+            tableView.reloadData()
         } else {
-            // TODO: create an alert
+            let msg = "Nothing to see here! Why don't you go search for something."
+            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
+            present(alert, animated: true, completion: {
+                self.navigationController?.popToRootViewController(animated: false)
+            })
         }
         
         tableView.delegate = self
