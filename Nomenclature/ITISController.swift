@@ -30,16 +30,13 @@ class ITISController: NSObject {
             URLQueryItem.init(name: "wt", value: "json")
         ]
         
-        // create base URL, Use guard here in transfer to code base
-        // var baseURL = URL(string: baseURLString)!
-        
-        // add method call
+        // url components build out
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.path = "/"
         urlComponents.host = baseString
         urlComponents.queryItems = queryItems
-        print("url: \(urlComponents.url!)")
+        // print("url: \(urlComponents.url!)")
         
         guard let url = urlComponents.url else {
             print("Error: url missing")
@@ -47,6 +44,7 @@ class ITISController: NSObject {
         }
         
         // create request
+        // TODO: Handle time out
         let urlRequest = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 1.0)
         
         // create session
@@ -90,68 +88,6 @@ class ITISController: NSObject {
         }
         
         return arguments
-    }
-    
-
-    func anyNameOrTSNSearch(searchString: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
-        // TODO: XML parse from
-        // http://www.itis.gov/ITISWebService/services/ITISService/searchForAnyMatch?srchKey=dolphin
-    }
-
-    
-    func commonNameSearch(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
-        
-        var arguments = "*"
-        
-        if commonName.contains(" ") {
-            let commonNameMultipleWords = commonName.components(separatedBy: " ")
-            for item in commonNameMultipleWords {
-                if item != commonNameMultipleWords.last {
-                    arguments = arguments + "\(item)\\ "
-                } else {
-                    arguments = arguments + "\(item)*"
-                }
-            }
-        } else {
-            arguments = arguments + "\(commonName)*"
-        }
-        
-        guard let escapedArguments = arguments.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-            print("query failure: invalid characters")
-            return
-        }
-        
-        let urlString = baseURL + methodCallCommonName + escapedArguments + "&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
-        print("urlString: \(urlString)")
-        
-        guard let url = URL(string: urlString) else {
-            print("url failure")
-            return
-        }
-        
-        print("URL: \(url)")
-        
-        let request = URLRequest(url: url)
-        
-        let task = session.dataTask(with: request, completionHandler: {
-        (data, response, error) in
-            if error != nil {
-                completionHandler(error, nil)
-            } else {
-                // TODO: check response
-                
-                guard let returnData = self.ConvertJSONToDict(data: data) else {
-                    print("serialization problem")
-                    completionHandler(ITISControllerErrors.noDataReturned, nil)
-                    return
-                }
-                
-                completionHandler(nil, returnData)
-                
-            }
-        })
-        
-        task.resume()
     }
     
     func ConvertJSONToDict(data: Data?) -> [NSDictionary]? {
@@ -212,10 +148,6 @@ class ITISController: NSObject {
             }
             
             let commonNameDataString = firstNameObject.components(separatedBy: "$")
-            
-//            for (index, item) in commonNameDataString.enumerated() {
-//                print("\(index): \(item)")
-//            }
             
             let firstCommonName = commonNameDataString[1]
             
