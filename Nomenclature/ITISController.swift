@@ -17,17 +17,80 @@ class ITISController: NSObject {
     let methodCallCommonName = "vernacular:"
     
     
-//    func commonNameSearch2(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
-//        
-//        guard let url = URL(string: (baseURL + methodCall)) else {
-//            print("url failure")
-//            return
-//        }
-//        
-//        var request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadRevalidatingCacheData, timeoutInterval: 3.0)
-//        request.httpMethod = "GET"
-//        request.httpBody = "*\(commonName)*&rows=\(String(numberOfRecords))&wt=\(returnFormat)"
-//    }
+    func commonNameSearch2(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
+        
+        let baseString = "services.itis.gov"
+        let method = "vernacular:"
+        let searchString = parseSearchString(searchString: commonName)
+        
+        let queryItems = [
+            
+            URLQueryItem.init(name: "q", value: method + searchString),
+            URLQueryItem.init(name: "rows", value: String(describing: numberOfRecords)),
+            URLQueryItem.init(name: "wt", value: "json")
+        ]
+        
+        // create base URL, Use guard here in transfer to code base
+        // var baseURL = URL(string: baseURLString)!
+        
+        // add method call
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.path = "/"
+        urlComponents.host = baseString
+        urlComponents.queryItems = queryItems
+        print("url: \(urlComponents.url!)")
+        
+        guard let url = urlComponents.url else {
+            print("Error: url missing")
+            return
+        }
+        
+        // create request
+        let urlRequest = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 1.0)
+        
+        // create session
+        let session = URLSession.shared
+        
+        // create task
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            
+            if error != nil {
+                completionHandler(error, nil)
+            } else {
+                // TODO: check response
+                guard let returnData = self.ConvertJSONToDict(data: data) else {
+                    print("serialization problem")
+                    completionHandler(ITISControllerErrors.noDataReturned, nil)
+                    return
+                }
+                
+                completionHandler(nil, returnData)
+            }
+        }
+        // resume task
+        task.resume()
+    }
+    
+    func parseSearchString(searchString: String) -> String {
+        var arguments = "*"
+        
+        if searchString.contains(" ") {
+            let commonNameMultipleWords = searchString.components(separatedBy: " ")
+            for item in commonNameMultipleWords {
+                if item != commonNameMultipleWords.last {
+                    arguments = arguments + "\(item)\\ "
+                } else {
+                    arguments = arguments + "\(item)*"
+                }
+            }
+        } else {
+            arguments = arguments + "\(searchString)*"
+        }
+        
+        return arguments
+    }
     
 
     func anyNameOrTSNSearch(searchString: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
