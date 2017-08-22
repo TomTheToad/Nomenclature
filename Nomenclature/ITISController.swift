@@ -248,11 +248,6 @@ class ITISController: NSObject {
             
         }
         
-//        print("### Heirarchy ###")
-//        for item in recordsDict {
-//            print("keys: \(item.allKeys), values: \(item.allValues)")
-//        }
-        
         return recordsDict
     }
 
