@@ -19,6 +19,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func saveAction(_ sender: Any) {
         saveOrganism()
     }
+    
+    @IBAction func myCollectionButton(_ sender: Any) {
+        performMCSeque(sender: self)
+    }
 
     
     // IBOutlets
@@ -56,5 +60,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             print("Save failed")
         }
+    }
+    
+    func performMCSeque(sender: Any?) {
+        performSegue(withIdentifier: "detailToMC", sender: sender)
     }
 }

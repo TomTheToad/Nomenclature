@@ -172,11 +172,11 @@
                         <viewControllerLayoutGuide type="bottom" id="73u-pn-DS2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3vn-VE-noQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3ws-KE-G0D">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MCTableCell" id="2NV-0M-eyp" customClass="MCTableCell" customModule="Nomenclature" customModuleProvider="target">
@@ -233,11 +233,11 @@
                         <viewControllerLayoutGuide type="bottom" id="gwf-qA-qpm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Cn4-fh-uPz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PgH-eA-XIl">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Wo-Gz-1m7">
                                     <size key="itemSize" width="50" height="50"/>
@@ -356,6 +356,12 @@
                                                     <action selector="saveAction:" destination="be2-sO-jFd" id="guc-Bb-B1w"/>
                                                 </connections>
                                             </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="PSw-lk-kyv"/>
+                                            <barButtonItem title="myCollection" style="plain" id="2ry-rZ-rxx">
+                                                <connections>
+                                                    <action selector="myCollectionButton:" destination="be2-sO-jFd" id="HIR-qd-AIL"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="jz9-eY-te2"/>
                                         </items>
                                     </toolbar>
@@ -373,11 +379,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="H9n-Tk-2ny" id="XPm-61-sfK"/>
+                        <segue destination="48K-9Z-y5z" kind="show" identifier="detailToMC" id="lrN-no-7Ln"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rV-lF-RgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="138"/>
+            <point key="canvasLocation" x="2756" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tfx-5T-c38">
@@ -398,4 +405,7 @@
             <point key="canvasLocation" x="198" y="137"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lrN-no-7Ln"/>
+    </inferredMetricsTieBreakers>
 </document>
