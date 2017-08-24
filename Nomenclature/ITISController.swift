@@ -137,11 +137,6 @@ class ITISController: NSObject {
                 return nil
             }
             
-            for item in commonNameArray {
-                print("common name: \(item)")
-            }
-            
-            // print("common name: \(commonNameArray)")
             guard let firstNameObject = commonNameArray.firstObject as? NSString else {
                 print("commonName string missing")
                 return nil

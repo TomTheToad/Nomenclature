@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C702F2E71F4CEA7E002598D3 /* MCTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F2E61F4CEA7E002598D3 /* MCTableController.swift */; };
+		C702F2E91F4CFB9F002598D3 /* MCTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F2E81F4CFB9F002598D3 /* MCTableCell.swift */; };
 		C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED41F3B232B006F25E1 /* SearchController.swift */; };
 		C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */; };
 		C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		C702F2E61F4CEA7E002598D3 /* MCTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTableController.swift; sourceTree = "<group>"; };
+		C702F2E81F4CFB9F002598D3 /* MCTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTableCell.swift; sourceTree = "<group>"; };
 		C738CED41F3B232B006F25E1 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableController.swift; sourceTree = "<group>"; };
 		C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableCell.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				C702F2E61F4CEA7E002598D3 /* MCTableController.swift */,
+				C702F2E81F4CFB9F002598D3 /* MCTableCell.swift */,
 			);
 			name = MyCollection;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C702F2E91F4CFB9F002598D3 /* MCTableCell.swift in Sources */,
 				C7957C741F30E43D00C09528 /* ITISController.swift in Sources */,
 				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
 				C702F2E71F4CEA7E002598D3 /* MCTableController.swift in Sources */,

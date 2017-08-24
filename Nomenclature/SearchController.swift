@@ -12,6 +12,7 @@ class SearchController: UIViewController {
     
     // Fields
     let itis = ITISController()
+    let coreData = CoreDataController()
     var numberOfRecords = 10
     
     var resultsDict = [NSDictionary]() {
@@ -26,7 +27,6 @@ class SearchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     // IBActions
@@ -36,9 +36,14 @@ class SearchController: UIViewController {
             numberOfRecords = 50
         } else if index == 2 {
             numberOfRecords = 100
+        } else if index == 3 {
+            numberOfRecords = 500
         } else {
             numberOfRecords = 10
         }
+    }
+    @IBAction func myCollectionButtonAction(_ sender: Any) {
+        performMCSeque(sender: self)
     }
     
     @IBAction func searchButton(_ sender: Any) {
@@ -67,6 +72,10 @@ class SearchController: UIViewController {
                 }
             }
         })
+    }
+    
+    func performMCSeque(sender: Any?) {
+        performSegue(withIdentifier: "searchToMC", sender: sender)
     }
     
     func performResultsSeque(sender: Any?) {

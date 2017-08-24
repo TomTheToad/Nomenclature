@@ -11,6 +11,8 @@ import CoreData
 
 class CoreDataController {
     
+    // Fields
+    let allowedKeys = ["vernacular", "kingdom", "phylum", "class", "order", "family", "genus", "species"]
     let managedObjectContext: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Internal application error")
@@ -21,12 +23,15 @@ class CoreDataController {
     // retrieve all
     func fetchAll() -> [Organism]? {
         var results: [Organism]?
+        
+        let request = NSFetchRequest<Organism>(entityName: "Organism")
         do {
-            results = try managedObjectContext.fetch(Organism.fetchRequest()) as? [Organism]
+            results = try managedObjectContext.fetch(request)
+            return results
         } catch {
+            print("fetchall, nothing returned")
             return nil
         }
-        return results
     }
     
     func fetchOneOrganism(species: String) -> Organism? {
@@ -43,20 +48,23 @@ class CoreDataController {
     
     // create
     func addOrganism(dict: NSDictionary) -> Bool {
-        let organism = Organism(entity: Organism.entity(), insertInto: managedObjectContext)
+        guard let entity = NSEntityDescription.entity(forEntityName: "Organism", in: managedObjectContext) else {
+            print("coreData: Entity error")
+            return false
+        }
+        let organism = Organism(entity: entity, insertInto: managedObjectContext)
+        
         for item in dict {
             let itemKey = String(describing: item.key)
             let itemValue = String(describing: item.value)
-            if itemKey == "class" {
+            if itemKey == "class" || itemKey == "Class" {
                 organism.sciClass = itemValue
-            } else {
+            } else if allowedKeys.contains(itemKey){
                 organism.setValue(itemValue, forKey: itemKey)
             }
-            
-            return saveData()
         }
         
-        return true
+        return saveData()
     }
     
     func removeOrganism(organism: Organism) {

@@ -12,7 +12,14 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // Fields
     let coreData = CoreDataController()
-    var myCollection = [Organism]()
+    var myCollection: [Organism]? = {
+        let coreData = CoreDataController()
+        guard let results = coreData.fetchAll() else {
+            print("no results")
+            return nil
+        }
+        return results
+        }()
     
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -20,29 +27,39 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let collectionData = coreData.fetchAll() {
-            myCollection = collectionData
-            tableView.reloadData()
-        } else {
-            let msg = "Nothing to see here! Why don't you go search for something."
-            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
-            present(alert, animated: true, completion: {
-                self.navigationController?.popToRootViewController(animated: false)
-            })
-        }
-        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if myCollection == nil {
+            let msg = "Nothing to see here! Why don't you go search for something."
+            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(alertAction)
+            navigationController?.present(alert, animated: true, completion: {
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: false)
+                }
+            })
+        }
     }
     
     // MARK: Table Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myCollection.count
+        guard let count = myCollection?.count else {
+            return 0
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MCTableCell", for: indexPath) as! SearchResultsTableCell
-        cell.commonNameLabel.text = myCollection[indexPath.row].vernacular
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MCTableCell", for: indexPath) as! MCTableCell
+        
+        guard let organism = myCollection?[indexPath.row] else {
+            cell.vernacularTextField.text = "Name Missing!"
+            return cell
+        }
+
+        cell.vernacularTextField.text = organism.vernacular
         return cell
     }
 }

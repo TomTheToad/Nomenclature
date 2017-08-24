@@ -65,10 +65,25 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dX-NB-eRX">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KQc-NR-nJB"/>
+                                    <barButtonItem systemItem="bookmarks" id="NED-LA-w2u">
+                                        <connections>
+                                            <action selector="myCollectionButtonAction:" destination="BYZ-38-t0r" id="ads-or-Lck"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="U2H-s1-dsg"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.32087762334766046" green="0.68287961619329951" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2dX-NB-eRX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4Kf-dJ-rCo"/>
                             <constraint firstItem="spb-Sh-YhW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="ANL-QV-NlA"/>
+                            <constraint firstAttribute="trailing" secondItem="2dX-NB-eRX" secondAttribute="trailing" id="Dp0-s9-Haf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2dX-NB-eRX" secondAttribute="bottom" id="RHd-oH-ZPi"/>
                             <constraint firstItem="spb-Sh-YhW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="j2n-7K-6wM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="spb-Sh-YhW" secondAttribute="trailing" constant="10" id="xMd-B0-p7e"/>
                         </constraints>
@@ -78,7 +93,7 @@
                         <outlet property="searchField" destination="m7p-PU-PkO" id="TrK-Ol-213"/>
                         <outlet property="segmentedControl" destination="arA-3c-A3j" id="50p-Ds-VvV"/>
                         <segue destination="dfW-ss-8oo" kind="show" identifier="searchResultsSeque" id="TTY-yg-amD"/>
-                        <segue destination="48K-9Z-y5z" kind="show" identifier="searchToMyCollection" id="CY4-Kc-ggI"/>
+                        <segue destination="48K-9Z-y5z" kind="show" identifier="searchToMC" id="CY4-Kc-ggI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -164,13 +179,30 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MCTableCell" id="2NV-0M-eyp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MCTableCell" id="2NV-0M-eyp" customClass="MCTableCell" customModule="Nomenclature" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2NV-0M-eyp" id="4mE-eG-2Zg">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyR-AP-tdO">
+                                                    <rect key="frame" x="10" y="10" width="355" height="23.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TyR-AP-tdO" firstAttribute="top" secondItem="4mE-eG-2Zg" secondAttribute="topMargin" constant="2" id="40t-rS-SAd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TyR-AP-tdO" secondAttribute="trailing" constant="2" id="GhH-R7-s9T"/>
+                                                <constraint firstItem="TyR-AP-tdO" firstAttribute="leading" secondItem="4mE-eG-2Zg" secondAttribute="leadingMargin" constant="2" id="H7V-uQ-FDz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TyR-AP-tdO" secondAttribute="bottom" constant="2" id="KVK-Ih-Cgx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="vernacularTextField" destination="TyR-AP-tdO" id="2T6-x2-40Y"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
