@@ -16,7 +16,6 @@ class ITISController: NSObject {
     let baseURL = "https://services.itis.gov/?q="
     let methodCallCommonName = "vernacular:"
     
-    
     func commonNameSearch(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
         
         let baseString = "services.itis.gov"

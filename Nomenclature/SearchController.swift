@@ -11,7 +11,7 @@ import UIKit
 class SearchController: UIViewController {
     
     // Fields
-    let itis = ITISController()
+    let itis = ITISAPIController()
     let coreData = CoreDataController()
     var numberOfRecords = 10
     
