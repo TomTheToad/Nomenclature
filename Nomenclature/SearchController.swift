@@ -27,6 +27,8 @@ class SearchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        testINaturalist()
     }
     
     // IBActions
@@ -42,12 +44,16 @@ class SearchController: UIViewController {
             numberOfRecords = 10
         }
     }
+    
     @IBAction func myCollectionButtonAction(_ sender: Any) {
         performMCSeque(sender: self)
     }
     
     @IBAction func searchButton(_ sender: Any) {
-        
+        searchITIS()
+    }
+    
+    func searchITIS() {
         guard let searchText = searchField.text else {
             print("Please enter something to search")
             return
@@ -70,6 +76,26 @@ class SearchController: UIViewController {
                 if let thisDict = dict {
                     print("thisDict: \(thisDict)")
                 }
+            }
+        })
+    }
+    
+    func testINaturalist() {
+        let iNat = INaturalListAPIController()
+        iNat.performQuery(query: "whale", numberOfItemsPerPage: 40, completionHander: {
+            (error, dict) in
+            if error == nil {
+                guard let firstItem = dict?.first else {
+                    print("first item missing")
+                    return
+                }
+                
+                for item in firstItem {
+                    print("key: \(item.key), value: \(item.value)")
+                }
+            }
+            else {
+                print("error: \(String(describing: error?.localizedDescription))")
             }
         })
     }
