@@ -1,5 +1,5 @@
 //
-//  ITISController.swift
+//  ITISAPIController.swift
 //  Nomenclature
 //
 //  Created by VICTOR ASSELTA on 8/1/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ITISController: NSObject {
+class ITISAPIController: NSObject {
 
     let returnFormat = "json"
     let session = URLSession(configuration: .ephemeral)
