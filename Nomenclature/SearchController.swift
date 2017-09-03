@@ -29,6 +29,7 @@ class SearchController: UIViewController {
         super.viewDidLoad()
         
         // testINaturalist()
+        // testEOL() <- failed do to lack of api ssl support
     }
     
     // IBActions
@@ -83,6 +84,26 @@ class SearchController: UIViewController {
     func testINaturalist() {
         let iNat = INaturalListAPIController()
         iNat.performQuery(query: "whale", numberOfItemsPerPage: 40, completionHander: {
+            (error, dict) in
+            if error == nil {
+                guard let firstItem = dict?.first else {
+                    print("first item missing")
+                    return
+                }
+                
+                for item in firstItem {
+                    print("key: \(item.key), value: \(item.value)")
+                }
+            }
+            else {
+                print("error: \(String(describing: error?.localizedDescription))")
+            }
+        })
+    }
+    
+    func testEOL() {
+        let eol = EOLAPI()
+        eol.performQuery(query: "whale", completionHander: {
             (error, dict) in
             if error == nil {
                 guard let firstItem = dict?.first else {

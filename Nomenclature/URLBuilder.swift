@@ -12,17 +12,23 @@ class URLBuilder: NSObject {
     var baseURL = String()
     var path = String()
     var queryItems = [URLQueryItem]()
+    var secureScheme = true
     
-    init(baseURL: String, path: String, queryItems: [URLQueryItem]) {
+    init(baseURL: String, path: String, queryItems: [URLQueryItem], secureScheme: Bool = true) {
         self.baseURL = baseURL
         self.path = path
         self.queryItems = queryItems
+        
     }
     
     private func buildURL() -> URL? {
         
         var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
+        if secureScheme != true {
+            urlComponents.scheme = "https"
+        } else {
+            urlComponents.scheme = "http"
+        }
         urlComponents.host = baseURL
         urlComponents.path = path
         urlComponents.queryItems = queryItems
