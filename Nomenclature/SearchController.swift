@@ -28,7 +28,7 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // testINaturalist()
+        testINaturalist()
     }
     
     // IBActions
@@ -82,7 +82,7 @@ class SearchController: UIViewController {
     
     func testINaturalist() {
         let iNat = INaturalListAPIController()
-        iNat.performQuery(query: "whale", numberOfItemsPerPage: 40, completionHander: {
+        iNat.performQuery(query: "blue whale", numberOfItemsPerPage: 40, completionHander: {
             (error, dict) in
             if error == nil {
                 guard let firstItem = dict?.first else {

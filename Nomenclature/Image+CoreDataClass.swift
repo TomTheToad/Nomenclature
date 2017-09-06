@@ -1,5 +1,5 @@
 //
-//  Organism+CoreDataClass.swift
+//  Image+CoreDataClass.swift
 //  Nomenclature
 //
 //  Created by VICTOR ASSELTA on 9/5/17.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Organism)
-public class Organism: NSManagedObject {
+@objc(Image)
+public class Image: NSManagedObject {
 
 }
