@@ -97,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2224.8000000000002" y="-457.42128935532236"/>
+            <point key="canvasLocation" x="2375" y="-743"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="2Cr-pU-AD9">
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzj-2c-2RD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="391"/>
+            <point key="canvasLocation" x="3260" y="-743"/>
         </scene>
         <!--My Collection-->
         <scene sceneID="Kdz-9p-rVI">
@@ -237,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMD-EE-uzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="-457"/>
+            <point key="canvasLocation" x="358" y="-302"/>
         </scene>
         <!--My Collection-->
         <scene sceneID="2Ek-xi-g2m">
@@ -420,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rV-lF-RgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1345" y="1166"/>
+            <point key="canvasLocation" x="4326" y="-743"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tfx-5T-c38">
@@ -456,10 +456,10 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1285.5999999999999" y="-457.42128935532236"/>
+            <point key="canvasLocation" x="1489" y="-743"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="z2F-DJ-htY"/>
+        <segue reference="nqz-43-MGB"/>
     </inferredMetricsTieBreakers>
 </document>

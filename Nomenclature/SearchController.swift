@@ -101,7 +101,7 @@ class SearchController: UIViewController {
     }
     
     func performMCSeque(sender: Any?) {
-        performSegue(withIdentifier: "searchToMC", sender: sender)
+        // TODO: perform seque to initialVC
     }
     
     func performResultsSeque(sender: Any?) {
