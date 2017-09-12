@@ -28,7 +28,7 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        testINaturalist()
+        // testINaturalist()
     }
     
     // IBActions

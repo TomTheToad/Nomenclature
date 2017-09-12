@@ -21,7 +21,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func myCollectionButton(_ sender: Any) {
-        performMCSeque(sender: self)
+        returnToInitialVC()
     }
 
     
@@ -62,7 +62,15 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func performMCSeque(sender: Any?) {
-        performSegue(withIdentifier: "detailToMC", sender: sender)
+
+    func returnToInitialVC() {
+        guard let initialVC = storyboard?.instantiateInitialViewController() else {
+            // big error goes here
+            print("Could not instantiate initial view controller!")
+            return
+        }
+        
+        present(initialVC, animated: false, completion: nil)
     }
+    
 }

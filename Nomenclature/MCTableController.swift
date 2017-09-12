@@ -24,6 +24,11 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
+    // IBActions
+    @IBAction func addButton(_ sender: Any) {
+        addCard()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +42,16 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
             alert.addAction(alertAction)
             navigationController?.present(alert, animated: true, completion: {
                 DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: false)
+                    // self.navigationController?.popViewController(animated: false)
+                    self.navigationController?.popToRootViewController(animated: false)
                 }
             })
         }
+    }
+    
+    // Seque
+    func addCard() {
+        performSegue(withIdentifier: "tableAddCard", sender: self)
     }
     
     // MARK: Table Methods
