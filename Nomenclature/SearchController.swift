@@ -25,12 +25,6 @@ class SearchController: UIViewController {
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // testINaturalist()
-    }
-    
     // IBActions
     @IBAction func selectNumberRecordsAction(_ sender: Any) {
         let index = segmentedControl.selectedSegmentIndex
@@ -76,26 +70,6 @@ class SearchController: UIViewController {
                 if let thisDict = dict {
                     print("thisDict: \(thisDict)")
                 }
-            }
-        })
-    }
-    
-    func testINaturalist() {
-        let iNat = INaturalListAPIController()
-        iNat.performQuery(query: "blue whale", numberOfItemsPerPage: 40, completionHander: {
-            (error, dict) in
-            if error == nil {
-                guard let firstItem = dict?.first else {
-                    print("first item missing")
-                    return
-                }
-                
-                for item in firstItem {
-                    print("key: \(item.key), value: \(item.value)")
-                }
-            }
-            else {
-                print("error: \(String(describing: error?.localizedDescription))")
             }
         })
     }

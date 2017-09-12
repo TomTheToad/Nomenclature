@@ -26,6 +26,9 @@
 		C7A2AC7A1F5F7EDF0009ED84 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A2AC761F5F7EDF0009ED84 /* Image+CoreDataClass.swift */; };
 		C7A2AC7B1F5F7EDF0009ED84 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A2AC771F5F7EDF0009ED84 /* Image+CoreDataProperties.swift */; };
 		C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */; };
+		C7D502E41F6887EF00065274 /* WikimediaAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */; };
+		C7D502E61F68929B00065274 /* FlikrAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E51F68929B00065274 /* FlikrAPIController.swift */; };
+		C7D502E91F68934B00065274 /* URLResponseCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E81F68934B00065274 /* URLResponseCheck.swift */; };
 		C7E8388C1F3F2CBC00A5F88A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */; };
 		C7E8388E1F3F2CD500A5F88A /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */; };
 		C7EE61871F58DFB6002B4EC7 /* INaturalistAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EE61861F58DFB6002B4EC7 /* INaturalistAPIController.swift */; };
@@ -54,6 +57,9 @@
 		C7A2AC761F5F7EDF0009ED84 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7A2AC771F5F7EDF0009ED84 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikimediaAPIController.swift; sourceTree = "<group>"; };
+		C7D502E51F68929B00065274 /* FlikrAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlikrAPIController.swift; sourceTree = "<group>"; };
+		C7D502E81F68934B00065274 /* URLResponseCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLResponseCheck.swift; sourceTree = "<group>"; };
 		C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 		C7EE61861F58DFB6002B4EC7 /* INaturalistAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INaturalistAPIController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		C7D502E71F68931200065274 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C7D502E81F68934B00065274 /* URLResponseCheck.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		C7E838911F3F2D1C00A5F88A /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +192,9 @@
 			children = (
 				C7957C731F30E43D00C09528 /* ITISAPIController.swift */,
 				C7EE61861F58DFB6002B4EC7 /* INaturalistAPIController.swift */,
+				C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */,
+				C7D502E51F68929B00065274 /* FlikrAPIController.swift */,
+				C7D502E71F68931200065274 /* Helpers */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -256,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C702F2E91F4CFB9F002598D3 /* MCTableCell.swift in Sources */,
+				C7D502E61F68929B00065274 /* FlikrAPIController.swift in Sources */,
 				C7A2AC791F5F7EDF0009ED84 /* Organism+CoreDataProperties.swift in Sources */,
 				C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */,
 				C7A2AC781F5F7EDF0009ED84 /* Organism+CoreDataClass.swift in Sources */,
@@ -267,9 +285,11 @@
 				C7A2AC731F5F7BF80009ED84 /* OrganismCard.swift in Sources */,
 				C7EE61871F58DFB6002B4EC7 /* INaturalistAPIController.swift in Sources */,
 				C7A2AC7B1F5F7EDF0009ED84 /* Image+CoreDataProperties.swift in Sources */,
+				C7D502E91F68934B00065274 /* URLResponseCheck.swift in Sources */,
 				C786C5F61F4F61D40050F3C4 /* MCCollectionController.swift in Sources */,
 				C7EE61891F58E05A002B4EC7 /* URLBuilder.swift in Sources */,
 				C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */,
+				C7D502E41F6887EF00065274 /* WikimediaAPIController.swift in Sources */,
 				C7E8388E1F3F2CD500A5F88A /* DetailViewCell.swift in Sources */,
 				C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */,
 				C7A2AC7A1F5F7EDF0009ED84 /* Image+CoreDataClass.swift in Sources */,
