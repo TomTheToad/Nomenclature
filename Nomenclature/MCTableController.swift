@@ -50,7 +50,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         // testWM()
         // testINaturalist()
-        testFlikr()
+        // testFlikr()
     }
     
     // Test Methods

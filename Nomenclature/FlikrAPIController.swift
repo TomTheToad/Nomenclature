@@ -19,11 +19,11 @@ class FlickrAPIController {
     }()
     
     // Flickr application key
-    let key = "1ce9f305e66a4ac8c886a811b7cc2c9b"
-    let method = "flickr.photos.search"
-    let session = URLSession(configuration: .ephemeral)
-    let baseURLString = "api.flickr.com"
-    let path = "/services/rest/"
+    private let key = "1ce9f305e66a4ac8c886a811b7cc2c9b"
+    private let method = "flickr.photos.search"
+    private let session = URLSession(configuration: .ephemeral)
+    private let baseURLString = "api.flickr.com"
+    private let path = "/services/rest/"
     
     // Custom errors for this API
     enum FlikrErrors: Error {
@@ -141,6 +141,36 @@ class FlickrAPIController {
             (data, response, error) in
             completionHandler(data, response, error)
         }).resume()
+    }
+    
+    func convertNSDictToPhoto(dictionary: NSDictionary) -> Photo {
+        var photo = Photo(id: "", url: "")
+        if let farmID = dictionary.value(forKey: "farm"),
+            let serverID = dictionary.value(forKey: "server"),
+            let secret = dictionary.value(forKey: "secret"),
+            let id = dictionary.value(forKey: "id") as? String {
+            
+            // TODO: urlComponents?
+            let urlString = "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret)_t.jpg"
+
+            photo.id = id
+            photo.urlString = urlString
+            // print("id: \(id), url: \(urlString)")
+            return photo
+        }
+        return photo
+    }
+    
+    func convertNSDictArraytoPhotoArray(dictionaryArray: [NSDictionary]) -> [Photo] {
+        var photoArray = [Photo]()
+        for dict in dictionaryArray {
+            let photo = convertNSDictToPhoto(dictionary: dict)
+            if photo.urlString != "" {
+                photoArray.append(photo)
+            }
+
+        }
+        return photoArray
     }
 
 }

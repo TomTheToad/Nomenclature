@@ -2,7 +2,7 @@
 //  Organism+CoreDataProperties.swift
 //  Nomenclature
 //
-//  Created by VICTOR ASSELTA on 9/5/17.
+//  Created by VICTOR ASSELTA on 9/16/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
 
@@ -18,6 +18,7 @@ extension Organism {
 
     @NSManaged public var family: String?
     @NSManaged public var genus: String?
+    @NSManaged public var image: NSData?
     @NSManaged public var kingdom: String?
     @NSManaged public var order: String?
     @NSManaged public var phylum: String?
@@ -25,24 +26,6 @@ extension Organism {
     @NSManaged public var species: String?
     @NSManaged public var subOrder: String?
     @NSManaged public var vernacular: String?
-    @NSManaged public var image: NSData?
-    @NSManaged public var hasImage: NSSet?
-
-}
-
-// MARK: Generated accessors for hasImage
-extension Organism {
-
-    @objc(addHasImageObject:)
-    @NSManaged public func addToHasImage(_ value: Image)
-
-    @objc(removeHasImageObject:)
-    @NSManaged public func removeFromHasImage(_ value: Image)
-
-    @objc(addHasImage:)
-    @NSManaged public func addToHasImage(_ values: NSSet)
-
-    @objc(removeHasImage:)
-    @NSManaged public func removeFromHasImage(_ values: NSSet)
+    @NSManaged public var photo: NSData?
 
 }
