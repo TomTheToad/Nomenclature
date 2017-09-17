@@ -22,16 +22,11 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     
     // IBOutlets
     @IBOutlet weak var imageCollectionView: UICollectionView!
-
     @IBOutlet weak var searchTextField: UITextField!
     
     // IBActions
-    @IBAction func addSelectedImageButton(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToDetailView", sender: self)
-    }
-    
-    @IBAction func cancelButton(_ sender: Any) {
-            self.dismiss(animated: false, completion: nil)
+    @IBAction func addImageButton(_ sender: Any) {
+        performSegue(withIdentifier: "saveToDetailVC", sender: self)
     }
     
     // viewDidLoad
@@ -64,13 +59,14 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
         cell.backgroundColor = UIColor.red
         
-        guard let photo = receivedPhotos?[indexPath.row] else {
+        guard var photo = receivedPhotos?[indexPath.row] else {
             return cell
         }
         
         if let image = photo.image {
             cell.backgroundColor = UIColor.blue
             cell.imageView.image = image
+            cell.photo = photo
         } else if let url = photo.urlForImage() {
             flikr.downloadImageFromFlikrURL(url: url, completionHandler: {
                 (data, response, error) in
@@ -86,7 +82,8 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
                     DispatchQueue.main.async {
                         cell.backgroundColor = UIColor.blue
                         cell.imageView.image = image
-                        cell.photo?.image = image
+                        photo.image = image
+                        cell.photo = photo
                     }
                     
                 } else {
@@ -114,14 +111,19 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         cell.isSelected = true
         selectedPhoto = photo
         
-
     }
 
     // Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindToDetailView" {
+        if segue.identifier == "saveToDetailVC" {
             let vc = segue.destination as! DetailViewController
-            vc.receivedPhoto = selectedPhoto
+            
+            guard let photo = selectedPhoto else {
+                return
+            }
+            
+            vc.receivedPhoto = photo
+            vc.setImage(photo: photo)
         }
     }
     

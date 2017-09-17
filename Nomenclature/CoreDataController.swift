@@ -62,7 +62,7 @@ class CoreDataController {
     }
     
     // create
-    func addOrganism(dict: NSDictionary) -> Bool {
+    func addOrganism(dict: NSDictionary, photo: Photo?) -> Bool {
         let organism = createOrganism()
         
         for item in dict {
@@ -72,6 +72,14 @@ class CoreDataController {
                 organism.sciClass = itemValue
             } else if allowedKeys.contains(itemKey){
                 organism.setValue(itemValue, forKey: itemKey)
+            }
+        }
+        
+        if let image = photo?.image {
+            if let photoData = UIImagePNGRepresentation(image) as NSData? {
+                organism.photo = photoData
+            } else {
+                print("core data could not save image data")
             }
         }
         

@@ -11,9 +11,19 @@ import UIKit
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Fields
-    let coreData = CoreDataController()
+    private let coreData = CoreDataController()
+    
     var organismData = NSDictionary()
-    let headings = ["vernacular", "kingdom", "phylum", "class", "order", "suborder", "family", "genus", "species"]
+    private var searchString = String()
+    
+    private let headings = ["vernacular", "kingdom", "phylum", "class", "order", "suborder", "family", "genus", "species"]
+    
+    var flikrPhotos: [Photo]? {
+        didSet {
+            performSegue(withIdentifier: "imageSearchSegue", sender: self)
+        }
+    }
+    
     var receivedPhoto: Photo?
     
     // IBActions
@@ -23,6 +33,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func addImageButton(_ sender: Any) {
         fetchFlikrImages()
+    }
+    
+    @IBAction func saveToDetailViewController(_: UIStoryboardSegue) {
+        
     }
     
     // IBOutlets
@@ -54,6 +68,17 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             organismImage.image = UIImage(named: "addImage")
         }
     }
+    
+    func setImage(photo: Photo) {
+        guard let image = photo.image else {
+            print("image missing")
+            return
+        }
+        
+        organismImage.image = image
+        receivedPhoto = photo
+        
+    }
 
     // TableView methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,6 +107,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
+        self.searchString = searchString
+        
         do {
             
             try flikr.getImageArray(textToSearch: searchString, completionHander: {
@@ -95,7 +122,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let photos = flikr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
                     
                     DispatchQueue.main.async {
-                        self.presentImageSearch(searchString: searchString, photos: photos)
+                        self.flikrPhotos = photos
                     }
                     
                 } else {
@@ -111,7 +138,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // CoreData methods
     // TODO: alter for edit
     func saveOrganism() {
-        let isSuccess = coreData.addOrganism(dict: organismData)
+        let isSuccess = coreData.addOrganism(dict: organismData, photo: receivedPhoto)
         if isSuccess {
             print("Organism saved")
         } else {
@@ -130,11 +157,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         present(initialVC, animated: false, completion: nil)
     }
     
-    func presentImageSearch(searchString: String, photos: [Photo]) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ImageSearchController") as! ImageSearchController
-        vc.receivedPhotos = photos
-        vc.searchString = searchString
-        navigationController?.present(vc, animated: false, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "imageSearchSegue" {
+            let vc = segue.destination as! ImageSearchController
+            vc.receivedPhotos = flikrPhotos
+            vc.searchString = searchString
+        }
     }
     
 }
