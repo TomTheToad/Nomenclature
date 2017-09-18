@@ -70,12 +70,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setImage(photo: Photo) {
-        guard let image = photo.image else {
+        guard let imageData = photo.imageData else {
             print("image missing")
             return
         }
         
-        organismImage.image = image
+        organismImage.image = UIImage(data: imageData as Data)
         receivedPhoto = photo
         
     }

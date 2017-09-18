@@ -75,12 +75,9 @@ class CoreDataController {
             }
         }
         
-        if let image = photo?.image {
-            if let photoData = UIImagePNGRepresentation(image) as NSData? {
-                organism.photo = photoData
-            } else {
-                print("core data could not save image data")
-            }
+        if let imageData = photo?.imageData {
+            organism.image = imageData
+            print("photo saved")
         }
         
         return saveData()

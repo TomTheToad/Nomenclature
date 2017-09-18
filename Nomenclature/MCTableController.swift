@@ -26,7 +26,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // IBActions
     @IBAction func addButton(_ sender: Any) {
-        addCard()
+        performSegue(withIdentifier: "tableAddCard", sender: self)
     }
     
     override func viewDidLoad() {
@@ -102,11 +102,6 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
                 print("error: \(String(describing: error?.localizedDescription))")
             }
         })
-    }
-    
-    // Seque
-    func addCard() {
-        performSegue(withIdentifier: "tableAddCard", sender: self)
     }
     
     // MARK: Table Methods

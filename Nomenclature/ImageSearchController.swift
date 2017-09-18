@@ -63,9 +63,9 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             return cell
         }
         
-        if let image = photo.image {
+        if let imageData = photo.imageData {
             cell.backgroundColor = UIColor.blue
-            cell.imageView.image = image
+            cell.imageView.image = UIImage(data: imageData as Data)
             cell.photo = photo
         } else if let url = photo.urlForImage() {
             flikr.downloadImageFromFlikrURL(url: url, completionHandler: {
@@ -75,14 +75,10 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
                         return
                     }
                     
-                    guard let image = UIImage(data: imageData) else {
-                        return
-                    }
-                    
                     DispatchQueue.main.async {
                         cell.backgroundColor = UIColor.blue
-                        cell.imageView.image = image
-                        photo.image = image
+                        cell.imageView.image = UIImage(data: imageData)
+                        photo.imageData = imageData as NSData
                         cell.photo = photo
                     }
                     

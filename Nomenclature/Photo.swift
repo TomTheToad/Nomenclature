@@ -12,12 +12,12 @@ struct Photo {
     
     var id: String
     var urlString: String
-    var image: UIImage?
+    var imageData: NSData?
     
-    init(id: String, url: String, image: UIImage? = nil) {
+    init(id: String, url: String, imageData: NSData? = nil) {
         self.id = id
         self.urlString = url
-        self.image = image
+        self.imageData = imageData
     }
     
     func urlForImage() -> URL? {
