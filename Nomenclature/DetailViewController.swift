@@ -65,7 +65,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             organismImage.image = uiImage
             
         } else {
+            
             organismImage.image = UIImage(named: "addImage")
+            
         }
     }
     

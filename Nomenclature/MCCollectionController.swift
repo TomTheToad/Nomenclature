@@ -84,7 +84,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         if let imageData = organism.image {
-            print("image data reached")
             guard let image = UIImage(data: imageData as Data) else {
                 print("default image called")
                 cell.organismImage.image = UIImage(named: "addImage")

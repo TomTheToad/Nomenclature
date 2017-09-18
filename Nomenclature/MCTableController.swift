@@ -47,61 +47,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             })
         }
-        
-        // testWM()
-        // testINaturalist()
-        // testFlikr()
-    }
-    
-    // Test Methods
-    func testFlikr() {
-        let flikr = FlickrAPIController()
-        do {
-            try flikr.getImageArray(textToSearch: "alaskan,malamute", completionHander: {
-                (error, dict) in
-                if error == nil {
-                    guard let dict = dict else {
-                        print("flikr dict empty")
-                        return
-                    }
-                    
-                    for image in dict {
-                        for item in image {
-                           print("key: \(item.key), value: \(item.value)")
-                        }
-                    }
-                } else {
-                    print("flikr error: \(error!)")
-                }
-        })
-        } catch {
-            print("flikr failure")
-        }
-    }
-    
-    func testWM() {
-        let wm = WikimediaAPIController()
-        wm.testWM()
-    }
-    
-    func testINaturalist() {
-        let iNat = INaturalListAPIController()
-        iNat.performQuery(query: "blue whale", numberOfItemsPerPage: 40, completionHander: {
-            (error, dict) in
-            if error == nil {
-                guard let firstItem = dict?.first else {
-                    print("first item missing")
-                    return
-                }
-                
-                for item in firstItem {
-                    print("key: \(item.key), value: \(item.value)")
-                }
-            }
-            else {
-                print("error: \(String(describing: error?.localizedDescription))")
-            }
-        })
+
     }
     
     // MARK: Table Methods
