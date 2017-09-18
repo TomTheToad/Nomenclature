@@ -112,6 +112,15 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         selectedPhoto = photo
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell else {
+            // TODO: send error
+            return
+        }
+        
+        cell.isSelected = false
+    }
 
     // Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

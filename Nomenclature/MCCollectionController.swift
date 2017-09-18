@@ -89,7 +89,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
                 cell.organismImage.image = UIImage(named: "addImage")
                 return cell
             }
-            print("collection image found")
             cell.organismImage.image = image
         } else {
             cell.organismImage.image = UIImage(named: "addImage")

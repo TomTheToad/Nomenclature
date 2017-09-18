@@ -105,7 +105,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vVX-aW-r68" id="gea-Qt-84K">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zl-r2-xk4">
@@ -168,7 +168,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2NV-0M-eyp" id="4mE-eG-2Zg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyR-AP-tdO">
@@ -562,7 +562,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nvs-Am-ie6" id="0O3-bg-LCJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="iqa-Aq-fmC">
@@ -687,29 +687,33 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="568"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aRx-vq-ax9">
-                                            <size key="itemSize" width="139" height="149"/>
+                                            <size key="itemSize" width="181" height="194"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCollectionViewCell" id="ZFd-5p-JK5" customClass="ImageCollectionViewCell" customModule="Nomenclature" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="139" height="149"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="181" height="194"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="139" height="149"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="181" height="194"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-qU-mRU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="139" height="149"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="181" height="194"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="0hF-qU-mRU" secondAttribute="trailing" id="3td-8l-Q4E"/>
                                                     <constraint firstItem="0hF-qU-mRU" firstAttribute="leading" secondItem="ZFd-5p-JK5" secondAttribute="leading" id="8jg-64-TLw"/>
                                                     <constraint firstAttribute="bottom" secondItem="0hF-qU-mRU" secondAttribute="bottom" id="RyH-Cz-nhq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0hF-qU-mRU" secondAttribute="bottom" id="aIq-L5-0Ib"/>
                                                     <constraint firstAttribute="trailing" secondItem="0hF-qU-mRU" secondAttribute="trailing" id="jm6-vj-JOV"/>
                                                     <constraint firstItem="0hF-qU-mRU" firstAttribute="top" secondItem="ZFd-5p-JK5" secondAttribute="top" id="kd2-Vo-SCG"/>
+                                                    <constraint firstItem="0hF-qU-mRU" firstAttribute="leading" secondItem="ZFd-5p-JK5" secondAttribute="leading" id="t6d-s8-1mL"/>
+                                                    <constraint firstItem="0hF-qU-mRU" firstAttribute="top" secondItem="ZFd-5p-JK5" secondAttribute="top" id="uoC-MJ-ucm"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="imageView" destination="0hF-qU-mRU" id="36Q-Kx-EhT"/>
@@ -746,7 +750,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMt-k2-p8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1H9-Q4-1LC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3838" y="1110"/>
+            <point key="canvasLocation" x="3837.5999999999999" y="1109.5952023988007"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tfx-5T-c38">
