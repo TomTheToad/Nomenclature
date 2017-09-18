@@ -144,7 +144,7 @@ class FlickrAPIController {
             let id = dictionary.value(forKey: "id") as? String {
             
             // TODO: urlComponents?
-            let urlString = "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret)_t.jpg"
+            let urlString = "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret).jpg"
 
             photo.id = id
             photo.urlString = urlString

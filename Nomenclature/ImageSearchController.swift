@@ -29,6 +29,10 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         performSegue(withIdentifier: "saveToDetailVC", sender: self)
     }
     
+    @IBAction func cancelButton(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+    }
+    
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()

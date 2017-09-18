@@ -652,7 +652,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZRr-eK-Xg9"/>
-                                    <barButtonItem systemItem="cancel" id="UBl-3n-GWD"/>
+                                    <barButtonItem systemItem="cancel" id="UBl-3n-GWD">
+                                        <connections>
+                                            <action selector="cancelButton:" destination="zKo-4R-Ang" id="F8K-Gg-hS3"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="P17-Sy-FQN"/>
                                 </items>
                             </toolbar>
