@@ -76,6 +76,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("image missing")
             return
         }
+        print("image data found")
         
         organismImage.image = UIImage(data: imageData as Data)
         receivedPhoto = photo
