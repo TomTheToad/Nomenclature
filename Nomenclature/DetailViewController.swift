@@ -12,6 +12,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Fields
     private let coreData = CoreDataController()
+    private let flikr = FlickrAPIController()
     
     var organismData = NSDictionary()
     private var searchString = String()
@@ -72,17 +73,31 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setImage(photo: Photo) {
-        guard let imageData = photo.imageData else {
-            print("image missing")
+        guard let url = photo.urlForImage() else {
+            print("unable to download image")
             return
         }
-        print("image data found")
         
-        organismImage.image = UIImage(data: imageData as Data)
-        receivedPhoto = photo
+        var thisPhoto = photo
         
+        flikr.downloadImageFromFlikrURL(url: url, completionHandler: {
+            (data, response, error) in
+            if error == nil {
+                guard let imageData = data else {
+                    return
+                }
+                thisPhoto.imageData = imageData as NSData
+                DispatchQueue.main.async {
+                    self.receivedPhoto = thisPhoto
+                    self.organismImage.image = UIImage(data: imageData)
+                }
+            } else {
+                print("flikr download image error has occured. response: \(response.debugDescription)")
+                return
+            }
+        })
     }
-
+    
     // TableView methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return headings.count

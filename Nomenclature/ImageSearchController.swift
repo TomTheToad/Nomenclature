@@ -67,12 +67,13 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             return cell
         }
         
+        // TODO: this may never be called. Test without
         if let imageData = photo.imageData {
             cell.backgroundColor = UIColor.blue
             cell.imageView.image = UIImage(data: imageData as Data)
             cell.photo = photo
-        } else if let url = photo.urlForImage() {
-            flikr.downloadImageFromFlikrURL(url: url, completionHandler: {
+        } else if let thumbURL = photo.urlForThumbImage() {
+            flikr.downloadImageFromFlikrURL(url: thumbURL, completionHandler: {
                 (data, response, error) in
                 if error == nil {
                     guard let imageData = data else {
@@ -82,7 +83,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
                     DispatchQueue.main.async {
                         cell.backgroundColor = UIColor.blue
                         cell.imageView.image = UIImage(data: imageData)
-                        photo.imageData = imageData as NSData
+                        photo.thumbImageData = imageData as NSData
                         cell.photo = photo
                     }
                     

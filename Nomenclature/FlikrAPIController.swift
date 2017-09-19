@@ -137,7 +137,7 @@ class FlickrAPIController {
     }
     
     func convertNSDictToPhoto(dictionary: NSDictionary) -> Photo {
-        var photo = Photo(id: "", url: "")
+        var photo = Photo(id: "", thumbURLString: "", url: "")
         if let farmID = dictionary.value(forKey: "farm"),
             let serverID = dictionary.value(forKey: "server"),
             let secret = dictionary.value(forKey: "secret"),
@@ -145,10 +145,11 @@ class FlickrAPIController {
             
             // TODO: urlComponents?
             let urlString = "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret).jpg"
+            let thumbURLString = "https://farm\(farmID).staticflickr.com/\(serverID)/\(id)_\(secret)_t.jpg"
 
             photo.id = id
             photo.urlString = urlString
-            // print("id: \(id), url: \(urlString)")
+            photo.thumbURLString = thumbURLString
             return photo
         }
         return photo

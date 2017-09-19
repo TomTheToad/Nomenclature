@@ -11,9 +11,10 @@
         <attribute name="sciClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="species" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subOrder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="vernacular" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Organism" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="Organism" positionX="-63" positionY="-18" width="128" height="225"/>
     </elements>
 </model>

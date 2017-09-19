@@ -12,10 +12,13 @@ struct Photo {
     
     var id: String
     var urlString: String
+    var thumbURLString: String
     var imageData: NSData?
+    var thumbImageData: NSData?
     
-    init(id: String, url: String, imageData: NSData? = nil) {
+    init(id: String, thumbURLString: String, url: String, imageData: NSData? = nil) {
         self.id = id
+        self.thumbURLString = thumbURLString
         self.urlString = url
         self.imageData = imageData
     }
@@ -26,5 +29,13 @@ struct Photo {
         }
         
         return url
+    }
+    
+    func urlForThumbImage() -> URL? {
+        guard let thumbURL = URL(string: thumbURLString) else {
+            return nil
+        }
+        
+        return thumbURL
     }
 }

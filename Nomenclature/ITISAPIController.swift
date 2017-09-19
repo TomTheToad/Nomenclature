@@ -136,10 +136,16 @@ class ITISAPIController: NSObject {
                 return nil
             }
             
+            print("number of common names: \(commonNameArray.count)")
+            
+            // TODO: create a list of all common names or extract english
+            
             guard let firstNameObject = commonNameArray.firstObject as? NSString else {
                 print("commonName string missing")
                 return nil
             }
+            
+            // TODO: Add a compound common names list or individual keys?
             
             let commonNameDataString = firstNameObject.components(separatedBy: "$")
             let firstCommonName = commonNameDataString[1]
