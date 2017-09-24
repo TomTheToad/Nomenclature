@@ -12,23 +12,43 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     // Fields
     let coreData = CoreDataController()
-    var myCollection: [Organism]? = {
-        let coreData = CoreDataController()
-        guard let results = coreData.fetchAll() else {
-            print("no results")
-            return nil
+    var receivedCollection: Collection?
+
+    var myCollection: [Organism]? {
+        didSet {
+            mcCollection.reloadData()
         }
-        return results
-    }()
+    }
     
     // IBOutlets
     @IBOutlet weak var mcCollection: UICollectionView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        setMyCollection()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mcCollection.delegate = self
         mcCollection.dataSource = self
         mcCollection.isPagingEnabled = true
+        
+        testReceivedCollection()
+        
+        
+//        if myCollection == nil {
+//            let msg = "Nothing to see here! Why don't you go search for something."
+//            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
+//            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+//            alert.addAction(alertAction)
+//            navigationController?.present(alert, animated: true, completion: {
+//                DispatchQueue.main.async {
+//                    // self.navigationController?.popViewController(animated: false)
+//                    self.navigationController?.popToRootViewController(animated: false)
+//                }
+//            })
+//        }
         
     }
     
@@ -37,6 +57,33 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         performSegue(withIdentifier: "collectionAddCard", sender: self)
     }
     
+    // Test methods
+    func testReceivedCollection() {
+        if receivedCollection != nil {
+            print("receivedCollection: not nil")
+        } else {
+            print("receivedCollection: is nil")
+        }
+    }
+    
+    // Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "collectionAddCard" {
+            let navVC = segue.destination as! UINavigationController
+            // TODO: determine the next vc
+            let vc = navVC.topViewController as! SearchController
+            vc.receivedCollection = receivedCollection
+        }
+    }
+    
+    func setMyCollection() {
+        guard let thisCollection = receivedCollection else {
+            print("collection missing")
+            return
+        }
+        
+        myCollection = coreData.fetchAllOrganismsInCollection(collection: thisCollection)
+    }
     
     // MARK: Collection view methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

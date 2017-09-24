@@ -12,21 +12,21 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // Fields
     let coreData = CoreDataController()
-    var myCollection: [Organism]? = {
-        let coreData = CoreDataController()
-        guard let results = coreData.fetchAll() else {
-            print("no results")
-            return nil
+    var receivedCollection: Collection?
+    
+    var myCollection: [Organism]? {
+        didSet {
+            tableView.reloadData()
         }
-        return results
-        }()
+    }
     
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
-    // IBActions
-    @IBAction func addButton(_ sender: Any) {
-        performSegue(withIdentifier: "tableAddCard", sender: self)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setMyCollection()
     }
     
     override func viewDidLoad() {
@@ -47,7 +47,21 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             })
         }
-
+        
+    }
+    
+    // IBActions
+    @IBAction func addButton(_ sender: Any) {
+        performSegue(withIdentifier: "tableAddCard", sender: self)
+    }
+    
+    func setMyCollection() {
+        guard let thisCollection = receivedCollection else {
+            print("collection missing")
+            return
+        }
+        
+        myCollection = coreData.fetchAllOrganismsInCollection(collection: thisCollection)
     }
     
     // MARK: Table Methods

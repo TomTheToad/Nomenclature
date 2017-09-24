@@ -15,6 +15,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private let flikr = FlickrAPIController()
     
     var organismData = NSDictionary()
+    var receivedCollection: Collection?
+    
     private var searchString = String()
     
     private let headings = ["vernacular", "kingdom", "phylum", "class", "order", "suborder", "family", "genus", "species"]
@@ -56,6 +58,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         setImage()
     }
+
     
     func setImage() {
         if let image = organismData.value(forKey: "photo") as? Data {
@@ -156,7 +159,13 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // CoreData methods
     // TODO: alter for edit
     func saveOrganism() {
-        let isSuccess = coreData.addOrganism(dict: organismData, photo: receivedPhoto)
+        guard let collection = receivedCollection else {
+            // TODO: return error
+            print("collection missing")
+            return
+        }
+        
+        let isSuccess = coreData.addOrganism(dict: organismData, photo: receivedPhoto, collection: collection)
         if isSuccess {
             print("Organism saved")
         } else {

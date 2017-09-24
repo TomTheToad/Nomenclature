@@ -146,6 +146,7 @@ class ITISAPIController: NSObject {
             }
             
             // TODO: Add a compound common names list or individual keys?
+            // array of tuples? (name, language)
             
             let commonNameDataString = firstNameObject.components(separatedBy: "$")
             let firstCommonName = commonNameDataString[1]

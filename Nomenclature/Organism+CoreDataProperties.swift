@@ -2,7 +2,7 @@
 //  Organism+CoreDataProperties.swift
 //  Nomenclature
 //
-//  Created by VICTOR ASSELTA on 9/18/17.
+//  Created by VICTOR ASSELTA on 9/23/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
 
@@ -26,7 +26,8 @@ extension Organism {
     @NSManaged public var sciClass: String?
     @NSManaged public var species: String?
     @NSManaged public var subOrder: String?
-    @NSManaged public var vernacular: String?
     @NSManaged public var thumbImage: NSData?
+    @NSManaged public var vernacular: String?
+    @NSManaged public var withinCollection: Collection?
 
 }

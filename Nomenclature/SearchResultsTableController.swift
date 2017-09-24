@@ -12,6 +12,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
     
     // Fields
     var resultsDict = [NSDictionary]()
+    var receivedCollection: Collection?
     
     // IBOutlets
     @IBOutlet weak var resultsTableView: UITableView!
@@ -54,6 +55,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
             }
             let vc = segue.destination as! DetailViewController
             vc.organismData = resultsDict[indexRow]
+            vc.receivedCollection = receivedCollection
         }
     }
 }

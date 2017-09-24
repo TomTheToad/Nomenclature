@@ -14,6 +14,7 @@ class SearchController: UIViewController {
     let itis = ITISAPIController()
     let coreData = CoreDataController()
     var numberOfRecords = 10
+    var receivedCollection: Collection?
     
     var resultsDict = [NSDictionary]() {
         didSet {
@@ -86,6 +87,7 @@ class SearchController: UIViewController {
         if segue.identifier == "searchResultsSeque" {
             let searchResultsController = segue.destination as! SearchResultsTableController
             searchResultsController.resultsDict = resultsDict
+            searchResultsController.receivedCollection = receivedCollection
         }
     }
 }

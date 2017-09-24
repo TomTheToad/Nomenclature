@@ -10,6 +10,8 @@
 		C702F2E71F4CEA7E002598D3 /* MCTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F2E61F4CEA7E002598D3 /* MCTableController.swift */; };
 		C702F2E91F4CFB9F002598D3 /* MCTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F2E81F4CFB9F002598D3 /* MCTableCell.swift */; };
 		C711C55D1F6F3515004FF8E1 /* OrganismCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711C55C1F6F3515004FF8E1 /* OrganismCard.swift */; };
+		C72B37611F71523B00C7FF25 /* MCGCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B37601F71523B00C7FF25 /* MCGCollectionController.swift */; };
+		C72B37631F71539000C7FF25 /* MCGCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B37621F71539000C7FF25 /* MCGCollectionViewCell.swift */; };
 		C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED41F3B232B006F25E1 /* SearchController.swift */; };
 		C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */; };
 		C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */; };
@@ -22,8 +24,11 @@
 		C7957C661F30E3C700C09528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7957C651F30E3C700C09528 /* Assets.xcassets */; };
 		C7957C691F30E3C700C09528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7957C671F30E3C700C09528 /* LaunchScreen.storyboard */; };
 		C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C731F30E43D00C09528 /* ITISAPIController.swift */; };
-		C7B890E01F7095D300100901 /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B890DE1F7095D300100901 /* Organism+CoreDataClass.swift */; };
-		C7B890E11F7095D300100901 /* Organism+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B890DF1F7095D300100901 /* Organism+CoreDataProperties.swift */; };
+		C7A9376C1F76AE2A0015A6F2 /* CreateEditCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */; };
+		C7A9377B1F76B3F80015A6F2 /* Collection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */; };
+		C7A9377C1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */; };
+		C7A9377F1F76BAD80015A6F2 /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9377D1F76BAD80015A6F2 /* Organism+CoreDataClass.swift */; };
+		C7A937801F76BAD80015A6F2 /* Organism+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9377E1F76BAD80015A6F2 /* Organism+CoreDataProperties.swift */; };
 		C7BE0A5F1F6D690C005FC2E4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BE0A5E1F6D690C005FC2E4 /* Photo.swift */; };
 		C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */; };
 		C7D502E41F6887EF00065274 /* WikimediaAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */; };
@@ -40,6 +45,8 @@
 		C702F2E61F4CEA7E002598D3 /* MCTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTableController.swift; sourceTree = "<group>"; };
 		C702F2E81F4CFB9F002598D3 /* MCTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCTableCell.swift; sourceTree = "<group>"; };
 		C711C55C1F6F3515004FF8E1 /* OrganismCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganismCard.swift; sourceTree = "<group>"; };
+		C72B37601F71523B00C7FF25 /* MCGCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCGCollectionController.swift; sourceTree = "<group>"; };
+		C72B37621F71539000C7FF25 /* MCGCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCGCollectionViewCell.swift; sourceTree = "<group>"; };
 		C738CED41F3B232B006F25E1 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableController.swift; sourceTree = "<group>"; };
 		C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableCell.swift; sourceTree = "<group>"; };
@@ -54,8 +61,11 @@
 		C7957C681F30E3C700C09528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7957C6A1F30E3C700C09528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7957C731F30E43D00C09528 /* ITISAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITISAPIController.swift; sourceTree = "<group>"; };
-		C7B890DE1F7095D300100901 /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C7B890DF1F7095D300100901 /* Organism+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCollections.swift; sourceTree = "<group>"; };
+		C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C7A9377D1F76BAD80015A6F2 /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C7A9377E1F76BAD80015A6F2 /* Organism+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7BE0A5E1F6D690C005FC2E4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikimediaAPIController.swift; sourceTree = "<group>"; };
@@ -88,6 +98,16 @@
 				C7F36EA11F6F55A3002F3900 /* MCCollectionViewCell.swift */,
 			);
 			name = MyCollection;
+			sourceTree = "<group>";
+		};
+		C72B375F1F71510100C7FF25 /* MyCollections Groups */ = {
+			isa = PBXGroup;
+			children = (
+				C72B37601F71523B00C7FF25 /* MCGCollectionController.swift */,
+				C72B37621F71539000C7FF25 /* MCGCollectionViewCell.swift */,
+				C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */,
+			);
+			name = "MyCollections Groups";
 			sourceTree = "<group>";
 		};
 		C78E26881F69AF67009828F1 /* ImageSearch */ = {
@@ -130,8 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				C7E838931F3F2D3500A5F88A /* Detail */,
-				C7E838921F3F2D2B00A5F88A /* SearchResults */,
-				C7E838911F3F2D1C00A5F88A /* Search */,
+				C78E26881F69AF67009828F1 /* ImageSearch */,
+				C7E838911F3F2D1C00A5F88A /* TaxonomySearch */,
+				C7E838921F3F2D2B00A5F88A /* TaxonomySearchResults */,
+				C72B375F1F71510100C7FF25 /* MyCollections Groups */,
 				C702F2E51F4CEA3F002598D3 /* MyCollection */,
 				C7EE618A1F58E145002B4EC7 /* APIs */,
 				C7957C5B1F30E3C700C09528 /* AppDelegate.swift */,
@@ -154,8 +176,10 @@
 			isa = PBXGroup;
 			children = (
 				C7957C621F30E3C700C09528 /* Nomenclature.xcdatamodeld */,
-				C7B890DE1F7095D300100901 /* Organism+CoreDataClass.swift */,
-				C7B890DF1F7095D300100901 /* Organism+CoreDataProperties.swift */,
+				C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */,
+				C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */,
+				C7A9377D1F76BAD80015A6F2 /* Organism+CoreDataClass.swift */,
+				C7A9377E1F76BAD80015A6F2 /* Organism+CoreDataProperties.swift */,
 				C7BE0A5E1F6D690C005FC2E4 /* Photo.swift */,
 				C7957C6A1F30E3C700C09528 /* Info.plist */,
 				C711C55C1F6F3515004FF8E1 /* OrganismCard.swift */,
@@ -171,21 +195,21 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		C7E838911F3F2D1C00A5F88A /* Search */ = {
+		C7E838911F3F2D1C00A5F88A /* TaxonomySearch */ = {
 			isa = PBXGroup;
 			children = (
 				C738CED41F3B232B006F25E1 /* SearchController.swift */,
 			);
-			name = Search;
+			name = TaxonomySearch;
 			sourceTree = "<group>";
 		};
-		C7E838921F3F2D2B00A5F88A /* SearchResults */ = {
+		C7E838921F3F2D2B00A5F88A /* TaxonomySearchResults */ = {
 			isa = PBXGroup;
 			children = (
 				C738CED61F3B3D5F006F25E1 /* SearchResultsTableController.swift */,
 				C738CED81F3B4B71006F25E1 /* SearchResultsTableCell.swift */,
 			);
-			name = SearchResults;
+			name = TaxonomySearchResults;
 			sourceTree = "<group>";
 		};
 		C7E838931F3F2D3500A5F88A /* Detail */ = {
@@ -193,7 +217,6 @@
 			children = (
 				C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */,
 				C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */,
-				C78E26881F69AF67009828F1 /* ImageSearch */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -284,26 +307,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7BE0A5F1F6D690C005FC2E4 /* Photo.swift in Sources */,
+				C7A9377B1F76B3F80015A6F2 /* Collection+CoreDataClass.swift in Sources */,
 				C702F2E91F4CFB9F002598D3 /* MCTableCell.swift in Sources */,
 				C7D502E61F68929B00065274 /* FlikrAPIController.swift in Sources */,
 				C78E268C1F69B48E009828F1 /* ImageCollectionViewCell.swift in Sources */,
 				C7F36EA21F6F55A3002F3900 /* MCCollectionViewCell.swift in Sources */,
+				C7A937801F76BAD80015A6F2 /* Organism+CoreDataProperties.swift in Sources */,
 				C78E268A1F69AFB7009828F1 /* ImageSearchController.swift in Sources */,
 				C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */,
+				C72B37611F71523B00C7FF25 /* MCGCollectionController.swift in Sources */,
+				C7A9376C1F76AE2A0015A6F2 /* CreateEditCollections.swift in Sources */,
 				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
 				C711C55D1F6F3515004FF8E1 /* OrganismCard.swift in Sources */,
 				C702F2E71F4CEA7E002598D3 /* MCTableController.swift in Sources */,
 				C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */,
+				C72B37631F71539000C7FF25 /* MCGCollectionViewCell.swift in Sources */,
+				C7A9377F1F76BAD80015A6F2 /* Organism+CoreDataClass.swift in Sources */,
 				C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */,
 				C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */,
-				C7B890E11F7095D300100901 /* Organism+CoreDataProperties.swift in Sources */,
 				C7EE61871F58DFB6002B4EC7 /* INaturalistAPIController.swift in Sources */,
 				C7D502E91F68934B00065274 /* URLResponseCheck.swift in Sources */,
 				C786C5F61F4F61D40050F3C4 /* MCCollectionController.swift in Sources */,
 				C7EE61891F58E05A002B4EC7 /* URLBuilder.swift in Sources */,
+				C7A9377C1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift in Sources */,
 				C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */,
 				C7D502E41F6887EF00065274 /* WikimediaAPIController.swift in Sources */,
-				C7B890E01F7095D300100901 /* Organism+CoreDataClass.swift in Sources */,
 				C7E8388E1F3F2CD500A5F88A /* DetailViewCell.swift in Sources */,
 				C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */,
 				C7E8388C1F3F2CBC00A5F88A /* DetailViewController.swift in Sources */,

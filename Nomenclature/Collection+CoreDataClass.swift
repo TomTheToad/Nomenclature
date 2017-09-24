@@ -1,5 +1,5 @@
 //
-//  Organism+CoreDataClass.swift
+//  Collection+CoreDataClass.swift
 //  Nomenclature
 //
 //  Created by VICTOR ASSELTA on 9/23/17.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Organism)
-public class Organism: NSManagedObject {
+@objc(Collection)
+public class Collection: NSManagedObject {
 
 }
