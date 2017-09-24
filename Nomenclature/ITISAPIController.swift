@@ -140,6 +140,25 @@ class ITISAPIController: NSObject {
             
             // TODO: create a list of all common names or extract english
             
+            /// BEGIN Test Methods ///
+            // TODO: save as an array
+            var nameArray = [(name: String, language: String)]()
+            for data in commonNameArray {
+                guard let nameAsString = data as? NSString else {
+                    print("name missing in common name array")
+                    return nil
+                }
+                
+                let name = nameAsString.components(separatedBy: "$")
+                nameArray.append((name[1], name[2]))
+            }
+            
+            for item in nameArray {
+                print("vernacular: \(item.name), language: \(item.language)")
+            }
+            /// END ///
+            
+            
             guard let firstNameObject = commonNameArray.firstObject as? NSString else {
                 print("commonName string missing")
                 return nil
