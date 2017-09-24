@@ -16,18 +16,24 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
        let coreData = CoreDataController()
         return coreData.fetchAllCollections()
     }()
+    var selectedCollection: Collection? {
+        didSet {
+            presentMyCollection()
+        }
+    }
     
     // IBoutlets
     @IBOutlet weak var myCollectionGroupsView: UICollectionView!
     
-    @IBAction func addButtonAction(_ sender: Any) {
-        performSegue(withIdentifier: "collectionsToCreateCollection", sender: self)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         myCollectionGroupsView.delegate = self
         myCollectionGroupsView.dataSource = self
+    }
+    
+    @IBAction func addButtonAction(_ sender: Any) {
+        performSegue(withIdentifier: "collectionsToCreateCollection", sender: self)
     }
     
     // CollectionView methods
@@ -48,6 +54,32 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         cell.titleLabel.text = thisCollection.title
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let thisCollection = myCollectionGroups?[indexPath.row] else {
+            // TODO: internal error
+            print("collection missing!")
+            return
+        }
+        
+        selectedCollection = thisCollection
+        
+    }
+    
+    // Navigation
+    func presentMyCollection() {
+        performSegue(withIdentifier: "collectionsToSingleCollection", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "collectionsToSingleCollection" {
+            let tabVC = segue.destination as! UITabBarController
+            let vc1 = tabVC.viewControllers?.first as! MCCollectionController
+            let vc2 = tabVC.viewControllers?.last as! MCTableController
+            vc1.receivedCollection = selectedCollection
+            vc2.receivedCollection = selectedCollection
+        }
     }
     
 }

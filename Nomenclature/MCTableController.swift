@@ -35,24 +35,33 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.delegate = self
         tableView.dataSource = self
         
-        if myCollection == nil {
-            let msg = "Nothing to see here! Why don't you go search for something."
-            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            alert.addAction(alertAction)
-            navigationController?.present(alert, animated: true, completion: {
-                DispatchQueue.main.async {
-                    // self.navigationController?.popViewController(animated: false)
-                    self.navigationController?.popToRootViewController(animated: false)
-                }
-            })
-        }
+//        if myCollection == nil {
+//            let msg = "Nothing to see here! Why don't you go search for something."
+//            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
+//            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+//            alert.addAction(alertAction)
+//            navigationController?.present(alert, animated: true, completion: {
+//                DispatchQueue.main.async {
+//                    // self.navigationController?.popViewController(animated: false)
+//                    self.navigationController?.popToRootViewController(animated: false)
+//                }
+//            })
+//        }
         
     }
     
     // IBActions
     @IBAction func addButton(_ sender: Any) {
         performSegue(withIdentifier: "tableAddCard", sender: self)
+    }
+    
+    // Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tableAddCard" {
+            let navVC = segue.destination as! UINavigationController
+            let vc = navVC.viewControllers.first as! SearchController
+            vc.receivedCollection = receivedCollection
+        }
     }
     
     func setMyCollection() {
