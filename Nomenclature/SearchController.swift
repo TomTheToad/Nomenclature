@@ -16,7 +16,7 @@ class SearchController: UIViewController {
     var numberOfRecords = 10
     var receivedCollection: Collection?
     
-    var resultsDict = [NSDictionary]() {
+    var organismCards = [OrganismCard]() {
         didSet {
             performResultsSeque(sender: self)
         }
@@ -57,13 +57,24 @@ class SearchController: UIViewController {
         itis.commonNameSearch(commonName: searchText, numberOfRecords: numberOfRecords, completionHandler: {
             (error, dict) in
             if error == nil {
-                guard let thisDict = dict else {
+                guard let organismsDict = dict else {
                     print("Error dict")
                     return
                 }
                 
+                guard let collection = self.receivedCollection else {
+                    print("Error collection")
+                    return
+                }
+                
+                var cardsArray = [OrganismCard]()
+                for recordDict in organismsDict {
+                    let card = OrganismCard(collection: collection, taxonomicData: recordDict)
+                    cardsArray.append(card)
+                }
+                
                 DispatchQueue.main.async {
-                    self.resultsDict = thisDict
+                    self.organismCards = cardsArray
                 }
                 
             } else if error != nil {
@@ -86,8 +97,7 @@ class SearchController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchResultsSeque" {
             let searchResultsController = segue.destination as! SearchResultsTableController
-            searchResultsController.resultsDict = resultsDict
-            searchResultsController.receivedCollection = receivedCollection
+            searchResultsController.organismCards = organismCards
         }
     }
 }

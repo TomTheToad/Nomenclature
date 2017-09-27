@@ -84,12 +84,26 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MCTableCell", for: indexPath) as! MCTableCell
         
+        if (indexPath.row % 2) == 0 {
+            cell.backgroundColor = UIColor.lightGray
+        }
+        
         guard let organism = myCollection?[indexPath.row] else {
             cell.vernacularTextField.text = "Name Missing!"
             return cell
         }
+        
+        guard let names = organism.vernacular as? [(name: String, language: String)] else {
+            cell.vernacularTextField.text = "Name Missing!"
+            return cell
+        }
+        
+        var text = ""
+        for name in names {
+            text = text + "\(name.language): \(name.name) "
+        }
 
-        cell.vernacularTextField.text = organism.vernacular
+        cell.vernacularTextField.text = text
         return cell
     }
 }

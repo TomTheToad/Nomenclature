@@ -11,8 +11,12 @@ import UIKit
 class SearchResultsTableController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Fields
-    var resultsDict = [NSDictionary]()
-    var receivedCollection: Collection?
+    // var resultsDict = [NSDictionary]()
+    // TODO: use within init?
+    // var receivedCollection: Collection?
+    var organismCards = [OrganismCard]()
+    
+    
     
     // IBOutlets
     @IBOutlet weak var resultsTableView: UITableView!
@@ -26,18 +30,18 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultsDict.count
+        return organismCards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultsTableCell", for: indexPath) as! SearchResultsTableCell
-        let dict = resultsDict[indexPath.row]
-        
-        guard let commonName: String = dict.value(forKey: "vernacular") as? String else {
+        let card = organismCards[indexPath.row]
+        guard let firstCommonName = card.fetchFirstCommonName(language: "english") else {
+            // TODO: handle error
+            cell.commonNameLabel.text = "missing data"
             return cell
         }
-        
-        cell.commonNameLabel.text = commonName
+        cell.commonNameLabel.text = firstCommonName
         return cell
     }
     
@@ -54,8 +58,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
                 return
             }
             let vc = segue.destination as! DetailViewController
-            vc.organismData = resultsDict[indexRow]
-            vc.receivedCollection = receivedCollection
+            vc.recievedOrganismCard = organismCards[indexRow]
         }
     }
 }

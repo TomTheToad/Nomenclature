@@ -73,11 +73,19 @@ class CoreDataController {
         
         for item in dict {
             let itemKey = String(describing: item.key)
-            let itemValue = String(describing: item.value)
+            
+            // Exception: if organism class name, change to sciClass as class is a reserved term
             if itemKey == "class" || itemKey == "Class" {
-                organism.sciClass = itemValue
+                organism.sciClass = String(describing: item.value)
+            // Exception: vernacular is transformable and will be an array, not string
+            } else if itemKey == "vernacular" {
+                guard let thisNSData = item.value as? NSObject else {
+                    fatalError("internal data error")
+                }
+                organism.setValue(thisNSData, forKey: itemKey)
+            // Else if allowed key, go ahead and set as a String
             } else if allowedKeys.contains(itemKey){
-                organism.setValue(itemValue, forKey: itemKey)
+                organism.setValue(String(describing: item.value), forKey: itemKey)
             }
         }
         

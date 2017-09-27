@@ -12,16 +12,15 @@
         <attribute name="kingdom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="photoThumb" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="phylum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sciClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="species" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="subOrder" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="thumbImage" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="vernacular" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vernacular" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="withinCollection" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="hasOrganism" inverseEntity="Collection" syncable="YES"/>
     </entity>
     <elements>
         <element name="Collection" positionX="-63" positionY="72" width="128" height="90"/>
-        <element name="Organism" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="Organism" positionX="-63" positionY="-18" width="128" height="225"/>
     </elements>
 </model>

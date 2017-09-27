@@ -72,7 +72,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             cell.backgroundColor = UIColor.blue
             cell.imageView.image = UIImage(data: imageData as Data)
             cell.photo = photo
-        } else if let thumbURL = photo.urlForThumbImage() {
+        } else if let thumbURL = photo.urlForPhotoThumb() {
             flikr.downloadImageFromFlikrURL(url: thumbURL, completionHandler: {
                 (data, response, error) in
                 if error == nil {

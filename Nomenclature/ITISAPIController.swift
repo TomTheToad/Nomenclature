@@ -128,7 +128,7 @@ class ITISAPIController: NSObject {
         
         for record in dict {
             
-            var thisRecordArray = [String: String]()
+            var thisRecordArray = [String: Any]()
             
             // retrieve ojbect with common (vernacular) name
             guard let commonNameArray = record.object(forKey: "vernacular") as? NSArray else {
@@ -138,10 +138,7 @@ class ITISAPIController: NSObject {
             
             print("number of common names: \(commonNameArray.count)")
             
-            // TODO: create a list of all common names or extract english
-            
-            /// BEGIN Test Methods ///
-            // TODO: save as an array
+            // Create an array of tuples to store common names and associated languages.
             var nameArray = [(name: String, language: String)]()
             for data in commonNameArray {
                 guard let nameAsString = data as? NSString else {
@@ -150,26 +147,14 @@ class ITISAPIController: NSObject {
                 }
                 
                 let name = nameAsString.components(separatedBy: "$")
-                nameArray.append((name[1], name[2]))
+                nameArray.append((name[1].lowercased(), name[2].lowercased()))
             }
             
             for item in nameArray {
-                print("vernacular: \(item.name), language: \(item.language)")
+                print("vernacular: \(item.name.lowercased()), language: \(item.language.lowercased())")
             }
-            /// END ///
-            
-            
-            guard let firstNameObject = commonNameArray.firstObject as? NSString else {
-                print("commonName string missing")
-                return nil
-            }
-            
-            // TODO: Add a compound common names list or individual keys?
-            // array of tuples? (name, language)
-            
-            let commonNameDataString = firstNameObject.components(separatedBy: "$")
-            let firstCommonName = commonNameDataString[1]
-            thisRecordArray["vernacular"] = firstCommonName
+
+            thisRecordArray["vernacular"] = nameArray
             
             
             // retrieve object for key "hierarchySoFarWRanks"

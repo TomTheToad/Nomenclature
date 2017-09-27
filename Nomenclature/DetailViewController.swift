@@ -13,13 +13,23 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Fields
     private let coreData = CoreDataController()
     private let flikr = FlickrAPIController()
+    var recievedOrganismCard: OrganismCard?
+    var organismCard: OrganismCard {
+        get {
+            guard let card = recievedOrganismCard else {
+                // handle error, this should never happen
+                fatalError("Application error: missing data")
+            }
+            return card
+        }
+    }
     
-    var organismData = NSDictionary()
-    var receivedCollection: Collection?
-    
-    private var searchString = String()
-    
-    private let headings = ["vernacular", "kingdom", "phylum", "class", "order", "suborder", "family", "genus", "species"]
+    var searchString: String {
+        guard let searchString = recievedOrganismCard?.fetchFirstCommonName(language: "english") else {
+            return "missing data"
+        }
+        return searchString
+    }
     
     var flikrPhotos: [Photo]? {
         didSet {
@@ -31,7 +41,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // IBActions
     @IBAction func saveAction(_ sender: Any) {
-        saveOrganism()
+        // saveOrganism()
+        print("save organism called")
     }
     
     @IBAction func addImageButton(_ sender: Any) {
@@ -58,21 +69,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         setImage()
     }
-
     
     func setImage() {
-        if let image = organismData.value(forKey: "photo") as? Data {
-            guard let uiImage = UIImage(data: image) else {
-                return
-            }
-            
-            organismImage.image = uiImage
-            
+        if let image = organismCard.photo?.image {
+            organismImage.image = image
         } else {
-            
-            organismImage.image = UIImage(named: "addImage")
-            
+            organismImage.image = UIImage(named: "addImage")!
         }
+        
     }
     
     func setImage(photo: Photo) {
@@ -103,7 +107,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // TableView methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return headings.count
+        return organismCard.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,24 +116,16 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             fatalError("table cell error")
         }
         
-        let heading = headings[indexPath.row]
-        let name = organismData.value(forKey: heading) ?? "missing data"
+        let content = organismCard.dataSource[indexPath.row]
         
-        cell.headingLabel.text = heading
-        cell.nameLabel.text = String(describing: name)
-        
+        cell.headingLabel.text = content.cellHeading
+        cell.nameLabel.text = content.cellContent
         return cell
     }
     
     func fetchFlikrImages() {
         let flikr = FlickrAPIController()
-        guard let searchString = organismData.value(forKey: "vernacular") as? String else {
-            print("nothing to search")
-            return
-        }
-        
-        self.searchString = searchString
-        
+
         do {
             
             try flikr.getImageArray(textToSearch: searchString, completionHander: {
@@ -158,20 +154,20 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // CoreData methods
     // TODO: alter for edit
-    func saveOrganism() {
-        guard let collection = receivedCollection else {
-            // TODO: return error
-            print("collection missing")
-            return
-        }
-        
-        let isSuccess = coreData.addOrganism(dict: organismData, photo: receivedPhoto, collection: collection)
-        if isSuccess {
-            print("Organism saved")
-        } else {
-            print("Save failed")
-        }
-    }
+//    func saveOrganism() {
+//        guard let collection = receivedCollection else {
+//            // TODO: return error
+//            print("collection missing")
+//            return
+//        }
+//        
+//        let isSuccess = coreData.addOrganism(dict: organismData, photo: receivedPhoto, collection: collection)
+//        if isSuccess {
+//            print("Organism saved")
+//        } else {
+//            print("Save failed")
+//        }
+//    }
     
     // Navigation methods
     func returnToInitialVC() {

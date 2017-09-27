@@ -99,7 +99,17 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         if let vernacular = organism.vernacular {
-            cell.vernacularTextField.text = vernacular
+            // TODO: create struct for this
+            if let names = vernacular as? [(name: String, language: String)] {
+            
+                var text = ""
+                for name in names {
+                    text = "\(name.language): \(name.name) "
+                }
+                cell.vernacularTextField.text = text
+            } else {
+                cell.vernacularTextField.text = "missing"
+            }
         }
         
         if let kingdom = organism.kingdom {
