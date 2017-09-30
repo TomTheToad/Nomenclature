@@ -12,9 +12,10 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // Fields
     let coreData = CoreDataController()
+    let organismCardFactory = OrganismCardFactory()
     var receivedCollection: Collection?
     
-    var myCollection: [Organism]? {
+    var myCollection: [OrganismCard]? {
         didSet {
             tableView.reloadData()
         }
@@ -70,7 +71,11 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
             return
         }
         
-        myCollection = coreData.fetchAllOrganismsInCollection(collection: thisCollection)
+        guard let organisms = thisCollection.hasOrganism?.allObjects as? [Organism] else {
+            return
+        }
+        
+        myCollection = organismCardFactory.createCardArray(organismArray: organisms)
     }
     
     // MARK: Table Methods
@@ -88,22 +93,18 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.backgroundColor = UIColor.lightGray
         }
         
-        guard let organism = myCollection?[indexPath.row] else {
+        guard let card = myCollection?[indexPath.row] else {
             cell.vernacularTextField.text = "Name Missing!"
             return cell
         }
         
-        guard let names = organism.vernacular as? [(name: String, language: String)] else {
+        guard let firstName = card.fetchFirstCommonName(language: "english") else {
             cell.vernacularTextField.text = "Name Missing!"
             return cell
         }
         
-        var text = ""
-        for name in names {
-            text = text + "\(name.language): \(name.name) "
-        }
 
-        cell.vernacularTextField.text = text
+        cell.vernacularTextField.text = firstName
         return cell
     }
 }

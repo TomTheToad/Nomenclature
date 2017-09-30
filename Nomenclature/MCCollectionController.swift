@@ -13,8 +13,9 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     // Fields
     let coreData = CoreDataController()
     var receivedCollection: Collection?
+    var organismCardFactory = OrganismCardFactory()
 
-    var myCollection: [Organism]? {
+    var myCollection: [OrganismCard]? {
         didSet {
             mcCollection.reloadData()
         }
@@ -82,7 +83,11 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         
-        myCollection = coreData.fetchAllOrganismsInCollection(collection: thisCollection)
+        guard let organisms = thisCollection.hasOrganism?.allObjects as? [Organism] else {
+            return
+        }
+        
+        myCollection = organismCardFactory.createCardArray(organismArray: organisms)
     }
     
     // MARK: Collection view methods
@@ -94,59 +99,60 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCCollectionViewCell", for: indexPath) as! MCCollectionViewCell
         
-        guard let organism = myCollection?[indexPath.row] else {
+        guard let card = myCollection?[indexPath.row] else {
             return cell
         }
         
-        if let vernacular = organism.vernacular {
-            // TODO: create struct for this
-            if let names = vernacular as? [(name: String, language: String)] {
-            
-                var text = ""
-                for name in names {
-                    text = "\(name.language): \(name.name) "
-                }
-                cell.vernacularTextField.text = text
-            } else {
-                cell.vernacularTextField.text = "missing"
-            }
-        }
+//        if let vernacular = organism.vernacular {
+//            // TODO: create struct for this
+//            if let names = vernacular as? [(name: String, language: String)] {
+//            
+//                var text = ""
+//                for name in names {
+//                    text = "\(name.language): \(name.name) "
+//                }
+//                cell.vernacularTextField.text = text
+//            } else {
+//                cell.vernacularTextField.text = "missing"
+//            }
+//        }
         
-        if let kingdom = organism.kingdom {
+        if let kingdom = card.kingdom {
             cell.kingdomTextField.text = kingdom
         }
         
-        if let phylum = organism.phylum {
+        if let phylum = card.phylum {
             cell.phylumTextField.text = phylum
         }
         
-        if let sciClass = organism.sciClass {
+        if let sciClass = card.sciClass {
             cell.classTextField.text = sciClass
         }
         
-        if let order = organism.order {
+        if let order = card.order {
             cell.orderTextField.text = order
         }
         
-        if let family = organism.family {
+        if let family = card.family {
             cell.familyTextField.text = family
         }
         
-        if let genus = organism.genus {
+        if let genus = card.genus {
             cell.genusTextField.text = genus
         }
         
-        if let species = organism.species {
+        if let species = card.species {
             cell.speciesTextField.text = species
         }
         
-        if let imageData = organism.image {
-            guard let image = UIImage(data: imageData as Data) else {
-                print("default image called")
-                cell.organismImage.image = UIImage(named: "addImage")
+        guard let photo = card.photo else {
+            cell.organismImage.image = UIImage(named: "addImage")
+            return cell
+        }
+        
+        if let image = photo.image {
+                cell.organismImage.image = image
                 return cell
-            }
-            cell.organismImage.image = image
         } else {
             cell.organismImage.image = UIImage(named: "addImage")
         }

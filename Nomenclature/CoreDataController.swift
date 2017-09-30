@@ -26,16 +26,15 @@ class CoreDataController {
         guard let entity = NSEntityDescription.entity(forEntityName: name, in: managedObjectContext) else {
             fatalError("critical core data entity error")
         }
-        
         return entity
     }
     
     /* ### Organism Functions ### */
-    func createOrganism() -> Organism {
-        let entity = getEntity(name: "Organism")
-        let organism = Organism(entity: entity, insertInto: managedObjectContext)
-        return organism
-    }
+//    func createOrganism() -> Organism {
+//        let entity = getEntity(name: "Organism")
+//        let organism = Organism(entity: entity, insertInto: managedObjectContext)
+//        return organism
+//    }
     
     // retrieve all Organims
     // TODO: search by title?
@@ -68,33 +67,75 @@ class CoreDataController {
     }
     
     // create
-    func addOrganism(dict: NSDictionary, photo: Photo?, collection: Collection) -> Bool {
-        let organism = createOrganism()
+//    func addOrganism(dict: NSDictionary, photo: Photo?, collection: Collection) -> Bool {
+//        let organism = createOrganism()
+//        
+//        for item in dict {
+//            let itemKey = String(describing: item.key)
+//            
+//            // Exception: if organism class name, change to sciClass as class is a reserved term
+//            if itemKey == "class" || itemKey == "Class" {
+//                organism.sciClass = String(describing: item.value)
+//            // Exception: vernacular is transformable and will be an array, not string
+//            } else if itemKey == "vernacular" {
+//                guard let thisNSData = item.value as? NSObject else {
+//                    fatalError("internal data error")
+//                }
+//                organism.setValue(thisNSData, forKey: itemKey)
+//            // Else if allowed key, go ahead and set as a String
+//            } else if allowedKeys.contains(itemKey){
+//                organism.setValue(String(describing: item.value), forKey: itemKey)
+//            }
+//        }
+//        
+//        if let imageData = photo?.imageData {
+//            organism.image = imageData
+//            print("photo saved")
+//        }
+//        
+//        collection.addToHasOrganism(organism)
+//        
+//        return saveData()
+//    }
+    
+    func createOrganism(organismCard: OrganismCard) -> Bool {
+        let entity = getEntity(name: "Organism")
+        let organism = Organism(entity: entity, insertInto: managedObjectContext)
         
-        for item in dict {
-            let itemKey = String(describing: item.key)
-            
-            // Exception: if organism class name, change to sciClass as class is a reserved term
-            if itemKey == "class" || itemKey == "Class" {
-                organism.sciClass = String(describing: item.value)
-            // Exception: vernacular is transformable and will be an array, not string
-            } else if itemKey == "vernacular" {
-                guard let thisNSData = item.value as? NSObject else {
-                    fatalError("internal data error")
-                }
-                organism.setValue(thisNSData, forKey: itemKey)
-            // Else if allowed key, go ahead and set as a String
-            } else if allowedKeys.contains(itemKey){
-                organism.setValue(String(describing: item.value), forKey: itemKey)
+        // Set collection
+        organism.withinCollection = organismCard.collection
+        
+        // Set taxonomic data
+        organism.kingdom = organismCard.kingdom
+        organism.phylum = organismCard.phylum
+        organism.sciClass = organismCard.sciClass // class cannot be used so sciClass substituted
+        organism.order = organismCard.order
+        organism.family = organismCard.family
+        organism.genus = organismCard.genus
+        organism.species = organismCard.species
+        
+        // Set Photo
+        if let photo = organismCard.photo {
+            organism.image = photo.imageData
+            organism.thumbnailImage = photo.thumbImageData
+        }
+        
+//        // Set vernacular array
+//        print("berfore vernacular save")
+//        if let vernacular = organismCard.vernacular as NSObject? {
+//            organism.vernacular = vernacular
+//        }
+//        print("after vernacular save")
+//        return saveData()
+        if let vernacularArray = organismCard.vernacular {
+            for item in vernacularArray {
+                let cnEntity = getEntity(name: "CommonName")
+                let commonName = CommonName(entity: cnEntity, insertInto: managedObjectContext)
+                commonName.name = item.name
+                commonName.language = item.language
+                commonName.belongsToOrganism = organism
             }
         }
-        
-        if let imageData = photo?.imageData {
-            organism.image = imageData
-            print("photo saved")
-        }
-        
-        collection.addToHasOrganism(organism)
         
         return saveData()
     }

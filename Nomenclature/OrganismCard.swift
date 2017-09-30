@@ -33,16 +33,16 @@ struct OrganismCard {
                 commonName = name
             }
             
-            // Forced unwrapped because all allowed items set at init
+            
             let data = [
                 ("Common Name", commonName as String),
-                ("Kingdom", self.kingdom!),
-                ("Phylum", self.phylum!),
-                ("Class", self.sciClass!),
-                ("Order", self.order!),
-                ("family", self.family!),
-                ("genus", self.genus!),
-                ("species", self.species!)
+                ("Kingdom", checkForNil(item: kingdom)),
+                ("Phylum", checkForNil(item: phylum)),
+                ("Class", checkForNil(item: sciClass)),
+                ("Order", checkForNil(item: order)),
+                ("family", checkForNil(item: family)),
+                ("genus", checkForNil(item: genus)),
+                ("species", checkForNil(item: species))
                 
             ]
             return data
@@ -50,6 +50,28 @@ struct OrganismCard {
     }
     
     var defaultLanguage = "english"
+    
+    init(organism: Organism) {
+        self.collection = organism.withinCollection! // cannot exist without a collection
+        self.kingdom = organism.kingdom
+        self.phylum = organism.phylum
+        self.sciClass = organism.sciClass
+        self.order = organism.order
+        self.family = organism.family
+        self.genus = organism.genus
+        self.species = organism.species
+        
+        guard let names = organism.hasCommonNames?.allObjects as? [CommonName] else {
+            self.vernacular = [(name: "missing", language: "missing")]
+            return
+        }
+        
+        for item in names {
+            if let name = item.name, let language = item.language {
+                self.vernacular?.append((name: name, language: language))
+            }
+        }
+    }
     
     init(collection: Collection, taxonomicData: NSDictionary) {
         // required field
@@ -59,25 +81,25 @@ struct OrganismCard {
             let itemKey = String(describing: item.key).lowercased()
             
             if itemKey == "kingdom" {
-                self.kingdom = item.value as? String ?? "missing data"
+                self.kingdom = (item.value as? String ?? "missing data")
             }
             if itemKey == "phylum" {
-                self.phylum = item.value as? String ?? "missing data"
+                self.phylum = (item.value as? String ?? "missing data")
             }
             if itemKey == "class" {
-                self.sciClass = item.value as? String ?? "missing data"
+                self.sciClass = (item.value as? String ?? "missing data")
             }
             if itemKey == "order" {
-                self.order = item.value as? String ?? "missing data"
+                self.order = (item.value as? String ?? "missing data")
             }
             if itemKey == "family" {
-                self.family = item.value as? String ?? "missing data"
+                self.family = (item.value as? String ?? "missing data")
             }
             if itemKey == "genus" {
-                self.genus = item.value as? String ?? "missing data"
+                self.genus = (item.value as? String ?? "missing data")
             }
             if itemKey == "species" {
-                self.species = item.value as? String ?? "missing data"
+                self.species = (item.value as? String ?? "missing data")
             }
             
             if itemKey == "vernacular" {
@@ -118,31 +140,11 @@ struct OrganismCard {
         return namesToReturn
     }
     
-    // Allow for quickly setting table data without listing each allowed variable
-    // This will allow for different types of cards in the next version
-//    private func setDataSource() {
-//        var commonName: String = "\(defaultLanguage.uppercased()) name not found"
-//        if let name = fetchFirstCommonName(language: defaultLanguage) {
-//            commonName = name
-//        }
-//        
-//        // Forced unwrapped because all allowed items set at init
-//        dataSource = [
-//            ("Common Name", commonName as String),
-//            ("Kingdom", self.kingdom!),
-//            ("Phylum", self.phylum!),
-//            ("Class", self.sciClass!),
-//            ("Order", self.order!),
-//            ("family", self.family!),
-//            ("genus", self.genus!),
-//            ("species", self.species!)
-//        
-//        ]
-//    
-//    }
-    
-    func convertVernacularToNSObject(vernacularTupleArray: [(name: String, language: String)]) -> NSObject? {
-        return vernacularTupleArray as NSObject
+    func checkForNil(item: String?) -> String {
+        guard let thisItem = item else {
+            return "missing data"
+        }
+        return thisItem
     }
     
 }

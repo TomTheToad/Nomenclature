@@ -1,5 +1,5 @@
 //
-//  Organism+CoreDataClass.swift
+//  CommonName+CoreDataClass.swift
 //  Nomenclature
 //
 //  Created by VICTOR ASSELTA on 9/29/17.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Organism)
-public class Organism: NSManagedObject {
+@objc(CommonName)
+public class CommonName: NSManagedObject {
 
 }

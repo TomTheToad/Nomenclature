@@ -41,8 +41,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // IBActions
     @IBAction func saveAction(_ sender: Any) {
-        // saveOrganism()
-        print("save organism called")
+        saveOrganism()
     }
     
     @IBAction func addImageButton(_ sender: Any) {
@@ -154,20 +153,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // CoreData methods
     // TODO: alter for edit
-//    func saveOrganism() {
-//        guard let collection = receivedCollection else {
-//            // TODO: return error
-//            print("collection missing")
-//            return
-//        }
-//        
-//        let isSuccess = coreData.addOrganism(dict: organismData, photo: receivedPhoto, collection: collection)
-//        if isSuccess {
-//            print("Organism saved")
-//        } else {
-//            print("Save failed")
-//        }
-//    }
+    func saveOrganism() {
+        let isSuccess = coreData.createOrganism(organismCard: organismCard)
+        if isSuccess {
+            print("Organism saved")
+        } else {
+            print("Save failed")
+        }
+    }
     
     // Navigation methods
     func returnToInitialVC() {
