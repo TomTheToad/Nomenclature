@@ -133,7 +133,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         if let commonName = card.fetchFirstCommonName(language: "english") {
             // use type
-            cell.vernacularTextField.text = commonName.0
+            cell.vernacularTextField.text = commonName.name
         } else {
             cell.vernacularTextField.text = "missing data"
         }

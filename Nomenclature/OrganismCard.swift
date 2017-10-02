@@ -13,8 +13,11 @@ class OrganismCard {
     // Collection this organism belongs to
     var collection: Collection
     
+    typealias vernacularTuple = (name: String, language: String)
+    
     // Taxonomic structure
-    var vernacular = [(name: String, language: String)]()
+    // TODO: update to type alias
+    var vernacular = [vernacularTuple]()
     var kingdom: String?
     var phylum: String?
     var sciClass: String?
@@ -110,7 +113,7 @@ class OrganismCard {
             
             if itemKey == "vernacular" {
                 print("vernacular found: \(item.value)")
-                self.vernacular = item.value as? [(name: String, language: String)] ?? [(name: "missing", language: "missing")]
+                self.vernacular = item.value as? [vernacularTuple] ?? [(name: "missing", language: "missing")]
                 print("vernacular set to \(self.vernacular)")
             }
             
@@ -122,24 +125,24 @@ class OrganismCard {
         
     }
     
-    func fetchFirstCommonName() -> (String, String)? {
+    func fetchFirstCommonName() -> vernacularTuple? {
         guard let first = vernacular.first else {
             return nil
         }
         return first
     }
     
-    func fetchFirstCommonName(language: String) -> (String, String)? {
+    func fetchFirstCommonName(language: String) -> vernacularTuple? {
         let names = fetchCommonNamesByLanguage(language: language)
         return names?.first
     }
     
-    func fetchCommonNamesByLanguage(language: String) -> [(String, String)]? {
+    func fetchCommonNamesByLanguage(language: String) -> [vernacularTuple]? {
 //        guard let names = vernacular else {
 //            return nil
 //        }
         
-        var namesToReturn = [(String, String)]()
+        var namesToReturn = [vernacularTuple]()
         for name in vernacular {
             if name.language == language.lowercased() {
                 namesToReturn.append(name)
