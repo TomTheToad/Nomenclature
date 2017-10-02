@@ -135,9 +135,6 @@ class CoreDataController {
             commonName.language = item.language
             print("coreData language: \(item.language)")
             commonName.belongsToOrganism = organism
-            organism.addToHasCommonNames(commonName)
-            let result = saveData()
-            print("commonName saved? \(result)")
         }
         
         return saveData()
