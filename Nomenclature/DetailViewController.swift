@@ -28,7 +28,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let searchString = recievedOrganismCard?.fetchFirstCommonName(language: "english") else {
             return "missing data"
         }
-        return searchString
+        return searchString.0
     }
     
     var flikrPhotos: [Photo]? {
@@ -85,6 +85,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         var thisPhoto = photo
+        organismCard.photo = photo
         
         flikr.downloadImageFromFlikrURL(url: url, completionHandler: {
             (data, response, error) in

@@ -8,13 +8,13 @@
 
 import UIKit
 
-struct OrganismCard {
+class OrganismCard {
     
     // Collection this organism belongs to
     var collection: Collection
     
     // Taxonomic structure
-    var vernacular: [(name: String, language: String)]?
+    var vernacular = [(name: String, language: String)]()
     var kingdom: String?
     var phylum: String?
     var sciClass: String?
@@ -30,7 +30,7 @@ struct OrganismCard {
         get {
             var commonName: String = "\(defaultLanguage.uppercased()) name not found"
             if let name = fetchFirstCommonName(language: defaultLanguage) {
-                commonName = name
+                commonName = name.0
             }
             
             
@@ -61,16 +61,22 @@ struct OrganismCard {
         self.genus = organism.genus
         self.species = organism.species
         
-        guard let names = organism.hasCommonNames?.allObjects as? [CommonName] else {
-            self.vernacular = [(name: "missing", language: "missing")]
-            return
+//        guard let names = organism.hasCommonNames?.allObjects as? [CommonName] else {
+//            self.vernacular = [(name: "missing", language: "missing")]
+//            return
+//        }
+        if let names = organism.hasCommonNames?.allObjects as? [CommonName] {
+            print("common names returned from organism.hasCommonNames")
+            for item in names {
+                if let name = item.name, let language = item.language {
+                    print("name: \(name), language: \(language)")
+                    self.vernacular.append((name: name, language: language))
+                }
+            }
+        } else {
+            print("common name failure: organism.hasCommonNames")
         }
         
-        for item in names {
-            if let name = item.name, let language = item.language {
-                self.vernacular?.append((name: name, language: language))
-            }
-        }
     }
     
     init(collection: Collection, taxonomicData: NSDictionary) {
@@ -103,7 +109,9 @@ struct OrganismCard {
             }
             
             if itemKey == "vernacular" {
+                print("vernacular found: \(item.value)")
                 self.vernacular = item.value as? [(name: String, language: String)] ?? [(name: "missing", language: "missing")]
+                print("vernacular set to \(self.vernacular)")
             }
             
         }
@@ -115,26 +123,26 @@ struct OrganismCard {
     }
     
     func fetchFirstCommonName() -> (String, String)? {
-        guard let first = vernacular?.first else {
+        guard let first = vernacular.first else {
             return nil
         }
         return first
     }
     
-    func fetchFirstCommonName(language: String) -> String? {
+    func fetchFirstCommonName(language: String) -> (String, String)? {
         let names = fetchCommonNamesByLanguage(language: language)
         return names?.first
     }
     
-    func fetchCommonNamesByLanguage(language: String) -> [String]? {
-        guard let names = vernacular else {
-            return nil
-        }
+    func fetchCommonNamesByLanguage(language: String) -> [(String, String)]? {
+//        guard let names = vernacular else {
+//            return nil
+//        }
         
-        var namesToReturn = [String]()
-        for name in names {
+        var namesToReturn = [(String, String)]()
+        for name in vernacular {
             if name.language == language.lowercased() {
-                namesToReturn.append(name.name)
+                namesToReturn.append(name)
             }
         }
         return namesToReturn

@@ -41,7 +41,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
             cell.commonNameLabel.text = "missing data"
             return cell
         }
-        cell.commonNameLabel.text = firstCommonName
+        cell.commonNameLabel.text = firstCommonName.0
         return cell
     }
     

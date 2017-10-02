@@ -127,14 +127,17 @@ class CoreDataController {
 //        }
 //        print("after vernacular save")
 //        return saveData()
-        if let vernacularArray = organismCard.vernacular {
-            for item in vernacularArray {
-                let cnEntity = getEntity(name: "CommonName")
-                let commonName = CommonName(entity: cnEntity, insertInto: managedObjectContext)
-                commonName.name = item.name
-                commonName.language = item.language
-                commonName.belongsToOrganism = organism
-            }
+        for item in organismCard.vernacular {
+            let cnEntity = getEntity(name: "CommonName")
+            let commonName = CommonName(entity: cnEntity, insertInto: managedObjectContext)
+            commonName.name = item.name
+            print("coreData commonName: \(item.name)")
+            commonName.language = item.language
+            print("coreData language: \(item.language)")
+            commonName.belongsToOrganism = organism
+            organism.addToHasCommonNames(commonName)
+            let result = saveData()
+            print("commonName saved? \(result)")
         }
         
         return saveData()
@@ -174,6 +177,7 @@ class CoreDataController {
     func saveData() -> Bool {
         do {
             try managedObjectContext.save()
+            print("coreData save succesfully.")
             return true
         } catch {
             print("Error: Unable to save to core data")

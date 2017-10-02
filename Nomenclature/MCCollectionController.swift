@@ -103,20 +103,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return cell
         }
         
-//        if let vernacular = organism.vernacular {
-//            // TODO: create struct for this
-//            if let names = vernacular as? [(name: String, language: String)] {
-//            
-//                var text = ""
-//                for name in names {
-//                    text = "\(name.language): \(name.name) "
-//                }
-//                cell.vernacularTextField.text = text
-//            } else {
-//                cell.vernacularTextField.text = "missing"
-//            }
-//        }
-        
         if let kingdom = card.kingdom {
             cell.kingdomTextField.text = kingdom
         }
@@ -145,15 +131,23 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             cell.speciesTextField.text = species
         }
         
+        if let commonName = card.fetchFirstCommonName(language: "english") {
+            // use type
+            cell.vernacularTextField.text = commonName.0
+        } else {
+            cell.vernacularTextField.text = "missing data"
+        }
+        
         guard let photo = card.photo else {
             cell.organismImage.image = UIImage(named: "addImage")
             return cell
         }
         
         if let image = photo.image {
+                print("image found")
                 cell.organismImage.image = image
-                return cell
         } else {
+            print("image not found")
             cell.organismImage.image = UIImage(named: "addImage")
         }
         

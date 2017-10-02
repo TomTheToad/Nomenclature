@@ -104,7 +104,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
 
-        cell.vernacularTextField.text = firstName
+        cell.vernacularTextField.text = firstName.0
         return cell
     }
 }
