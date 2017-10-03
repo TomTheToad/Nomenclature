@@ -12,7 +12,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Fields
     private let coreData = CoreDataController()
-    private let flikr = FlickrAPIController()
+    private let flickr = FlickrAPIController()
     var recievedOrganismCard: OrganismCard?
     var organismCard: OrganismCard {
         get {
@@ -31,7 +31,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return searchString.0
     }
     
-    var flikrPhotos: [Photo]? {
+    var flickrPhotos: [Photo]? {
         didSet {
             performSegue(withIdentifier: "imageSearchSegue", sender: self)
         }
@@ -45,7 +45,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func addImageButton(_ sender: Any) {
-        fetchFlikrImages()
+        fetchFlickrImages()
     }
     
     @IBAction func saveToDetailViewController(_: UIStoryboardSegue) {
@@ -86,7 +86,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var thisPhoto = photo
         
-        flikr.downloadImageFromFlikrURL(url: url, completionHandler: {
+        flickr.downloadImageFromFlickrURL(url: url, completionHandler: {
             (data, response, error) in
             if error == nil {
                 guard let imageData = data else {
@@ -124,12 +124,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    func fetchFlikrImages() {
+    func fetchFlickrImages() {
         let flikr = FlickrAPIController()
 
         do {
             
-            try flikr.getImageArray(textToSearch: searchString, completionHander: {
+            try flickr.getImageArray(textToSearch: searchString, completionHander: {
                 (error, data) in
                 if error == nil {
                     guard let dict = data else {
@@ -140,7 +140,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let photos = flikr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
                     
                     DispatchQueue.main.async {
-                        self.flikrPhotos = photos
+                        self.flickrPhotos = photos
                     }
                     
                 } else {
@@ -179,7 +179,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "imageSearchSegue" {
             let vc = segue.destination as! ImageSearchController
-            vc.receivedPhotos = flikrPhotos
+            vc.receivedPhotos = flickrPhotos
             vc.searchString = searchString
         }
     }

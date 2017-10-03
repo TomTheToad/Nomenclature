@@ -11,7 +11,7 @@ import UIKit
 class ImageSearchController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     // Fields
-    let flikr = FlickrAPIController()
+    let flickr = FlickrAPIController()
     // TODO: update this to a struct or NSManagedObjectClass
     var searchString = String()
     var receivedPhotos: [Photo]?
@@ -73,7 +73,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             cell.imageView.image = UIImage(data: imageData as Data)
             cell.photo = photo
         } else if let thumbURL = photo.thumbImageURL {
-            flikr.downloadImageFromFlikrURL(url: thumbURL, completionHandler: {
+            flickr.downloadImageFromFlickrURL(url: thumbURL, completionHandler: {
                 (data, response, error) in
                 if error == nil {
                     guard let imageData = data else {

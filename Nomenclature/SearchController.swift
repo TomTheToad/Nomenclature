@@ -13,7 +13,7 @@
 
 import UIKit
 
-class SearchController: UIViewController {
+class SearchController: UIViewController, UITextFieldDelegate {
     
     // Fields
     let itis = ITISAPIController()
@@ -31,6 +31,11 @@ class SearchController: UIViewController {
     // IBOutlets
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchField.delegate = self
+    }
     
     // IBActions
     @IBAction func selectNumberRecordsAction(_ sender: Any) {
@@ -92,6 +97,13 @@ class SearchController: UIViewController {
         })
     }
     
+    // Keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchITIS()
+        return true
+    }
+    
+    // Navigation
     func performMCSeque(sender: Any?) {
         // TODO: perform seque to initialVC
     }

@@ -15,12 +15,6 @@ class WikimediaAPIController {
     
     var urlQueryItems: [URLQueryItem] = [
         
-//        URLQueryItem(name: "action", value: "query"),
-//        URLQueryItem(name: "formatversion", value: "2"),
-//        URLQueryItem(name: "titles", value: "alaskan_malamute"),
-//        URLQueryItem(name: "prop", value: "pageimages|pageterms"),
-//        URLQueryItem(name: "pilimit", value: "10"),
-//        URLQueryItem(name: "format", value: "json")
         URLQueryItem(name: "action", value: "query"),
         URLQueryItem(name: "prop", value: "extracts"),
         URLQueryItem(name: "format", value: "json"),
