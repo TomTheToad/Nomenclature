@@ -14,18 +14,20 @@
         <attribute name="family" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kingdom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phylum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sciClass" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="species" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="thumbnailURLString" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hasCommonNames" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CommonName" inverseName="belongsToOrganism" inverseEntity="CommonName" syncable="YES"/>
         <relationship name="withinCollection" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="hasOrganism" inverseEntity="Collection" syncable="YES"/>
     </entity>
     <elements>
         <element name="Collection" positionX="-63" positionY="72" width="128" height="90"/>
-        <element name="Organism" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="CommonName" positionX="-54" positionY="72" width="128" height="90"/>
+        <element name="Organism" positionX="-63" positionY="-18" width="128" height="240"/>
     </elements>
 </model>

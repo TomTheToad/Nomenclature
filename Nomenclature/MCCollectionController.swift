@@ -139,6 +139,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         guard let photo = card.photo else {
+            print("collection photo not found")
             cell.organismImage.image = UIImage(named: "addImage")
             return cell
         }

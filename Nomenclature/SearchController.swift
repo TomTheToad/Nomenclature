@@ -6,6 +6,11 @@
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
 
+// TODO: list:
+// 1) add cancel
+// 2) update search to include capitalized and noncapitalized query
+// 3) create cards later, eliminate some processing overhead?
+
 import UIKit
 
 class SearchController: UIViewController {
@@ -13,6 +18,7 @@ class SearchController: UIViewController {
     // Fields
     let itis = ITISAPIController()
     let coreData = CoreDataController()
+    
     var numberOfRecords = 10
     var receivedCollection: Collection?
     

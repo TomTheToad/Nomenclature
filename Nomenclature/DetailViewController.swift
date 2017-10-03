@@ -17,7 +17,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var organismCard: OrganismCard {
         get {
             guard let card = recievedOrganismCard else {
-                // handle error, this should never happen
+                // handle error, this should never happen but probably will
                 fatalError("Application error: missing data")
             }
             return card
@@ -79,13 +79,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setImage(photo: Photo) {
-        guard let url = photo.urlForImage() else {
+        guard let url = photo.imageURL else {
             print("unable to download image")
             return
         }
         
         var thisPhoto = photo
-        organismCard.photo = photo
         
         flikr.downloadImageFromFlikrURL(url: url, completionHandler: {
             (data, response, error) in
@@ -94,8 +93,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     return
                 }
                 thisPhoto.imageData = imageData as NSData
+                self.organismCard.photo = thisPhoto
                 DispatchQueue.main.async {
                     self.receivedPhoto = thisPhoto
+                    // TODO: remove redundancy
                     self.organismImage.image = UIImage(data: imageData)
                 }
             } else {
@@ -155,6 +156,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // CoreData methods
     // TODO: alter for edit
     func saveOrganism() {
+        print("is organismCard photo: \(String(describing: organismCard.photo))")
         let isSuccess = coreData.createOrganism(organismCard: organismCard)
         if isSuccess {
             print("Organism saved")

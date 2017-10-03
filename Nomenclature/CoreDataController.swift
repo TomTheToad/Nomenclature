@@ -30,12 +30,6 @@ class CoreDataController {
     }
     
     /* ### Organism Functions ### */
-//    func createOrganism() -> Organism {
-//        let entity = getEntity(name: "Organism")
-//        let organism = Organism(entity: entity, insertInto: managedObjectContext)
-//        return organism
-//    }
-    
     // retrieve all Organims
     // TODO: search by title?
     func fetchAllOrganismsInCollection(collection: Collection) -> [Organism]? {
@@ -67,37 +61,6 @@ class CoreDataController {
     }
     
     // create
-//    func addOrganism(dict: NSDictionary, photo: Photo?, collection: Collection) -> Bool {
-//        let organism = createOrganism()
-//        
-//        for item in dict {
-//            let itemKey = String(describing: item.key)
-//            
-//            // Exception: if organism class name, change to sciClass as class is a reserved term
-//            if itemKey == "class" || itemKey == "Class" {
-//                organism.sciClass = String(describing: item.value)
-//            // Exception: vernacular is transformable and will be an array, not string
-//            } else if itemKey == "vernacular" {
-//                guard let thisNSData = item.value as? NSObject else {
-//                    fatalError("internal data error")
-//                }
-//                organism.setValue(thisNSData, forKey: itemKey)
-//            // Else if allowed key, go ahead and set as a String
-//            } else if allowedKeys.contains(itemKey){
-//                organism.setValue(String(describing: item.value), forKey: itemKey)
-//            }
-//        }
-//        
-//        if let imageData = photo?.imageData {
-//            organism.image = imageData
-//            print("photo saved")
-//        }
-//        
-//        collection.addToHasOrganism(organism)
-//        
-//        return saveData()
-//    }
-    
     func createOrganism(organismCard: OrganismCard) -> Bool {
         let entity = getEntity(name: "Organism")
         let organism = Organism(entity: entity, insertInto: managedObjectContext)
@@ -116,17 +79,16 @@ class CoreDataController {
         
         // Set Photo
         if let photo = organismCard.photo {
+            print("coreData: organism photo data found")
             organism.image = photo.imageData
+            organism.imageURLString = photo.urlString
             organism.thumbnailImage = photo.thumbImageData
+            organism.thumbnailURLString = photo.thumbURLString
+        } else {
+            print("coreData: organism photo data not found")
         }
         
-//        // Set vernacular array
-//        print("berfore vernacular save")
-//        if let vernacular = organismCard.vernacular as NSObject? {
-//            organism.vernacular = vernacular
-//        }
-//        print("after vernacular save")
-//        return saveData()
+        // Set vernacular array
         for item in organismCard.vernacular {
             let cnEntity = getEntity(name: "CommonName")
             let commonName = CommonName(entity: cnEntity, insertInto: managedObjectContext)

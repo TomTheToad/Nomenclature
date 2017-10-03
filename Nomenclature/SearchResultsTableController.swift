@@ -11,9 +11,6 @@ import UIKit
 class SearchResultsTableController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Fields
-    // var resultsDict = [NSDictionary]()
-    // TODO: use within init?
-    // var receivedCollection: Collection?
     var organismCards = [OrganismCard]()
     
     

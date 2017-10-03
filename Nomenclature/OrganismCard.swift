@@ -64,10 +64,6 @@ class OrganismCard {
         self.genus = organism.genus
         self.species = organism.species
         
-//        guard let names = organism.hasCommonNames?.allObjects as? [CommonName] else {
-//            self.vernacular = [(name: "missing", language: "missing")]
-//            return
-//        }
         if let names = organism.hasCommonNames?.allObjects as? [CommonName] {
             print("common names returned from organism.hasCommonNames")
             for item in names {
@@ -79,6 +75,14 @@ class OrganismCard {
         } else {
             print("common name failure: organism.hasCommonNames")
         }
+        
+        var photo = Photo()
+        photo.imageData = organism.image
+        photo.urlString = organism.imageURLString
+        photo.thumbImageData = organism.thumbnailImage
+        photo.thumbURLString = organism.thumbnailURLString
+        
+        self.photo = photo
         
     }
     
@@ -138,10 +142,9 @@ class OrganismCard {
     }
     
     func fetchCommonNamesByLanguage(language: String) -> [vernacularTuple]? {
-//        guard let names = vernacular else {
-//            return nil
-//        }
         
+        // TODO: This could lead to a nil condition
+        // although technically, this should never be nil
         var namesToReturn = [vernacularTuple]()
         for name in vernacular {
             if name.language == language.lowercased() {
