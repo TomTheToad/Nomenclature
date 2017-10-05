@@ -33,6 +33,7 @@
 		C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */; };
 		C7C7657C1F7EC1270086E960 /* CommonName+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C765781F7EC1270086E960 /* CommonName+CoreDataClass.swift */; };
 		C7C7657D1F7EC1270086E960 /* CommonName+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C765791F7EC1270086E960 /* CommonName+CoreDataProperties.swift */; };
+		C7CC68DF1F85A173005FC76C /* OKAlertGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CC68DE1F85A173005FC76C /* OKAlertGenerator.swift */; };
 		C7D502E41F6887EF00065274 /* WikimediaAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */; };
 		C7D502E61F68929B00065274 /* FlickrAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E51F68929B00065274 /* FlickrAPIController.swift */; };
 		C7D502E91F68934B00065274 /* URLResponseCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E81F68934B00065274 /* URLResponseCheck.swift */; };
@@ -73,6 +74,7 @@
 		C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		C7C765781F7EC1270086E960 /* CommonName+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommonName+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7C765791F7EC1270086E960 /* CommonName+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommonName+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C7CC68DE1F85A173005FC76C /* OKAlertGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OKAlertGenerator.swift; sourceTree = "<group>"; };
 		C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikimediaAPIController.swift; sourceTree = "<group>"; };
 		C7D502E51F68929B00065274 /* FlickrAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrAPIController.swift; sourceTree = "<group>"; };
 		C7D502E81F68934B00065274 /* URLResponseCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLResponseCheck.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				C7D502E81F68934B00065274 /* URLResponseCheck.swift */,
 				C7DE04FF1F7F0BA60022BA63 /* OrganismCardFactory.swift */,
+				C7CC68DE1F85A173005FC76C /* OKAlertGenerator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				C72B37611F71523B00C7FF25 /* MCGCollectionController.swift in Sources */,
 				C7A9376C1F76AE2A0015A6F2 /* CreateEditCollections.swift in Sources */,
 				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
+				C7CC68DF1F85A173005FC76C /* OKAlertGenerator.swift in Sources */,
 				C7C7657D1F7EC1270086E960 /* CommonName+CoreDataProperties.swift in Sources */,
 				C711C55D1F6F3515004FF8E1 /* OrganismCard.swift in Sources */,
 				C79B94261F83D8C800E3D02A /* Organism+CoreDataClass.swift in Sources */,

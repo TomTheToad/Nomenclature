@@ -125,8 +125,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func fetchFlickrImages() {
-        let flikr = FlickrAPIController()
-
         do {
             
             try flickr.getImageArray(textToSearch: searchString, completionHander: {
@@ -137,7 +135,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     
                     // TODO: check for single photo return
-                    let photos = flikr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
+                    let photos = self.flickr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
                     
                     DispatchQueue.main.async {
                         self.flickrPhotos = photos

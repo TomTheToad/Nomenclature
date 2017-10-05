@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateEditCollections: UIViewController {
+class CreateEditCollections: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     // Fields
     let coreData = CoreDataController()
@@ -25,6 +25,13 @@ class CreateEditCollections: UIViewController {
     // IBActions
     @IBAction func saveButtonAction(_ sender: Any) {
         createCollection()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        titleTextField.delegate = self
+        descriptionTextView.delegate = self
+        configureKeyboard()
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
@@ -60,5 +67,50 @@ class CreateEditCollections: UIViewController {
             let vc = tabBarVC.viewControllers?.first as! MCCollectionController
             vc.receivedCollection = collection
         }
+    }
+    
+    // Keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+    
+    func configureKeyboard() {
+        descriptionTextView.addDoneButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 && descriptionTextView.isFocused {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 && descriptionTextView.isFocused == false {
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+}
+
+extension UITextView {
+    
+    func addDoneButton() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                            target: self, action: #selector(UIView.endEditing(_:)))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        self.inputAccessoryView = keyboardToolbar
     }
 }

@@ -16,8 +16,8 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     var searchString = String()
     var receivedPhotos: [Photo]?
     
-    // TODO: create an image entity
-    var imagesReturned: [NSDictionary]?
+    // var imagesReturned: [NSDictionary]?
+    // TODO: move to external datasource for reload or use insert methods
     var selectedPhoto: Photo?
     
     // IBOutlets
@@ -25,6 +25,11 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var searchTextField: UITextField!
     
     // IBActions
+    @IBAction func searchAgainButton(_sender: Any) {
+        fetchFlickrImages()
+        view.endEditing(true)
+    }
+    
     @IBAction func addImageButton(_ sender: Any) {
         performSegue(withIdentifier: "saveToDetailVC", sender: self)
     }
@@ -47,6 +52,40 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         
         searchTextField.text = searchString
 
+    }
+    
+    // Flickr methods
+    func fetchFlickrImages() {
+        guard let newSearchString = searchTextField.text else {
+            return
+        }
+        
+        do {
+            
+            try flickr.getImageArray(textToSearch: newSearchString, completionHander: {
+                (error, data) in
+                if error == nil {
+                    guard let dict = data else {
+                        return
+                    }
+                    
+                    // TODO: check for single photo return
+                    let photos = self.flickr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
+                    
+                    DispatchQueue.main.async {
+                        self.receivedPhotos = photos
+                    }
+                    
+                } else {
+                    return
+                }
+                
+            })
+        } catch {
+            return
+        }
+        
+        imageCollectionView.reloadData()
     }
     
     // CollectionView

@@ -58,6 +58,10 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         performSegue(withIdentifier: "collectionAddCard", sender: self)
     }
     
+    @IBAction func deleteCardButton(_ sender: Any) {
+        // delete card
+    }
+    
     // Test methods
     func testReceivedCollection() {
         if receivedCollection != nil {
