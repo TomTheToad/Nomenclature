@@ -13,6 +13,7 @@
     <entity name="Organism" representedClassName="Organism" syncable="YES">
         <attribute name="family" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kingdom" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,6 +29,6 @@
     <elements>
         <element name="Collection" positionX="-63" positionY="72" width="128" height="90"/>
         <element name="CommonName" positionX="-54" positionY="72" width="128" height="90"/>
-        <element name="Organism" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="Organism" positionX="-63" positionY="-18" width="128" height="255"/>
     </elements>
 </model>

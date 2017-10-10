@@ -9,6 +9,10 @@
 import UIKit
 
 class MCTableCell: UITableViewCell {
+    
+    // Organism id
+    var id: String?
+    
     // IBOutlets
     @IBOutlet weak var vernacularTextField: UILabel!
 }

@@ -24,11 +24,11 @@
 		C7957C661F30E3C700C09528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7957C651F30E3C700C09528 /* Assets.xcassets */; };
 		C7957C691F30E3C700C09528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7957C671F30E3C700C09528 /* LaunchScreen.storyboard */; };
 		C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C731F30E43D00C09528 /* ITISAPIController.swift */; };
-		C79B94261F83D8C800E3D02A /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B94241F83D8C800E3D02A /* Organism+CoreDataClass.swift */; };
-		C79B94271F83D8C800E3D02A /* Organism+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B94251F83D8C800E3D02A /* Organism+CoreDataProperties.swift */; };
 		C7A9376C1F76AE2A0015A6F2 /* CreateEditCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */; };
 		C7A9377B1F76B3F80015A6F2 /* Collection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */; };
 		C7A9377C1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */; };
+		C7B1C8581F86CA9800FE6AA5 /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B1C8561F86CA9800FE6AA5 /* Organism+CoreDataClass.swift */; };
+		C7B1C8591F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B1C8571F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift */; };
 		C7BE0A5F1F6D690C005FC2E4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BE0A5E1F6D690C005FC2E4 /* Photo.swift */; };
 		C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */; };
 		C7C7657C1F7EC1270086E960 /* CommonName+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C765781F7EC1270086E960 /* CommonName+CoreDataClass.swift */; };
@@ -37,6 +37,8 @@
 		C7D502E41F6887EF00065274 /* WikimediaAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */; };
 		C7D502E61F68929B00065274 /* FlickrAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E51F68929B00065274 /* FlickrAPIController.swift */; };
 		C7D502E91F68934B00065274 /* URLResponseCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D502E81F68934B00065274 /* URLResponseCheck.swift */; };
+		C7D99B031F8BE24D008CDF7F /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D99B021F8BE24D008CDF7F /* ImageCell.swift */; };
+		C7D99B051F8BE258008CDF7F /* NomenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D99B041F8BE258008CDF7F /* NomenCell.swift */; };
 		C7DE05001F7F0BA60022BA63 /* OrganismCardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE04FF1F7F0BA60022BA63 /* OrganismCardFactory.swift */; };
 		C7E8388C1F3F2CBC00A5F88A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */; };
 		C7E8388E1F3F2CD500A5F88A /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */; };
@@ -65,11 +67,11 @@
 		C7957C681F30E3C700C09528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7957C6A1F30E3C700C09528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7957C731F30E43D00C09528 /* ITISAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITISAPIController.swift; sourceTree = "<group>"; };
-		C79B94241F83D8C800E3D02A /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C79B94251F83D8C800E3D02A /* Organism+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCollections.swift; sourceTree = "<group>"; };
 		C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C7B1C8561F86CA9800FE6AA5 /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C7B1C8571F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7BE0A5E1F6D690C005FC2E4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		C7C44B9D1F39552D002D8E82 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		C7C765781F7EC1270086E960 /* CommonName+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommonName+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -78,6 +80,8 @@
 		C7D502E31F6887EF00065274 /* WikimediaAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikimediaAPIController.swift; sourceTree = "<group>"; };
 		C7D502E51F68929B00065274 /* FlickrAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrAPIController.swift; sourceTree = "<group>"; };
 		C7D502E81F68934B00065274 /* URLResponseCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLResponseCheck.swift; sourceTree = "<group>"; };
+		C7D99B021F8BE24D008CDF7F /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		C7D99B041F8BE258008CDF7F /* NomenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NomenCell.swift; sourceTree = "<group>"; };
 		C7DE04FF1F7F0BA60022BA63 /* OrganismCardFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganismCardFactory.swift; sourceTree = "<group>"; };
 		C7E8388B1F3F2CBC00A5F88A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C7E8388D1F3F2CD500A5F88A /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				C702F2E81F4CFB9F002598D3 /* MCTableCell.swift */,
 				C786C5F51F4F61D40050F3C4 /* MCCollectionController.swift */,
 				C7F36EA11F6F55A3002F3900 /* MCCollectionViewCell.swift */,
+				C7D99B021F8BE24D008CDF7F /* ImageCell.swift */,
+				C7D99B041F8BE258008CDF7F /* NomenCell.swift */,
 			);
 			name = MyCollection;
 			sourceTree = "<group>";
@@ -186,8 +192,8 @@
 				C7957C621F30E3C700C09528 /* Nomenclature.xcdatamodeld */,
 				C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */,
 				C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */,
-				C79B94241F83D8C800E3D02A /* Organism+CoreDataClass.swift */,
-				C79B94251F83D8C800E3D02A /* Organism+CoreDataProperties.swift */,
+				C7B1C8561F86CA9800FE6AA5 /* Organism+CoreDataClass.swift */,
+				C7B1C8571F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift */,
 				C7C765781F7EC1270086E960 /* CommonName+CoreDataClass.swift */,
 				C7C765791F7EC1270086E960 /* CommonName+CoreDataProperties.swift */,
 				C7BE0A5E1F6D690C005FC2E4 /* Photo.swift */,
@@ -323,18 +329,18 @@
 				C702F2E91F4CFB9F002598D3 /* MCTableCell.swift in Sources */,
 				C7D502E61F68929B00065274 /* FlickrAPIController.swift in Sources */,
 				C78E268C1F69B48E009828F1 /* ImageCollectionViewCell.swift in Sources */,
-				C79B94271F83D8C800E3D02A /* Organism+CoreDataProperties.swift in Sources */,
 				C7DE05001F7F0BA60022BA63 /* OrganismCardFactory.swift in Sources */,
 				C7F36EA21F6F55A3002F3900 /* MCCollectionViewCell.swift in Sources */,
 				C78E268A1F69AFB7009828F1 /* ImageSearchController.swift in Sources */,
 				C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */,
 				C72B37611F71523B00C7FF25 /* MCGCollectionController.swift in Sources */,
+				C7B1C8591F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift in Sources */,
+				C7D99B051F8BE258008CDF7F /* NomenCell.swift in Sources */,
 				C7A9376C1F76AE2A0015A6F2 /* CreateEditCollections.swift in Sources */,
 				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
 				C7CC68DF1F85A173005FC76C /* OKAlertGenerator.swift in Sources */,
 				C7C7657D1F7EC1270086E960 /* CommonName+CoreDataProperties.swift in Sources */,
 				C711C55D1F6F3515004FF8E1 /* OrganismCard.swift in Sources */,
-				C79B94261F83D8C800E3D02A /* Organism+CoreDataClass.swift in Sources */,
 				C702F2E71F4CEA7E002598D3 /* MCTableController.swift in Sources */,
 				C738CED71F3B3D5F006F25E1 /* SearchResultsTableController.swift in Sources */,
 				C72B37631F71539000C7FF25 /* MCGCollectionViewCell.swift in Sources */,
@@ -342,11 +348,13 @@
 				C738CED51F3B232B006F25E1 /* SearchController.swift in Sources */,
 				C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */,
 				C7EE61871F58DFB6002B4EC7 /* INaturalistAPIController.swift in Sources */,
+				C7D99B031F8BE24D008CDF7F /* ImageCell.swift in Sources */,
 				C7D502E91F68934B00065274 /* URLResponseCheck.swift in Sources */,
 				C786C5F61F4F61D40050F3C4 /* MCCollectionController.swift in Sources */,
 				C7EE61891F58E05A002B4EC7 /* URLBuilder.swift in Sources */,
 				C7A9377C1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift in Sources */,
 				C7C44B9E1F39552D002D8E82 /* CoreDataController.swift in Sources */,
+				C7B1C8581F86CA9800FE6AA5 /* Organism+CoreDataClass.swift in Sources */,
 				C7D502E41F6887EF00065274 /* WikimediaAPIController.swift in Sources */,
 				C7E8388E1F3F2CD500A5F88A /* DetailViewCell.swift in Sources */,
 				C7957C5C1F30E3C700C09528 /* AppDelegate.swift in Sources */,

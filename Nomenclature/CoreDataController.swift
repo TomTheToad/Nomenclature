@@ -65,6 +65,9 @@ class CoreDataController {
         let entity = getEntity(name: "Organism")
         let organism = Organism(entity: entity, insertInto: managedObjectContext)
         
+        // Create UUID
+        organism.id = UUID().uuidString
+        
         // Set collection
         organism.withinCollection = organismCard.collection
         
@@ -102,9 +105,25 @@ class CoreDataController {
         return saveData()
     }
     
-    func removeOrganism(organism: Organism) -> Bool {
+    func deleteOrganism(organism: Organism) -> Bool {
         managedObjectContext.delete(organism)
         return saveData()
+    }
+    
+    func deleteOrganism(id: String) -> Bool {
+        let request = NSFetchRequest<Organism>(entityName: "Organism")
+        let predicate = NSPredicate(format: "id == %@", id)
+        request.predicate = predicate
+        
+        do {
+            guard let thisOrganism = try managedObjectContext.fetch(request).first else {
+                return false
+            }
+            managedObjectContext.delete(thisOrganism)
+            return true
+        } catch {
+            return false
+        }
     }
     
     /* ### Collection Functions ### */

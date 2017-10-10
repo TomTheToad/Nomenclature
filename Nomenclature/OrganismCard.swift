@@ -10,6 +10,9 @@ import UIKit
 
 class OrganismCard {
     
+    // UUI created when saved to core Data
+    var id: String?
+    
     // Collection this organism belongs to
     var collection: Collection
     
@@ -55,6 +58,7 @@ class OrganismCard {
     var defaultLanguage = "english"
     
     init(organism: Organism) {
+        self.id = organism.id
         self.collection = organism.withinCollection! // cannot exist without a collection
         self.kingdom = organism.kingdom
         self.phylum = organism.phylum

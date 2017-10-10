@@ -94,15 +94,18 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         guard let card = myCollection?[indexPath.row] else {
-            cell.vernacularTextField.text = "Name Missing!"
+            cell.vernacularTextField.text = "Card Missing!"
             return cell
+        }
+        
+        if let id = card.id {
+            cell.id = id
         }
         
         guard let firstName = card.fetchFirstCommonName(language: "english") else {
             cell.vernacularTextField.text = "Name Missing!"
             return cell
         }
-        
 
         cell.vernacularTextField.text = firstName.name
         return cell
