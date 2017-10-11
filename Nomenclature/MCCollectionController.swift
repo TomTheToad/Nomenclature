@@ -23,6 +23,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     // IBOutlets
     @IBOutlet weak var mcCollection: UICollectionView!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     override func viewWillAppear(_ animated: Bool) {
         setMyCollection()
@@ -126,7 +127,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCCollectionViewCell", for: indexPath) as! MCCollectionViewCell
         
         guard let card = myCollection?[indexPath.row] else {
@@ -135,84 +136,22 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.organismCard = card
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
+        cell.cellTableView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
+        cell.cellTableView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0)
+        cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
+        cell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
         
         return cell
     }
-//
-////        cell.leftAnchor.constraint(equalTo: collectionView.leftAnchor, constant: 0)
-////        cell.rightAnchor.constraint(equalTo: collectionView.rightAnchor, constant: 0)
-////        cell.topAnchor.constraint(lessThanOrEqualTo: collectionView.topAnchor)
-////        cell.bottomAnchor.constraint(lessThanOrEqualTo: collectionView.bottomAnchor)
-////        
-////        cell.cardStackView.leftAnchor.constraint(equalTo: cell.leftAnchor)
-////        cell.cardStackView.rightAnchor.constraint(equalTo: cell.rightAnchor)
-//        
-//        guard let card = myCollection?[indexPath.row] else {
-//            return cell
-//        }
-//        
-//        if let id = card.id {
-//            cell.id = id
-//        }
-//        
-//        if let kingdom = card.kingdom {
-//            cell.kingdomTextField.text = kingdom
-//        }
-//        
-//        if let phylum = card.phylum {
-//            cell.phylumTextField.text = phylum
-//        }
-//        
-//        if let sciClass = card.sciClass {
-//            cell.classTextField.text = sciClass
-//        }
-//        
-//        if let order = card.order {
-//            cell.orderTextField.text = order
-//        }
-//        
-//        if let family = card.family {
-//            cell.familyTextField.text = family
-//        }
-//        
-//        if let genus = card.genus {
-//            cell.genusTextField.text = genus
-//        }
-//        
-//        if let species = card.species {
-//            cell.speciesTextField.text = species
-//        }
-//        
-//        if let commonName = card.fetchFirstCommonName(language: "english") {
-//            // use type
-//            cell.vernacularTextField.text = commonName.name
-//        } else {
-//            cell.vernacularTextField.text = "missing data"
-//        }
-//        
-//        guard let photo = card.photo else {
-//            print("collection photo not found")
-//            cell.organismImage.image = UIImage(named: "addImage")
-//            return cell
-//        }
-//        
-//        if let image = photo.image {
-//                print("image found")
-//                cell.organismImage.image = image
-//        } else {
-//            print("image not found")
-//            cell.organismImage.image = UIImage(named: "addImage")
-//        }
-//        
-//        return cell
-//    }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width, height: collectionView.bounds.height - collectionView.contentInset.bottom - collectionView.contentInset.top)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: mcCollection.bounds.width,)
+//    }
+    
+    /* the item height must be less than the height of the UICollectionView minus the section insets top and bottom values, minus the content insets top and bottom values. */
     
 }
