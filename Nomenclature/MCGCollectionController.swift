@@ -53,6 +53,18 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         }
         cell.titleLabel.text = thisCollection.title
         
+        if let thisOrganism = thisCollection.hasOrganism?.allObjects.first as? Organism {
+            guard let imageData = thisOrganism.thumbnailImage else {
+                // TODO: create default image
+                // cell.collectionImageView.image = someDefaultImage
+                return cell
+            }
+            
+            let image = UIImage(data: imageData as Data)
+            cell.collectionImageView.image = image
+            return cell
+        }
+        // TODO: Return default image
         return cell
     }
     

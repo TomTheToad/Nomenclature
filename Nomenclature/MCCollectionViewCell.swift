@@ -40,6 +40,7 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! ImageCell
+            cell.contentMode = .center
             
             guard let photo = card.photo else {
                 cell.imageView?.image = UIImage(named: "addImage")!
@@ -60,6 +61,13 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
         cell.classification.text = data.cellHeading
         cell.name.text = data.cellContent
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return CGFloat(200)
+        }
+        return CGFloat(50)
     }
     
     // IBOutlets

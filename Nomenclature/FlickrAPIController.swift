@@ -71,9 +71,9 @@ class FlickrAPIController {
             
             if let thisResponse = response {
                 let responseCheck = self.responseCheck.checkReponse(thisResponse)
-                if responseCheck.0 != true {
+                if responseCheck.isSuccess != true {
                     completionHander(FlickrErrors.URLResponse(response: thisResponse), nil)
-                    print("NETWORK ERROR: \(responseCheck.1)")
+                    print("NETWORK ERROR: \(responseCheck.message)")
                     return
                 }
             }

@@ -42,7 +42,7 @@ class URLResponseCheck {
     
     // Checks response for status code and message
     // Takes URLReponse
-    func checkReponse(_ response: URLResponse) -> (Bool, String) {
+    func checkReponse(_ response: URLResponse) -> (isSuccess: Bool, message: String) {
         
         let httpResponse = response as? HTTPURLResponse
         let statusCode = httpResponse?.statusCode

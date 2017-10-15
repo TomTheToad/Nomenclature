@@ -31,11 +31,8 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mcCollection.delegate = self
-        mcCollection.dataSource = self
-        mcCollection.isPagingEnabled = true
-        
+
+        ConfigureCollection()
         testReceivedCollection()
         
         
@@ -108,6 +105,21 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    // MARK: Collection view methods
+    func ConfigureCollection() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: view.bounds.width, height: mcCollection.bounds.height)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets.zero
+        
+            mcCollection.collectionViewLayout = layout
+            mcCollection.delegate = self
+            mcCollection.dataSource = self
+            mcCollection.isPagingEnabled = true
+    }
+    
     func setMyCollection() {
         guard let thisCollection = receivedCollection else {
             print("collection missing")
@@ -121,7 +133,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         myCollection = organismCardFactory.createCardArray(organismArray: organisms)
     }
     
-    // MARK: Collection view methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myCollection?.count ?? 0
     }
@@ -133,6 +144,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         guard let card = myCollection?[indexPath.row] else {
             return cell
         }
+        
         cell.organismCard = card
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
@@ -143,15 +155,5 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         return cell
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: mcCollection.bounds.width,)
-//    }
-    
-    /* the item height must be less than the height of the UICollectionView minus the section insets top and bottom values, minus the content insets top and bottom values. */
     
 }
