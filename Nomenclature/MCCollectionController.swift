@@ -107,17 +107,24 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     // MARK: Collection view methods
     func ConfigureCollection() {
+
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.bounds.width, height: mcCollection.bounds.height)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets.zero
+        layout.headerReferenceSize = CGSize.zero
+        layout.footerReferenceSize = CGSize.zero
         
-            mcCollection.collectionViewLayout = layout
-            mcCollection.delegate = self
-            mcCollection.dataSource = self
-            mcCollection.isPagingEnabled = true
+        // TODO: quick fix, find a better solution
+        let cellHeight = mcCollection.bounds.height - navigationController!.toolbar.bounds.height - toolBar.bounds.height
+        
+        layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
+        
+        mcCollection.collectionViewLayout = layout
+        mcCollection.delegate = self
+        mcCollection.dataSource = self
+        mcCollection.isPagingEnabled = true
     }
     
     func setMyCollection() {
@@ -150,6 +157,8 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cellTableView.delegate = cell.self
         cell.cellTableView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
         cell.cellTableView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0)
+        cell.cellTableView.sectionHeaderHeight = 0
+        cell.cellTableView.sectionFooterHeight = 0
         cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
         cell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
         

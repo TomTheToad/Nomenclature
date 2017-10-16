@@ -28,7 +28,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let searchString = recievedOrganismCard?.fetchFirstCommonName(language: "english") else {
             return "missing data"
         }
-        return searchString.0
+        return searchString.name
     }
     
     var flickrPhotos: [Photo]? {
@@ -45,6 +45,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func addImageButton(_ sender: Any) {
+        activityIndicator.stopAnimating()
         fetchFlickrImages()
     }
     
@@ -53,6 +54,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // IBOutlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var organismImage: UIImageView!
     @IBAction func myCollectionButton(_ sender: Any) {
         returnToInitialVC()
@@ -63,6 +65,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         
+        activityIndicator.stopAnimating()
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -100,7 +103,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.organismImage.image = UIImage(data: imageData)
                 }
             } else {
-                print("flikr download image error has occured. response: \(response.debugDescription)")
+                self.GenericAlert()
                 return
             }
         })
@@ -138,6 +141,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let photos = self.flickr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
                     
                     DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
                         self.flickrPhotos = photos
                     }
                     
@@ -171,7 +175,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
-        present(initialVC, animated: false, completion: nil)
+        present(initialVC, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -182,4 +186,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func GenericAlert(message: String? = nil) {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            let thisMessage = message ?? "Oops, your reguest failed. Please check your connection and try again."
+            let alert = OKAlertGenerator(alertMessage: thisMessage)
+            self.present(alert.getAlertToPresent(), animated: false, completion: nil)
+        }
+    }
 }

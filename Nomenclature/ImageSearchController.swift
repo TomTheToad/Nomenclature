@@ -23,6 +23,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     // IBOutlets
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // IBActions
     @IBAction func searchAgainButton(_sender: Any) {
@@ -92,6 +93,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = receivedPhotos?.count else {
             // TODO: Alert Error
+            GenericAlert(message: "Auto search did not return anything for the given common name. Try entering a custom search term above and search again.")
             return 0
         }
         return count
@@ -173,6 +175,15 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             
             vc.receivedPhoto = photo
             vc.setImage(photo: photo)
+        }
+    }
+    
+    func GenericAlert(message: String? = nil) {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            let thisMessage = message ?? "Oops, your reguest failed. Please check your connection and try again."
+            let alert = OKAlertGenerator(alertMessage: thisMessage)
+            self.present(alert.getAlertToPresent(), animated: false, completion: nil)
         }
     }
     

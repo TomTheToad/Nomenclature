@@ -12,6 +12,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     // Fields
     let coreData = CoreDataController()
+//    let defaultImage = UIImage(named: "defaultImage")!
     var myCollectionGroups: [Collection]? = {
        let coreData = CoreDataController()
         return coreData.fetchAllCollections()
@@ -28,8 +29,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myCollectionGroupsView.delegate = self
-        myCollectionGroupsView.dataSource = self
+        configureCollection()
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
@@ -37,6 +37,24 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     // CollectionView methods
+    func configureCollection() {
+
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets.zero
+        layout.headerReferenceSize = CGSize.zero
+        layout.footerReferenceSize = CGSize.zero
+        let itemSize = myCollectionGroupsView.bounds.width / 3
+        layout.itemSize = CGSize(width: itemSize, height: itemSize)
+
+        myCollectionGroupsView.collectionViewLayout = layout
+        myCollectionGroupsView.delegate = self
+        myCollectionGroupsView.dataSource = self
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = myCollectionGroups?.count else {
             return 0
@@ -44,19 +62,21 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         return count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCGCollectionViewCell", for: indexPath) as! MCGCollectionViewCell
+        
         cell.backgroundColor = UIColor.darkGray
         
         guard let thisCollection = myCollectionGroups?[indexPath.row] else {
             return cell
         }
+        
         cell.titleLabel.text = thisCollection.title
         
         if let thisOrganism = thisCollection.hasOrganism?.allObjects.first as? Organism {
             guard let imageData = thisOrganism.thumbnailImage else {
-                // TODO: create default image
-                // cell.collectionImageView.image = someDefaultImage
+                 cell.collectionImageView.image = #imageLiteral(resourceName: "defaultImage")
                 return cell
             }
             
@@ -65,6 +85,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
             return cell
         }
         // TODO: Return default image
+        cell.collectionImageView.image = #imageLiteral(resourceName: "defaultImage")
         return cell
     }
     

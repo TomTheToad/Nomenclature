@@ -44,7 +44,7 @@ class ITISAPIController: NSObject {
         
         // create request
         // TODO: Handle time out
-        let urlRequest = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 1.0)
+        let urlRequest = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 3.0)
         
         // create session
         let session = URLSession.shared

@@ -13,8 +13,6 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
     // Fields
     var organismCards = [OrganismCard]()
     
-    
-    
     // IBOutlets
     @IBOutlet weak var resultsTableView: UITableView!
     

@@ -7,7 +7,7 @@
 //
 
 // TODO: list:
-// 1) add cancel
+// 1) add cancel [done]
 // 2) update search to include capitalized and noncapitalized query
 // 3) create cards later, eliminate some processing overhead?
 
@@ -31,9 +31,11 @@ class SearchController: UIViewController, UITextFieldDelegate {
     // IBOutlets
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.stopAnimating()
         searchField.delegate = self
     }
     
@@ -51,17 +53,20 @@ class SearchController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func myCollectionButtonAction(_ sender: Any) {
-        performMCSeque(sender: self)
+    @IBAction func cancelButton(_ sender: Any) {
+        returnToInitialVC()
     }
     
     @IBAction func searchButton(_ sender: Any) {
+        activityIndicator.startAnimating()
         searchITIS()
     }
     
     func searchITIS() {
         guard let searchText = searchField.text else {
-            print("Please enter something to search")
+            activityIndicator.stopAnimating()
+            print("nothing to search")
+            GenericAlert(message: "Please enter something to search")
             return
         }
         
@@ -69,12 +74,12 @@ class SearchController: UIViewController, UITextFieldDelegate {
             (error, dict) in
             if error == nil {
                 guard let organismsDict = dict else {
-                    print("Error dict")
+                    self.GenericAlert()
                     return
                 }
                 
                 guard let collection = self.receivedCollection else {
-                    print("Error collection")
+                    self.GenericAlert()
                     return
                 }
                 
@@ -84,15 +89,17 @@ class SearchController: UIViewController, UITextFieldDelegate {
                     cardsArray.append(card)
                 }
                 
-                DispatchQueue.main.async {
-                    self.organismCards = cardsArray
+                if cardsArray.count <= 0 {
+                    self.GenericAlert(message: "Your search did not return any results. Please note search terms are case sensitive. Please try again.")
+                } else {
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.organismCards = cardsArray
+                    }
                 }
                 
-            } else if error != nil {
-                print("error: \(error!.localizedDescription)")
-                if let thisDict = dict {
-                    print("thisDict: \(thisDict)")
-                }
+            } else {
+                self.GenericAlert()
             }
         })
     }
@@ -104,8 +111,14 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     // Navigation
-    func performMCSeque(sender: Any?) {
-        // TODO: perform seque to initialVC
+    func returnToInitialVC() {
+        guard let initialVC = storyboard?.instantiateInitialViewController() else {
+            // big error goes here
+            print("Could not instantiate initial view controller!")
+            return
+        }
+        
+        present(initialVC, animated: true, completion: nil)
     }
     
     func performResultsSeque(sender: Any?) {
@@ -116,6 +129,15 @@ class SearchController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "searchResultsSeque" {
             let searchResultsController = segue.destination as! SearchResultsTableController
             searchResultsController.organismCards = organismCards
+        }
+    }
+    
+    func GenericAlert(message: String? = nil) {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            let thisMessage = message ?? "Oops, your reguest failed. Please check your connection and try again."
+            let alert = OKAlertGenerator(alertMessage: thisMessage)
+            self.present(alert.getAlertToPresent(), animated: false, completion: nil)
         }
     }
 }
