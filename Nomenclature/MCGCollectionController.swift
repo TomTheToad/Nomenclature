@@ -28,7 +28,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         configureCollection()
     }
     

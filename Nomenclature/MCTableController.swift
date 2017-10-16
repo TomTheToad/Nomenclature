@@ -32,9 +32,8 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.automaticallyAdjustsScrollViewInsets = false
+        configureTableView()
         
 //        if myCollection == nil {
 //            let msg = "Nothing to see here! Why don't you go search for something."
@@ -79,6 +78,15 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     // MARK: Table Methods
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableHeaderView = nil
+        tableView.sectionHeaderHeight = 0
+        tableView.sectionFooterHeight = 0
+
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
