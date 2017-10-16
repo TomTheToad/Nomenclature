@@ -14,5 +14,7 @@ class MCTableCell: UITableViewCell {
     var id: String?
     
     // IBOutlets
+    @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var vernacularTextField: UILabel!
+    @IBOutlet weak var speciesTextField: UILabel!
 }

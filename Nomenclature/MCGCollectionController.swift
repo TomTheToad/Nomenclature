@@ -33,7 +33,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
-        performSegue(withIdentifier: "collectionsToCreateCollection", sender: self)
+        createCollection()
     }
     
     // CollectionView methods
@@ -55,16 +55,31 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 1 {
+            return 1
+        }
+        
         guard let count = myCollectionGroups?.count else {
             return 0
         }
+        
         return count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCGCollectionViewCell", for: indexPath) as! MCGCollectionViewCell
+        
+        if indexPath.section == 1 {
+            cell.collectionImageView.image = #imageLiteral(resourceName: "collectionAdd")
+            cell.titleLabel.isHidden = true
+            return cell
+        }
         
         cell.backgroundColor = UIColor.darkGray
         
@@ -90,17 +105,25 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let thisCollection = myCollectionGroups?[indexPath.row] else {
-            // TODO: internal error
-            print("collection missing!")
-            return
+        if indexPath.section == 1 {
+            createCollection()
+        } else {
+            guard let thisCollection = myCollectionGroups?[indexPath.row] else {
+                // TODO: internal error
+                print("collection missing!")
+                return
+            }
+            
+            selectedCollection = thisCollection
         }
-        
-        selectedCollection = thisCollection
         
     }
     
     // Navigation
+    func createCollection() {
+        performSegue(withIdentifier: "collectionsToCreateCollection", sender: self)
+    }
+    
     func presentMyCollection() {
         performSegue(withIdentifier: "collectionsToSingleCollection", sender: self)
     }

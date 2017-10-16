@@ -43,12 +43,12 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
             cell.contentMode = .center
             
             guard let photo = card.photo else {
-                cell.imageView?.image = UIImage(named: "addImage")!
+                cell.imageView?.image = #imageLiteral(resourceName: "cardAdd")
                 return cell
             }
             
             guard let image = photo.image else {
-                cell.imageView?.image = UIImage(named: "addImage")!
+                cell.imageView?.image = #imageLiteral(resourceName: "cardAdd")
                 return cell
             }
             

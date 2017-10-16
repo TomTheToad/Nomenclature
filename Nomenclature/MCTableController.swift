@@ -79,35 +79,57 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     // MARK: Table Methods
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = myCollection?.count else {
-            return 0
+        if section == 1 {
+            return 1
+        } else {
+            guard let count = myCollection?.count else {
+                return 0
+            }
+            return count
         }
-        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MCTableCell", for: indexPath) as! MCTableCell
         
-        if (indexPath.row % 2) == 0 {
-            cell.backgroundColor = UIColor.lightGray
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.white
         }
         
-        guard let card = myCollection?[indexPath.row] else {
-            cell.vernacularTextField.text = "Card Missing!"
+        if indexPath.section == 1 {
+            cell.vernacularTextField.text = "Add Organism"
+            cell.speciesTextField.isHidden = true
+            cell.cardImage.image = #imageLiteral(resourceName: "cardAdd")
+            cell.vernacularTextField.textColor = UIColor.orange
             return cell
-        }
-        
-        if let id = card.id {
-            cell.id = id
-        }
-        
-        guard let firstName = card.fetchFirstCommonName(language: "english") else {
-            cell.vernacularTextField.text = "Name Missing!"
-            return cell
-        }
+        } else {
+            guard let card = myCollection?[indexPath.row] else {
+                cell.vernacularTextField.text = "Card Missing!"
+                return cell
+            }
+            
+            if let photo = card.photo {
+                if let thumb = photo.thumbImage {
+                    cell.cardImage.image = thumb
+                } else {
+                    cell.cardImage.image = #imageLiteral(resourceName: "imageAdd")
+                }
+            }
+            
+            if let id = card.id {
+                cell.id = id
+            }
+            cell.vernacularTextField.textColor = UIColor.black
+            cell.speciesTextField.isHidden = false
+            cell.vernacularTextField.text = card.fetchFirstCommonName(language: "english")?.name ?? "no data"
+            cell.speciesTextField.text = card.species ?? "no data"
 
-        cell.vernacularTextField.text = firstName.name
-        return cell
+            return cell
+        }
     }
 }
