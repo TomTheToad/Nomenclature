@@ -117,7 +117,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         layout.footerReferenceSize = CGSize.zero
         
         // TODO: quick fix, find a better solution
-        let cellHeight = mcCollection.bounds.height - navigationController!.toolbar.bounds.height - toolBar.bounds.height
+        let cellHeight = mcCollection.bounds.height // - navigationController!.toolbar.bounds.height - toolBar.bounds.height
         
         layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
         

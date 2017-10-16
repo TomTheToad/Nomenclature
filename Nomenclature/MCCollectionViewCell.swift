@@ -69,21 +69,5 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
         }
         return CGFloat(50)
     }
-    
-    // IBOutlets
-    
-    // TODO: try to set this to the current view
-//    @IBOutlet weak var cardStackView: UIStackView!
-//    
-//    @IBOutlet weak var organismImage: UIImageView!
-//    @IBOutlet weak var vernacularTextField: UITextField!
-//    @IBOutlet weak var kingdomTextField: UITextField!
-//    @IBOutlet weak var phylumTextField: UITextField!
-//    @IBOutlet weak var classTextField: UITextField!
-//    @IBOutlet weak var orderTextField: UITextField!
-//    @IBOutlet weak var familyTextField: UITextField!
-//    @IBOutlet weak var genusTextField: UITextField!
-//    @IBOutlet weak var speciesTextField: UITextField!
-    
-    
+
 }

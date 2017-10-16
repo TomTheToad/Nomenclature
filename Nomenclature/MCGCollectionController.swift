@@ -46,7 +46,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         layout.sectionInset = UIEdgeInsets.zero
         layout.headerReferenceSize = CGSize.zero
         layout.footerReferenceSize = CGSize.zero
-        let itemSize = myCollectionGroupsView.bounds.width / 3
+        let itemSize = UIScreen.main.bounds.width / 3
         layout.itemSize = CGSize(width: itemSize, height: itemSize)
 
         myCollectionGroupsView.collectionViewLayout = layout
