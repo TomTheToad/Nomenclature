@@ -53,7 +53,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // IBActions
     @IBAction func addButton(_ sender: Any) {
-        performSegue(withIdentifier: "tableAddCard", sender: self)
+        addCard()
     }
     
     // Navigation
@@ -131,5 +131,16 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
 
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            addCard()
+        }
+    }
+    
+    // Navigation
+    func addCard() {
+        performSegue(withIdentifier: "tableAddCard", sender: self)
     }
 }
