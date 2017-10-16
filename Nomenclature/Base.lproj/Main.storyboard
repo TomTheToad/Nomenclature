@@ -302,9 +302,13 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82O-OF-oZE" userLabel="stabilizedView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PgH-eA-XIl">
                                 <rect key="frame" x="0.0" y="-65" width="375" height="575"/>
-                                <color key="backgroundColor" red="0.55607834420000002" green="0.78278896509999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j8U-K5-XAf">
                                     <size key="itemSize" width="380" height="442"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -324,7 +328,7 @@
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="center" selectionStyle="none" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="135" id="2FR-Yc-1P2" customClass="ImageCell" customModule="Nomenclature" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="55" width="380" height="135"/>
+                                                            <rect key="frame" x="0.0" y="56" width="380" height="135"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FR-Yc-1P2" id="qmV-wJ-cpb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="380" height="135"/>
@@ -347,7 +351,7 @@
                                                             </connections>
                                                         </tableViewCell>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nomenCell" rowHeight="92" id="TJv-s5-NbK" customClass="NomenCell" customModule="Nomenclature" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="190" width="380" height="92"/>
+                                                            <rect key="frame" x="0.0" y="191" width="380" height="92"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TJv-s5-NbK" id="OgF-EK-4tn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="380" height="92"/>
@@ -425,9 +429,13 @@
                             </toolbar>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="82O-OF-oZE" firstAttribute="leading" secondItem="Cn4-fh-uPz" secondAttribute="leading" id="ByA-6N-E2T"/>
                             <constraint firstItem="PgH-eA-XIl" firstAttribute="top" secondItem="09m-BI-qpz" secondAttribute="bottom" constant="-65" id="DWp-oK-45c"/>
+                            <constraint firstItem="82O-OF-oZE" firstAttribute="top" secondItem="09m-BI-qpz" secondAttribute="bottom" id="L5G-jb-Sek"/>
+                            <constraint firstItem="AVi-q8-dtN" firstAttribute="top" secondItem="82O-OF-oZE" secondAttribute="bottom" id="NrV-aW-DDd"/>
                             <constraint firstAttribute="trailing" secondItem="AVi-q8-dtN" secondAttribute="trailing" id="S7R-s7-xgz"/>
                             <constraint firstItem="PgH-eA-XIl" firstAttribute="leading" secondItem="Cn4-fh-uPz" secondAttribute="leading" id="UL7-Dg-Yu1"/>
+                            <constraint firstAttribute="trailing" secondItem="82O-OF-oZE" secondAttribute="trailing" id="XHT-bv-dPY"/>
                             <constraint firstItem="AVi-q8-dtN" firstAttribute="leading" secondItem="Cn4-fh-uPz" secondAttribute="leading" id="dSo-am-8NZ"/>
                             <constraint firstAttribute="trailing" secondItem="PgH-eA-XIl" secondAttribute="trailing" id="hDw-Z6-Gwv"/>
                             <constraint firstItem="AVi-q8-dtN" firstAttribute="top" secondItem="PgH-eA-XIl" secondAttribute="bottom" id="uqy-cw-p8G"/>

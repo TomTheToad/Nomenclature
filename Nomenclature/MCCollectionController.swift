@@ -159,6 +159,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cellTableView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0)
         cell.cellTableView.sectionHeaderHeight = 0
         cell.cellTableView.sectionFooterHeight = 0
+        cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
         cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
         cell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
         
