@@ -53,7 +53,7 @@ class FlickrAPIController {
             URLQueryItem(name: "format", value: "json"),
             URLQueryItem(name: "nojsoncallback", value: "1"),
             URLQueryItem(name: "safe_search", value: "2"),
-            URLQueryItem(name: "per_page", value: "20")
+            URLQueryItem(name: "per_page", value: "40")
             
         ]
         

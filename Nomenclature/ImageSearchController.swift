@@ -25,6 +25,18 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // TODO: update with nil testing and Organism struct of NSManagedObject
+        // pass more info for flikr?
+        configureCollection()
+        
+        searchTextField.text = searchString
+        
+    }
+    
     // IBActions
     @IBAction func searchAgainButton(_sender: Any) {
         fetchFlickrImages()
@@ -37,22 +49,6 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: false, completion: nil)
-    }
-    
-    // viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // TODO: update with nil testing and Organism struct of NSManagedObject
-        // pass more info for flikr?
-
-        imageCollectionView.delegate = self
-        imageCollectionView.dataSource = self
-        imageCollectionView.allowsSelection = true
-        imageCollectionView.allowsMultipleSelection = false
-        
-        searchTextField.text = searchString
-
     }
     
     // Flickr methods
@@ -90,6 +86,26 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     // CollectionView
+    func configureCollection() {
+        let size = UIScreen.main.bounds.width / 4
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets.zero
+        layout.headerReferenceSize = CGSize.zero
+        layout.footerReferenceSize = CGSize.zero
+        layout.itemSize = CGSize(width: size, height: size)
+        
+        imageCollectionView.delegate = self
+        imageCollectionView.dataSource = self
+        imageCollectionView.allowsSelection = true
+        imageCollectionView.allowsMultipleSelection = false
+        imageCollectionView.contentInset = .zero
+        imageCollectionView.collectionViewLayout = layout
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = receivedPhotos?.count else {
             // TODO: Alert Error

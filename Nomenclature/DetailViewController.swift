@@ -161,9 +161,22 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("is organismCard photo: \(String(describing: organismCard.photo))")
         let isSuccess = coreData.createOrganism(organismCard: organismCard)
         if isSuccess {
-            print("Organism saved")
+            let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
+                (UIAlertAction) in
+                self.returnToInitialVC()
+            })
+            let alert = UIAlertController(title: "Success", message: "Organism saved.", preferredStyle: .actionSheet)
+            alert.addAction(alertAction1)
+            present(alert, animated: true, completion: nil)
+            
         } else {
-            print("Save failed")
+            let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
+                (UIAlertAction) in
+                self.returnToInitialVC()
+            })
+            let alert = UIAlertController(title: "Save Failed", message: "Oops, looks like we encoutered an error. Please try again.", preferredStyle: .actionSheet)
+            alert.addAction(alertAction1)
+            present(alert, animated: true, completion: nil)
         }
     }
     
