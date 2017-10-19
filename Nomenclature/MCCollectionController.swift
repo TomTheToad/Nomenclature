@@ -41,7 +41,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: {
                 (action) in
                 DispatchQueue.main.async {
-                    self.addCard()
+                    self.addCard() 
                 }
             })
             alert.addAction(alertAction)
