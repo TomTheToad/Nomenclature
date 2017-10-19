@@ -10,6 +10,17 @@ import UIKit
 
 class MCGCollectionViewCell: UICollectionViewCell {
     
+    // Fields
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                alpha = 0.5
+            } else {
+                alpha = 1.0
+            }
+        }
+    }
+    
     // IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
     

@@ -35,29 +35,28 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         ConfigureCollection()
         testReceivedCollection()
         
-        
-//        if myCollection == nil {
-//            let msg = "Nothing to see here! Why don't you go search for something."
-//            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
-//            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-//            alert.addAction(alertAction)
-//            navigationController?.present(alert, animated: true, completion: {
-//                DispatchQueue.main.async {
-//                    // self.navigationController?.popViewController(animated: false)
-//                    self.navigationController?.popToRootViewController(animated: false)
-//                }
-//            })
-//        }
+        if myCollection == nil {
+            let msg = "Nothing to see here! Why don't you go search for something."
+            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: {
+                (action) in
+                DispatchQueue.main.async {
+                    self.addCard()
+                }
+            })
+            alert.addAction(alertAction)
+            navigationController?.present(alert, animated: true, completion: nil)
+        }
         
     }
     
     // IBActions
     @IBAction func addCardButton(_ sender: Any) {
-        performSegue(withIdentifier: "collectionAddCard", sender: self)
+        addCard()
     }
     
     @IBAction func deleteCardButton(_ sender: Any) {
-        deleteCardShown()
+        deletionAlert()
     }
     
     // Test methods
@@ -70,6 +69,21 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     // Card deletion
+    // Deletion alert
+    func deletionAlert() {
+        let alertActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let alertActionDelete = UIAlertAction(title: "Delete", style: .destructive, handler: {
+            (alertAction) in
+            self.deleteCardShown()
+        })
+        
+        let alert = UIAlertController(title: "Delete", message: "Delete selected collections?", preferredStyle: .actionSheet)
+        alert.addAction(alertActionCancel)
+        alert.addAction(alertActionDelete)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func deleteCardShown() {
         // should only be one card shown at a time. If not function will select first regardless.
         guard let cardToDelete = mcCollection.visibleCells.first as? MCCollectionViewCell else {
@@ -84,8 +98,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         
-        // TODO: create an alert with common name and species prior to deletion
-        
         let isSuccess = coreData.deleteOrganism(id: id)
         // TODO: add alert indicating deletion
         print("card deletion: \(isSuccess)")
@@ -96,6 +108,10 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     // Navigation
+    func addCard() {
+        performSegue(withIdentifier: "collectionAddCard", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionAddCard" {
             let navVC = segue.destination as! UINavigationController
@@ -117,7 +133,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         layout.footerReferenceSize = CGSize.zero
         
         // TODO: quick fix, find a better solution
-        let cellHeight = mcCollection.bounds.height // - navigationController!.toolbar.bounds.height - toolBar.bounds.height
+        let cellHeight = mcCollection.bounds.height
         
         layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
         

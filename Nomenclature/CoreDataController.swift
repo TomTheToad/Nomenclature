@@ -150,6 +150,21 @@ class CoreDataController {
         }
     }
     
+    // Delete collection
+    func deleteCollection(collection: Collection) -> Bool {
+        managedObjectContext.delete(collection)
+        
+        return saveData()
+    }
+    
+    func deleteCollections(collections: [Collection]) -> Bool {
+        for collection in collections {
+            managedObjectContext.delete(collection)
+        }
+        
+        return saveData()
+    }
+    
 
     // save changes to core data
     func saveData() -> Bool {

@@ -12,11 +12,12 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     // Fields
     let coreData = CoreDataController()
-//    let defaultImage = UIImage(named: "defaultImage")!
+
     var myCollectionGroups: [Collection]? = {
        let coreData = CoreDataController()
         return coreData.fetchAllCollections()
     }()
+    
     var selectedCollection: Collection? {
         didSet {
             presentMyCollection()
@@ -25,6 +26,14 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     // IBoutlets
     @IBOutlet weak var myCollectionGroupsView: UICollectionView!
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // TODO: deselect selected items
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +45,77 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         createCollection()
     }
     
+    @IBAction func editButtonAction(_ sender: Any) {
+        setEditing(!isEditing, animated: false)
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        myCollectionGroupsView.allowsMultipleSelection = !myCollectionGroupsView.allowsMultipleSelection
+
+        setEditButton()
+        setDeleteButton()
+
+    }
+    
+    func setEditButton() {
+        if isEditing {
+            editButton.title = "Done"
+        } else {
+            editButton.title = "Edit"
+        }
+    }
+    
+    func setDeleteButton() {
+        deleteButton.isHidden = !deleteButton.isHidden
+        // TODO: only enable when something has been selected
+        // deleteButton.isEnabled = !deleteButton.isEnabled
+    }
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        deletionAlert()
+    }
+    
+    // Deletion alert
+    func deletionAlert() {
+        let alertActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let alertActionDelete = UIAlertAction(title: "Delete", style: .destructive, handler: {
+            (alertAction) in
+            self.deleteSelectedCollections()
+        })
+        
+        let alert = UIAlertController(title: "Delete", message: "Delete selected collections?", preferredStyle: .actionSheet)
+        alert.addAction(alertActionCancel)
+        alert.addAction(alertActionDelete)
+        present(alert, animated: true, completion: nil)
+    }
+
     // CollectionView methods
+    func deleteSelectedCollections() {
+        if isEditing == true {
+            guard let indexArray = myCollectionGroupsView.indexPathsForSelectedItems else {
+                return
+            }
+            
+            for item in indexArray {
+                guard let thisCollection = myCollectionGroups?[item.row] else {
+                    return
+                }
+                
+                let results = coreData.deleteCollection(collection: thisCollection)
+                if results {
+                    myCollectionGroups?.remove(at: item.row)
+                }
+                
+                myCollectionGroups = coreData.fetchAllCollections()
+            }
+        }
+        // TODO: remove, insert, etc.
+        myCollectionGroupsView.reloadData()
+        setEditing(false, animated: false)
+    }
+    
     func configureCollection() {
 
         let layout = UICollectionViewFlowLayout()
@@ -52,6 +131,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         myCollectionGroupsView.collectionViewLayout = layout
         myCollectionGroupsView.delegate = self
         myCollectionGroupsView.dataSource = self
+        myCollectionGroupsView.allowsMultipleSelection = false
         
     }
     
@@ -105,16 +185,20 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            createCollection()
-        } else {
-            guard let thisCollection = myCollectionGroups?[indexPath.row] else {
-                // TODO: internal error
-                print("collection missing!")
-                return
+        if isEditing == false {
+            if indexPath.section == 1 {
+                createCollection()
+            } else {
+                guard let thisCollection = myCollectionGroups?[indexPath.row] else {
+                    // TODO: internal error
+                    print("collection missing!")
+                    return
+                }
+                
+                selectedCollection = thisCollection
             }
-            
-            selectedCollection = thisCollection
+        } else {
+            deleteButton.isEnabled = true
         }
         
     }
