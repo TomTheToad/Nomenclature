@@ -21,6 +21,8 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    var numberOfPages: Int = 0
+    
     // IBOutlets
     @IBOutlet weak var mcCollection: UICollectionView!
     @IBOutlet weak var toolBar: UIToolbar!
@@ -35,19 +37,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         ConfigureCollection()
         testReceivedCollection()
         
-        if myCollection == nil {
-            let msg = "Nothing to see here! Why don't you go search for something."
-            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: {
-                (action) in
-                DispatchQueue.main.async {
-                    self.addCard() 
-                }
-            })
-            alert.addAction(alertAction)
-            navigationController?.present(alert, animated: true, completion: nil)
-        }
-        
     }
     
     // IBActions
@@ -57,6 +46,41 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBAction func deleteCardButton(_ sender: Any) {
         deletionAlert()
+    }
+    
+    @IBAction func forwardButton(_ sender: Any) {
+        guard let nextIndex = getIndex(offset: 1) else {
+            return
+        }
+        
+        mcCollection.scrollToItem(at: nextIndex as IndexPath, at: .right, animated: true)
+    }
+    
+    @IBAction func backwardButton(_ sender: Any) {
+        guard let nextIndex = getIndex(offset: -1) else {
+            return
+        }
+        
+        mcCollection.scrollToItem(at: nextIndex as IndexPath, at: .right, animated: true)
+    }
+    
+    func getIndex(offset: Int) -> IndexPath? {
+        guard let currentIndex = mcCollection.indexPathsForVisibleItems.first else {
+            return nil
+        }
+        
+        let nextIndex = NSIndexPath(item: currentIndex.row + offset, section: 0) as IndexPath
+        if offset > 0 && nextIndex.row < numberOfPages {
+            print("index = + \(nextIndex.row)")
+            return nextIndex
+        } else if offset < 0 && nextIndex.row >= 0 {
+            print("index = - \(nextIndex.row)")
+            return nextIndex
+        } else {
+            print("no index returned")
+            return nil
+        }
+        
     }
     
     // Test methods
@@ -121,6 +145,20 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    // Check for items
+    func noItemsAlert() {
+        let msg = "Nothing to see here! Why don't you go search for something."
+        let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: {
+            (action) in
+            DispatchQueue.main.async {
+                self.addCard()
+            }
+        })
+        alert.addAction(alertAction)
+        navigationController?.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: Collection view methods
     func ConfigureCollection() {
 
@@ -157,7 +195,10 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myCollection?.count ?? 0
+        let count = myCollection?.count ?? 0
+        numberOfPages = count
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -165,6 +206,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCCollectionViewCell", for: indexPath) as! MCCollectionViewCell
         
         guard let card = myCollection?[indexPath.row] else {
+            noItemsAlert()
             return cell
         }
         

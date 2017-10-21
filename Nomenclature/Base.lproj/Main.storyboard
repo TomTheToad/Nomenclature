@@ -410,7 +410,11 @@
                                     <constraint firstAttribute="height" constant="44" id="fXs-ja-t5a"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="rewind" id="ZII-nR-BYQ"/>
+                                    <barButtonItem style="plain" systemItem="rewind" id="ZII-nR-BYQ">
+                                        <connections>
+                                            <action selector="backwardButton:" destination="gTf-3S-TcN" id="s9H-ME-FIh"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="88c-Qs-gpV"/>
                                     <barButtonItem systemItem="trash" id="zM2-dc-QMf">
                                         <connections>
@@ -424,7 +428,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wis-st-Fxs"/>
-                                    <barButtonItem systemItem="fastForward" id="IaW-GU-gF3"/>
+                                    <barButtonItem systemItem="fastForward" id="IaW-GU-gF3">
+                                        <connections>
+                                            <action selector="forwardButton:" destination="gTf-3S-TcN" id="alJ-YL-Jhg"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
