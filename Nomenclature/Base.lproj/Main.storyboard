@@ -279,7 +279,7 @@
                             <constraint firstItem="DXj-Ly-d96" firstAttribute="top" secondItem="kfl-gH-yA2" secondAttribute="bottom" id="zs1-p4-VeE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Table" id="U3O-Jq-p3h"/>
+                    <tabBarItem key="tabBarItem" title="table" image="tableIcon" id="U3O-Jq-p3h"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="3ws-KE-G0D" id="lm9-h8-PYh"/>
@@ -451,7 +451,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" id="nGj-Ky-RD5"/>
+                    <tabBarItem key="tabBarItem" title="cards" image="cardsIcon" id="nGj-Ky-RD5"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mcCollection" destination="PgH-eA-XIl" id="HVQ-YZ-rck"/>
@@ -1012,8 +1012,10 @@
     </scenes>
     <resources>
         <image name="addImage" width="375" height="199"/>
+        <image name="cardsIcon" width="25" height="25"/>
         <image name="reloadButtonDown" width="141" height="90"/>
         <image name="reloadButtonUp" width="141" height="90"/>
+        <image name="tableIcon" width="25" height="25"/>
         <image name="trashIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
