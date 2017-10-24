@@ -12,14 +12,9 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     // Fields
     let coreData = CoreDataController()
-    var receivedCollection: Collection?
     var organismCardFactory = OrganismCardFactory()
 
-    var myCollection: [OrganismCard]? {
-        didSet {
-            mcCollection.reloadData()
-        }
-    }
+    var myCollection: [OrganismCard]?
     
     var numberOfPages: Int = 0
     
@@ -27,15 +22,10 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var mcCollection: UICollectionView!
     @IBOutlet weak var toolBar: UIToolbar!
     
-    override func viewWillAppear(_ animated: Bool) {
-        setMyCollection()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ConfigureCollection()
-        testReceivedCollection()
         
     }
     
@@ -81,15 +71,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return nil
         }
         
-    }
-    
-    // Test methods
-    func testReceivedCollection() {
-        if receivedCollection != nil {
-            print("receivedCollection: not nil")
-        } else {
-            print("receivedCollection: is nil")
-        }
     }
     
     // Card deletion
@@ -141,7 +122,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             let navVC = segue.destination as! UINavigationController
             // TODO: determine the next vc
             let vc = navVC.topViewController as! SearchController
-            vc.receivedCollection = receivedCollection
+            vc.receivedCollection = myCollection
         }
     }
     
@@ -179,19 +160,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         mcCollection.delegate = self
         mcCollection.dataSource = self
         mcCollection.isPagingEnabled = true
-    }
-    
-    func setMyCollection() {
-        guard let thisCollection = receivedCollection else {
-            print("collection missing")
-            return
-        }
-        
-        guard let organisms = thisCollection.hasOrganism?.allObjects as? [Organism] else {
-            return
-        }
-        
-        myCollection = organismCardFactory.createCardArray(organismArray: organisms)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

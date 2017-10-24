@@ -12,6 +12,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     // Fields
     let coreData = CoreDataController()
+    let cardFactory = OrganismCardFactory()
 
     var myCollectionGroups: [Collection]? = {
        let coreData = CoreDataController()
@@ -212,12 +213,19 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         performSegue(withIdentifier: "collectionsToSingleCollection", sender: self)
     }
     
+    func getCards(collection: Collection) -> [OrganismCard] {
+        guard let let organisms = coreData.fetchAllOrganismsInCollection(collection: collection) else {
+            return 
+        }
+        return cardFactory.createCardArray(organismArray: organisms!)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "collectionsToSingleCollection" {
             let tabVC = segue.destination as! UITabBarController
             let vc1 = tabVC.viewControllers?.first as! MCCollectionController
             let vc2 = tabVC.viewControllers?.last as! MCTableController
-            vc1.receivedCollection = selectedCollection
+            vc1.myCollection = getCards(collection: selectedCollection!)
             vc2.receivedCollection = selectedCollection
         }
     }
