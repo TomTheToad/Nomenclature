@@ -32,7 +32,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
+        // self.automaticallyAdjustsScrollViewInsets = false
         configureTableView()
         
 //        if myCollection == nil {

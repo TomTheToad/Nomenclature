@@ -11,10 +11,10 @@ import UIKit
 class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate {
     
     // Organism
-    var organismCard: OrganismCard?
+    var receivedCard: OrganismCard?
     private var card: OrganismCard {
             get {
-            guard let thisCard = organismCard else {
+            guard let thisCard = receivedCard else {
                 // TODO: do something better
                 fatalError("card missing")
             }
@@ -46,7 +46,7 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
                 cell.imageView?.image = #imageLiteral(resourceName: "cardAdd")
                 return cell
             }
-            
+
             guard let image = photo.image else {
                 cell.imageView?.image = #imageLiteral(resourceName: "cardAdd")
                 return cell

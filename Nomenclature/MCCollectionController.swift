@@ -35,8 +35,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
 
         ConfigureCollection()
-        testReceivedCollection()
-        
     }
     
     // IBActions
@@ -71,25 +69,13 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         let nextIndex = NSIndexPath(item: currentIndex.row + offset, section: 0) as IndexPath
         if offset > 0 && nextIndex.row < numberOfPages {
-            print("index = + \(nextIndex.row)")
             return nextIndex
         } else if offset < 0 && nextIndex.row >= 0 {
-            print("index = - \(nextIndex.row)")
             return nextIndex
         } else {
-            print("no index returned")
             return nil
         }
         
-    }
-    
-    // Test methods
-    func testReceivedCollection() {
-        if receivedCollection != nil {
-            print("receivedCollection: not nil")
-        } else {
-            print("receivedCollection: is nil")
-        }
     }
     
     // Card deletion
@@ -114,7 +100,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         
-        guard let id = cardToDelete.organismCard?.id else {
+        guard let id = cardToDelete.receivedCard?.id else {
             return
         }
 
@@ -206,11 +192,14 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCCollectionViewCell", for: indexPath) as! MCCollectionViewCell
         
         guard let card = myCollection?[indexPath.row] else {
+            print("ERROR: missing card")
             noItemsAlert()
             return cell
         }
         
-        cell.organismCard = card
+        print("cardName: \(String(describing: card.fetchFirstCommonName(language: "english")))")
+        
+        cell.receivedCard = card
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
         cell.cellTableView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
@@ -220,6 +209,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
         cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
         cell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
+        cell.cellTableView.reloadData()
         
         return cell
     }
