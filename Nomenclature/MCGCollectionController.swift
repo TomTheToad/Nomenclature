@@ -32,7 +32,13 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var deleteButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
-        // TODO: deselect selected items
+        guard let selectedItems = myCollectionGroupsView.indexPathsForSelectedItems else {
+            return
+        }
+        
+        for thisIndex in selectedItems {
+            myCollectionGroupsView.cellForItem(at: thisIndex)?.isSelected = false
+        }
     }
     
     override func viewDidLoad() {

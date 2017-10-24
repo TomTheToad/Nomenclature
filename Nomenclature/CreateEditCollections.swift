@@ -82,7 +82,7 @@ class CreateEditCollections: UIViewController, UITextFieldDelegate, UITextViewDe
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 && descriptionTextView.isFocused {
@@ -92,7 +92,7 @@ class CreateEditCollections: UIViewController, UITextFieldDelegate, UITextViewDe
         
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 && descriptionTextView.isFocused == false {
                 self.view.frame.origin.y += keyboardSize.height
