@@ -70,7 +70,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
             return
         }
         
-        guard let organisms = thisCollection.hasOrganism?.allObjects as? [Organism] else {
+        guard let organisms = coreData.fetchAllOrganismsInCollection(collection: thisCollection) else {
             return
         }
         

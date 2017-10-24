@@ -187,7 +187,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         
-        guard let organisms = thisCollection.hasOrganism?.allObjects as? [Organism] else {
+        guard let organisms = coreData.fetchAllOrganismsInCollection(collection: thisCollection) else {
             return
         }
         
