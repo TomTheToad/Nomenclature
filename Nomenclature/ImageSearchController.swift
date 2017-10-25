@@ -39,6 +39,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     
     // IBActions
     @IBAction func searchAgainButton(_sender: Any) {
+        activityIndicator.startAnimating()
         fetchFlickrImages()
         view.endEditing(true)
     }
@@ -71,6 +72,8 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
                     
                     DispatchQueue.main.async {
                         self.receivedPhotos = photos
+                        self.imageCollectionView.reloadData()
+                        self.activityIndicator.stopAnimating()
                     }
                     
                 } else {
@@ -82,7 +85,6 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             return
         }
         
-        imageCollectionView.reloadData()
     }
     
     // CollectionView
