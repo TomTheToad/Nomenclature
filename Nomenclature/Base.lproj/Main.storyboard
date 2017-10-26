@@ -397,6 +397,7 @@
                                                 </tableView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="NVT-s7-9q1" firstAttribute="centerX" secondItem="nCz-BM-U0P" secondAttribute="centerX" id="Ee0-Jp-J1k"/>
                                             <constraint firstItem="NVT-s7-9q1" firstAttribute="height" secondItem="nCz-BM-U0P" secondAttribute="height" id="O9F-pE-wa2"/>
