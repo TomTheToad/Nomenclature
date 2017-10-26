@@ -2,8 +2,9 @@
 //  Collection+CoreDataProperties.swift
 //  Nomenclature
 //
-//  Created by VICTOR ASSELTA on 9/23/17.
+//  Created by VICTOR ASSELTA on 10/26/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
+//
 //
 
 import Foundation
@@ -16,7 +17,6 @@ extension Collection {
         return NSFetchRequest<Collection>(entityName: "Collection")
     }
 
-    @NSManaged public var contentDescription: String?
     @NSManaged public var title: String?
     @NSManaged public var hasOrganism: NSSet?
 

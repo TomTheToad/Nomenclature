@@ -45,7 +45,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func addImageButton(_ sender: Any) {
-        activityIndicator.stopAnimating()
+        activityIndicator.startAnimating()
         fetchFlickrImages()
     }
     
@@ -77,6 +77,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             organismImage.image = image
         } else {
             organismImage.image = UIImage(named: "addImage")!
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.addImageButton(_:)))
+            organismImage.isUserInteractionEnabled = true
+            organismImage.addGestureRecognizer(tapGestureRecognizer)
         }
         
     }

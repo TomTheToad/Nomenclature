@@ -612,7 +612,7 @@
                         <outlet property="editButton" destination="WV8-R5-HsM" id="NvD-eU-yC1"/>
                         <outlet property="myCollectionGroupsView" destination="Md7-7O-l0r" id="O5S-KN-YyC"/>
                         <segue destination="48K-9Z-y5z" kind="show" identifier="collectionsToSingleCollection" id="swv-ub-3QL"/>
-                        <segue destination="dFp-oh-ZnP" kind="show" identifier="collectionsToCreateCollection" id="UmO-dO-V5c"/>
+                        <segue destination="dFp-oh-ZnP" kind="presentation" identifier="collectionsToCreateCollection" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="UmO-dO-V5c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJE-PV-0hM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -632,81 +632,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SZG-j3-lhx">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="90.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6N-4y-MNF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Collection Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6N-4y-MNF">
+                                        <rect key="frame" x="111" y="0.0" width="153" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter a title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NXC-5c-Fsr">
-                                        <rect key="frame" x="10" y="25.5" width="355" height="44.5"/>
+                                        <rect key="frame" x="40" y="25.5" width="295" height="30"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vx3-uz-Aex">
-                                        <rect key="frame" x="10" y="75" width="355" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5L6-fj-Ont">
-                                        <rect key="frame" x="10" y="100.5" width="355" height="497.5"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
-                                    </textView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIe-xJ-ax3">
-                                        <rect key="frame" x="0.0" y="603" width="375" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="UYQ-Tz-KHm"/>
-                                        </constraints>
-                                        <items>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="k51-gC-SZK"/>
-                                            <barButtonItem systemItem="save" id="cIS-xC-jbx">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Mn-bG-2v3">
+                                        <rect key="frame" x="40" y="60.5" width="295" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bO7-f2-Cri">
+                                                <rect key="frame" x="0.0" y="0.0" width="147.5" height="30"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Cancel"/>
                                                 <connections>
-                                                    <action selector="saveButtonAction:" destination="dFp-oh-ZnP" id="HGN-yr-rHt"/>
+                                                    <action selector="cancelButtonAction:" destination="dFp-oh-ZnP" eventType="touchUpInside" id="K2i-N1-uhV"/>
                                                 </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="boX-oI-ESf"/>
-                                            <barButtonItem systemItem="cancel" id="gGS-h4-91q">
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJW-3H-0Bc">
+                                                <rect key="frame" x="147.5" y="0.0" width="147.5" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Save"/>
                                                 <connections>
-                                                    <action selector="cancelButtonAction:" destination="dFp-oh-ZnP" id="eNU-Gy-7rw"/>
+                                                    <action selector="saveButtonAction:" destination="dFp-oh-ZnP" eventType="touchUpInside" id="zge-qM-mQ7"/>
                                                 </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="qs1-hF-GI1"/>
-                                        </items>
-                                    </toolbar>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Vx3-uz-Aex" secondAttribute="trailing" constant="10" id="0J6-WR-3Br"/>
-                                    <constraint firstAttribute="trailing" secondItem="5L6-fj-Ont" secondAttribute="trailing" constant="10" id="7Mz-H8-U8G"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z6N-4y-MNF" secondAttribute="trailing" id="Bo0-5m-5ga"/>
-                                    <constraint firstItem="Z6N-4y-MNF" firstAttribute="leading" secondItem="SZG-j3-lhx" secondAttribute="leading" id="UgK-Ru-eaK"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z6N-4y-MNF" secondAttribute="trailing" id="VqL-ui-5f5"/>
-                                    <constraint firstItem="NXC-5c-Fsr" firstAttribute="leading" secondItem="SZG-j3-lhx" secondAttribute="leading" constant="10" id="aBb-eu-d1f"/>
-                                    <constraint firstItem="5L6-fj-Ont" firstAttribute="leading" secondItem="SZG-j3-lhx" secondAttribute="leading" constant="10" id="l5I-oL-VEf"/>
-                                    <constraint firstItem="Z6N-4y-MNF" firstAttribute="leading" secondItem="SZG-j3-lhx" secondAttribute="leading" id="nYH-e2-AQd"/>
-                                    <constraint firstAttribute="trailing" secondItem="NXC-5c-Fsr" secondAttribute="trailing" constant="10" id="ne7-Wt-TPw"/>
-                                    <constraint firstItem="CIe-xJ-ax3" firstAttribute="leading" secondItem="SZG-j3-lhx" secondAttribute="leading" id="rGI-He-Gzz"/>
-                                    <constraint firstAttribute="trailing" secondItem="CIe-xJ-ax3" secondAttribute="trailing" id="tob-of-OPZ"/>
+                                    <constraint firstItem="NXC-5c-Fsr" firstAttribute="leading" secondItem="SZG-j3-lhx" secondAttribute="leading" constant="40" id="3hS-Hy-LPg"/>
+                                    <constraint firstAttribute="trailing" secondItem="NXC-5c-Fsr" secondAttribute="trailing" constant="40" id="BAc-yH-hts"/>
+                                    <constraint firstItem="6Mn-bG-2v3" firstAttribute="leading" secondItem="SZG-j3-lhx" secondAttribute="leading" constant="40" id="jUk-gS-uzX"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Mn-bG-2v3" secondAttribute="trailing" constant="40" id="yB4-j2-sr0"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.55607834420000002" green="0.78278896509999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.67813570205479456" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SZG-j3-lhx" firstAttribute="top" secondItem="O2w-pU-erE" secondAttribute="bottom" id="IHf-GE-kbn"/>
-                            <constraint firstAttribute="trailing" secondItem="SZG-j3-lhx" secondAttribute="trailing" id="btI-rt-owo"/>
-                            <constraint firstItem="LUI-sr-gtB" firstAttribute="top" secondItem="SZG-j3-lhx" secondAttribute="bottom" id="dlj-bw-vD8"/>
-                            <constraint firstItem="SZG-j3-lhx" firstAttribute="top" secondItem="O2w-pU-erE" secondAttribute="bottom" id="uVe-6c-pUO"/>
-                            <constraint firstItem="SZG-j3-lhx" firstAttribute="leading" secondItem="DZ4-Ut-H50" secondAttribute="leading" id="zpH-BY-5w1"/>
+                            <constraint firstItem="SZG-j3-lhx" firstAttribute="top" secondItem="O2w-pU-erE" secondAttribute="bottom" constant="100" id="XJ2-tq-2TQ"/>
+                            <constraint firstItem="SZG-j3-lhx" firstAttribute="leading" secondItem="DZ4-Ut-H50" secondAttribute="leading" id="dow-Kf-zmr"/>
+                            <constraint firstAttribute="trailing" secondItem="SZG-j3-lhx" secondAttribute="trailing" id="p6J-ka-seq"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionTextView" destination="5L6-fj-Ont" id="gS0-Mh-OZI"/>
                         <outlet property="titleTextField" destination="NXC-5c-Fsr" id="JBU-UY-eUF"/>
                         <segue destination="48K-9Z-y5z" kind="show" identifier="createCollectionsToCollection" id="KL9-0u-c2F"/>
                     </connections>
@@ -746,7 +725,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PSw-lk-kyv"/>
-                                    <barButtonItem title="myCollection" style="plain" id="2ry-rZ-rxx">
+                                    <barButtonItem title="Cancel" style="plain" id="2ry-rZ-rxx">
                                         <connections>
                                             <action selector="cancelButton:" destination="be2-sO-jFd" id="HIR-qd-AIL"/>
                                         </connections>
@@ -765,7 +744,7 @@
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H9n-Tk-2ny">
                                         <rect key="frame" x="0.0" y="199" width="375" height="360"/>
-                                        <color key="backgroundColor" red="0.55607834420000002" green="0.78278896509999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailViewCell" id="nvs-Am-ie6" customClass="DetailViewCell" customModule="Nomenclature" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -807,6 +786,7 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="T6J-xo-bKm" secondAttribute="trailing" id="CeD-vG-NBl"/>
                                     <constraint firstItem="T6J-xo-bKm" firstAttribute="leading" secondItem="INm-qB-2mR" secondAttribute="leading" id="Ubv-y4-P9Y"/>
@@ -1027,6 +1007,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z2F-DJ-htY"/>
-        <segue reference="swv-ub-3QL"/>
+        <segue reference="KL9-0u-c2F"/>
     </inferredMetricsTieBreakers>
 </document>

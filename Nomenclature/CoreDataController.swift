@@ -122,11 +122,10 @@ class CoreDataController {
     
     /* ### Collection Functions ### */
     
-    func createCollection(title: String, description: String) -> Collection {
+    func createCollection(title: String) -> Collection {
         let entity = getEntity(name: "Collection")
         let newCollection = Collection(entity: entity, insertInto: managedObjectContext)
         newCollection.title = title
-        newCollection.contentDescription = description
         return newCollection
     }
     
