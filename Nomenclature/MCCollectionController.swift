@@ -33,7 +33,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         ConfigureCollection()
     }
     
@@ -147,7 +146,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             }
         })
         alert.addAction(alertAction)
-        navigationController?.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: Collection view methods
@@ -179,13 +178,17 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         
+        if organisms.isEmpty {
+            noItemsAlert()
+        }
+        
         myCollection = organismCardFactory.createCardArray(organismArray: organisms)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = myCollection?.count ?? 0
         numberOfPages = count
-        
+
         return count
     }
     
@@ -195,7 +198,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         guard let card = myCollection?[indexPath.row] else {
             print("ERROR: missing card")
-            noItemsAlert()
             return cell
         }
         
