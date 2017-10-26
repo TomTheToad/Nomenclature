@@ -284,7 +284,7 @@
                             <constraint firstItem="DXj-Ly-d96" firstAttribute="top" secondItem="kfl-gH-yA2" secondAttribute="bottom" id="zs1-p4-VeE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="table" image="tableIcon" id="U3O-Jq-p3h"/>
+                    <tabBarItem key="tabBarItem" title="" image="tableIcon" id="U3O-Jq-p3h"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="3ws-KE-G0D" id="lm9-h8-PYh"/>
@@ -415,7 +415,7 @@
                                     <constraint firstAttribute="height" constant="44" id="fXs-ja-t5a"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="rewind" id="ZII-nR-BYQ">
+                                    <barButtonItem image="backIcon" style="plain" id="ZII-nR-BYQ">
                                         <connections>
                                             <action selector="backwardButton:" destination="gTf-3S-TcN" id="s9H-ME-FIh"/>
                                         </connections>
@@ -433,7 +433,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wis-st-Fxs"/>
-                                    <barButtonItem systemItem="fastForward" id="IaW-GU-gF3">
+                                    <barButtonItem image="forwardIcon" id="IaW-GU-gF3">
                                         <connections>
                                             <action selector="forwardButton:" destination="gTf-3S-TcN" id="alJ-YL-Jhg"/>
                                         </connections>
@@ -456,7 +456,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="cards" image="cardsIcon" id="nGj-Ky-RD5"/>
+                    <tabBarItem key="tabBarItem" title="" image="cardsIcon" id="nGj-Ky-RD5"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mcCollection" destination="PgH-eA-XIl" id="HVQ-YZ-rck"/>
@@ -1017,7 +1017,9 @@
     </scenes>
     <resources>
         <image name="addImage" width="375" height="199"/>
+        <image name="backIcon" width="15" height="15"/>
         <image name="cardsIcon" width="25" height="25"/>
+        <image name="forwardIcon" width="15" height="15"/>
         <image name="reloadButtonDown" width="141" height="90"/>
         <image name="reloadButtonUp" width="141" height="90"/>
         <image name="tableIcon" width="25" height="25"/>
