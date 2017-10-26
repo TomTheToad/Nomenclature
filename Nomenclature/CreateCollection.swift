@@ -1,5 +1,5 @@
 //
-//  CreateEditCollections.swift
+//  CreateCollection.swift
 //  Nomenclature
 //
 //  Created by VICTOR ASSELTA on 9/23/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateEditCollections: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     // Fields
     let coreData = CoreDataController()
@@ -41,19 +41,32 @@ class CreateEditCollections: UIViewController, UITextFieldDelegate, UITextViewDe
     // Collection methods
     func createCollection() {
         
+        if (titleTextField.text?.isEmpty)! {
+            sendAlert(msg: "Title field is empty.")
+            return
+        }
+        
+        if (descriptionTextView.text?.isEmpty)! {
+            sendAlert(msg: "Description is empty.")
+        }
+        
         guard let thisTitle = titleTextField.text else {
-            // TODO: present alert
-            print("collection title missing")
+            sendAlert(msg: "Title field is empty.")
             return
         }
         
         guard let thisDescription = descriptionTextView.text else {
-            // TODO: present alert or allow for empty description?
-            print("collection description missing")
+            sendAlert(msg: "Description is empty.")
             return
         }
         
        collection = coreData.createCollection(title: thisTitle, description: thisDescription)
+    }
+    
+    // Alert
+    func sendAlert(msg: String) {
+        let alertGen = OKAlertGenerator(alertMessage: msg)
+        present(alertGen.getAlertToPresent(), animated: true, completion: nil)
     }
     
     // Navigation

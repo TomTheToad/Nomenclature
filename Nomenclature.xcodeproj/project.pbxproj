@@ -24,7 +24,7 @@
 		C7957C661F30E3C700C09528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7957C651F30E3C700C09528 /* Assets.xcassets */; };
 		C7957C691F30E3C700C09528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7957C671F30E3C700C09528 /* LaunchScreen.storyboard */; };
 		C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C731F30E43D00C09528 /* ITISAPIController.swift */; };
-		C7A9376C1F76AE2A0015A6F2 /* CreateEditCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */; };
+		C7A9376C1F76AE2A0015A6F2 /* CreateCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9376B1F76AE2A0015A6F2 /* CreateCollection.swift */; };
 		C7A9377B1F76B3F80015A6F2 /* Collection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */; };
 		C7A9377C1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */; };
 		C7B1C8581F86CA9800FE6AA5 /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B1C8561F86CA9800FE6AA5 /* Organism+CoreDataClass.swift */; };
@@ -67,7 +67,7 @@
 		C7957C681F30E3C700C09528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7957C6A1F30E3C700C09528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7957C731F30E43D00C09528 /* ITISAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITISAPIController.swift; sourceTree = "<group>"; };
-		C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCollections.swift; sourceTree = "<group>"; };
+		C7A9376B1F76AE2A0015A6F2 /* CreateCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollection.swift; sourceTree = "<group>"; };
 		C7A937791F76B3F80015A6F2 /* Collection+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7A9377A1F76B3F80015A6F2 /* Collection+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7B1C8561F86CA9800FE6AA5 /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			children = (
 				C72B37601F71523B00C7FF25 /* MCGCollectionController.swift */,
 				C72B37621F71539000C7FF25 /* MCGCollectionViewCell.swift */,
-				C7A9376B1F76AE2A0015A6F2 /* CreateEditCollections.swift */,
+				C7A9376B1F76AE2A0015A6F2 /* CreateCollection.swift */,
 			);
 			name = "MyCollections Groups";
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				C72B37611F71523B00C7FF25 /* MCGCollectionController.swift in Sources */,
 				C7B1C8591F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift in Sources */,
 				C7D99B051F8BE258008CDF7F /* NomenCell.swift in Sources */,
-				C7A9376C1F76AE2A0015A6F2 /* CreateEditCollections.swift in Sources */,
+				C7A9376C1F76AE2A0015A6F2 /* CreateCollection.swift in Sources */,
 				C738CED91F3B4B71006F25E1 /* SearchResultsTableCell.swift in Sources */,
 				C7CC68DF1F85A173005FC76C /* OKAlertGenerator.swift in Sources */,
 				C7C7657D1F7EC1270086E960 /* CommonName+CoreDataProperties.swift in Sources */,

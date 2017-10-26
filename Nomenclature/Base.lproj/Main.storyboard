@@ -619,10 +619,10 @@
             </objects>
             <point key="canvasLocation" x="-756" y="-1590.8545727136434"/>
         </scene>
-        <!--Create Edit Collections-->
+        <!--Create Collection-->
         <scene sceneID="mBr-Ns-m8M">
             <objects>
-                <viewController id="dFp-oh-ZnP" customClass="CreateEditCollections" customModule="Nomenclature" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dFp-oh-ZnP" customClass="CreateCollection" customModule="Nomenclature" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O2w-pU-erE"/>
                         <viewControllerLayoutGuide type="bottom" id="LUI-sr-gtB"/>
