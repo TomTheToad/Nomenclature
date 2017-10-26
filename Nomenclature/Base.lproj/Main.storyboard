@@ -298,7 +298,7 @@
         <!--My Collection-->
         <scene sceneID="2Ek-xi-g2m">
             <objects>
-                <viewController restorationIdentifier="mcCollection" storyboardIdentifier="mcCollection" title="My Collection" automaticallyAdjustsScrollViewInsets="NO" id="gTf-3S-TcN" customClass="MCCollectionController" customModule="Nomenclature" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="mcCollection" storyboardIdentifier="mcCollection" autoresizesArchivedViewToFullSize="NO" title="My Collection" automaticallyAdjustsScrollViewInsets="NO" id="gTf-3S-TcN" customClass="MCCollectionController" customModule="Nomenclature" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="09m-BI-qpz"/>
                         <viewControllerLayoutGuide type="bottom" id="gwf-qA-qpm"/>
@@ -748,7 +748,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PSw-lk-kyv"/>
                                     <barButtonItem title="myCollection" style="plain" id="2ry-rZ-rxx">
                                         <connections>
-                                            <action selector="myCollectionButton:" destination="be2-sO-jFd" id="HIR-qd-AIL"/>
+                                            <action selector="cancelButton:" destination="be2-sO-jFd" id="HIR-qd-AIL"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jz9-eY-te2"/>

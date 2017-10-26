@@ -35,7 +35,6 @@ class ITISAPIController: NSObject {
         urlComponents.path = "/"
         urlComponents.host = baseString
         urlComponents.queryItems = queryItems
-        // print("url: \(urlComponents.url!)")
         
         guard let url = urlComponents.url else {
             print("Error: url missing")
@@ -136,8 +135,6 @@ class ITISAPIController: NSObject {
                 return nil
             }
             
-            print("number of common names: \(commonNameArray.count)")
-            
             // Create an array of tuples to store common names and associated languages.
             var nameArray = [(name: String, language: String)]()
             for data in commonNameArray {
@@ -148,10 +145,6 @@ class ITISAPIController: NSObject {
                 
                 let name = nameAsString.components(separatedBy: "$")
                 nameArray.append((name[1].lowercased(), name[2].lowercased()))
-            }
-            
-            for item in nameArray {
-                print("vernacular: \(item.name.lowercased()), language: \(item.language.lowercased())")
             }
 
             thisRecordArray["vernacular"] = nameArray

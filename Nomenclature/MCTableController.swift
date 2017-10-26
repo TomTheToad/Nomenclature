@@ -32,21 +32,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.automaticallyAdjustsScrollViewInsets = false
         configureTableView()
-        
-//        if myCollection == nil {
-//            let msg = "Nothing to see here! Why don't you go search for something."
-//            let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
-//            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-//            alert.addAction(alertAction)
-//            navigationController?.present(alert, animated: true, completion: {
-//                DispatchQueue.main.async {
-//                    // self.navigationController?.popViewController(animated: false)
-//                    self.navigationController?.popToRootViewController(animated: false)
-//                }
-//            })
-//        }
         
     }
     
@@ -136,7 +122,6 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.speciesTextField.isHidden = false
             cell.vernacularTextField.text = card.fetchFirstCommonName(language: "english")?.name ?? "no data"
             cell.speciesTextField.text = card.species ?? "no data"
-
             return cell
         }
     }

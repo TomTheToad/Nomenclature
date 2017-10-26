@@ -62,7 +62,6 @@ class FlickrAPIController {
         urlComponents.host = baseURLString
         urlComponents.path = path
         urlComponents.queryItems = urlQueryItems
-        print("URL: \(urlComponents.url!)")
         
         let request = URLRequest(url: urlComponents.url!)
         

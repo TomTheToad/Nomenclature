@@ -69,10 +69,8 @@ class OrganismCard {
         self.species = organism.species
         
         if let names = organism.hasCommonNames?.allObjects as? [CommonName] {
-            print("common names returned from organism.hasCommonNames")
             for item in names {
                 if let name = item.name, let language = item.language {
-                    print("name: \(name), language: \(language)")
                     self.vernacular.append((name: name, language: language))
                 }
             }
@@ -120,9 +118,7 @@ class OrganismCard {
             }
             
             if itemKey == "vernacular" {
-                print("vernacular found: \(item.value)")
                 self.vernacular = item.value as? [vernacularTuple] ?? [(name: "missing", language: "missing")]
-                print("vernacular set to \(self.vernacular)")
             }
             
         }

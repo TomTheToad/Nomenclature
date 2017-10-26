@@ -12,12 +12,8 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     
     // Fields
     let flickr = FlickrAPIController()
-    // TODO: update this to a struct or NSManagedObjectClass
     var searchString = String()
     var receivedPhotos: [Photo]?
-    
-    // var imagesReturned: [NSDictionary]?
-    // TODO: move to external datasource for reload or use insert methods
     var selectedPhoto: Photo?
     
     // IBOutlets
@@ -28,11 +24,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TODO: update with nil testing and Organism struct of NSManagedObject
-        // pass more info for flikr?
         configureCollection()
-        
         searchTextField.text = searchString
         
     }
@@ -67,7 +59,6 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
                         return
                     }
                     
-                    // TODO: check for single photo return
                     let photos = self.flickr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
                     
                     DispatchQueue.main.async {
@@ -110,7 +101,6 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = receivedPhotos?.count else {
-            // TODO: Alert Error
             GenericAlert(message: "Auto search did not return anything for the given common name. Try entering a custom search term above and search again.")
             return 0
         }

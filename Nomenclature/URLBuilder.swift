@@ -27,8 +27,6 @@ class URLBuilder: NSObject {
         urlComponents.path = path
         urlComponents.queryItems = queryItems
         
-        print("url: \(urlComponents.url!)")
-        
         return urlComponents.url
     }
     
@@ -36,7 +34,6 @@ class URLBuilder: NSObject {
         guard let url = buildURL() else {
             return nil
         }
-        print("URLBuilder: \(url)")
         return url
     }
     

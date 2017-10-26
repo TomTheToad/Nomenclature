@@ -43,7 +43,6 @@ class CoreDataController {
             results = try managedObjectContext.fetch(request)
             return results
         } catch {
-            print("fetchall, nothing returned")
             return nil
         }
     }
@@ -82,13 +81,10 @@ class CoreDataController {
         
         // Set Photo
         if let photo = organismCard.photo {
-            print("coreData: organism photo data found")
             organism.image = photo.imageData
             organism.imageURLString = photo.urlString
             organism.thumbnailImage = photo.thumbImageData
             organism.thumbnailURLString = photo.thumbURLString
-        } else {
-            print("coreData: organism photo data not found")
         }
         
         // Set vernacular array
@@ -96,9 +92,7 @@ class CoreDataController {
             let cnEntity = getEntity(name: "CommonName")
             let commonName = CommonName(entity: cnEntity, insertInto: managedObjectContext)
             commonName.name = item.name
-            print("coreData commonName: \(item.name)")
             commonName.language = item.language
-            print("coreData language: \(item.language)")
             commonName.belongsToOrganism = organism
         }
         
@@ -170,10 +164,8 @@ class CoreDataController {
     func saveData() -> Bool {
         do {
             try managedObjectContext.save()
-            print("coreData save succesfully.")
             return true
         } catch {
-            print("Error: Unable to save to core data")
             return false
         }
     }

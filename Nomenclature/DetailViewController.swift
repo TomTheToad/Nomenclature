@@ -56,7 +56,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // IBOutlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var organismImage: UIImageView!
-    @IBAction func myCollectionButton(_ sender: Any) {
+    @IBAction func cancelButton(_ sender: Any) {
         returnToInitialVC()
     }
 
@@ -83,7 +83,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func setImage(photo: Photo) {
         guard let url = photo.imageURL else {
-            print("unable to download image")
             return
         }
         
@@ -137,7 +136,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         return
                     }
                     
-                    // TODO: check for single photo return
                     let photos = self.flickr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
                     
                     DispatchQueue.main.async {
@@ -156,9 +154,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // CoreData methods
-    // TODO: alter for edit
     func saveOrganism() {
-        print("is organismCard photo: \(String(describing: organismCard.photo))")
         let isSuccess = coreData.createOrganism(organismCard: organismCard)
         if isSuccess {
             let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {

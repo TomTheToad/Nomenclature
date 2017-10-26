@@ -109,12 +109,17 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         let isSuccess = coreData.deleteOrganism(id: id)
-        // TODO: add alert indicating deletion
-        print("card deletion: \(isSuccess)")
         
-
+        var msg = ""
+        if isSuccess {
+            msg = "Selection Deleted"
+        } else {
+            msg = "Oops, Unable to Delete Item. Please try again"
+        }
+        let alertGen = OKAlertGenerator(alertMessage: msg)
+        present(alertGen.getAlertToPresent(), animated: true, completion: nil)
+        
         myCollection?.remove(at: index.row)
-        // mcCollection.deleteItems(at: [index])
     }
     
     // Navigation
@@ -153,12 +158,9 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets.zero
-        layout.headerReferenceSize = CGSize.zero
-        layout.footerReferenceSize = CGSize.zero
         
         // TODO: quick fix, find a better solution
         let cellHeight = mcCollection.bounds.height
-        
         layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
         
         mcCollection.collectionViewLayout = layout
@@ -197,8 +199,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return cell
         }
         
-        print("cardName: \(String(describing: card.fetchFirstCommonName(language: "english")))")
-        
         cell.receivedCard = card
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
@@ -207,6 +207,8 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cellTableView.sectionHeaderHeight = 0
         cell.cellTableView.sectionFooterHeight = 0
         cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
+        cell.topAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.topAnchor, multiplier: 0)
+        cell.bottomAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.bottomAnchor, multiplier: 0)
         cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
         cell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
         cell.cellTableView.reloadData()

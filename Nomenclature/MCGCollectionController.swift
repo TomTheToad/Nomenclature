@@ -26,9 +26,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     // IBoutlets
     @IBOutlet weak var myCollectionGroupsView: UICollectionView!
-    
     @IBOutlet weak var editButton: UIBarButtonItem!
-    
     @IBOutlet weak var deleteButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +41,6 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.automaticallyAdjustsScrollViewInsets = false
         configureCollection()
     }
     
@@ -74,8 +71,6 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     func setDeleteButton() {
         deleteButton.isHidden = !deleteButton.isHidden
-        // TODO: only enable when something has been selected
-        // deleteButton.isEnabled = !deleteButton.isEnabled
     }
     
     @IBAction func deleteButton(_ sender: Any) {
@@ -185,7 +180,6 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
             cell.collectionImageView.image = image
             return cell
         }
-        // TODO: Return default image
         cell.collectionImageView.image = #imageLiteral(resourceName: "defaultImage")
         return cell
     }
