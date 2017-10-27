@@ -26,7 +26,6 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     // IBOutlets
     @IBOutlet weak var mcCollection: UICollectionView!
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var stablizedView: UIView!
     
     override func viewWillAppear(_ animated: Bool) {
         setMyCollection()
