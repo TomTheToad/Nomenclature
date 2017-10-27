@@ -53,7 +53,7 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
             }
             
             cell.imageView?.image = image
-            cell.imageView?.contentMode = .center
+            cell.imageView?.contentMode = .scaleAspectFill
             return cell
         }
             
