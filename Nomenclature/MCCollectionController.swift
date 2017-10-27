@@ -26,6 +26,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     // IBOutlets
     @IBOutlet weak var mcCollection: UICollectionView!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var stablizedView: UIView!
     
     override func viewWillAppear(_ animated: Bool) {
         setMyCollection()
@@ -151,18 +152,18 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     // MARK: Collection view methods
     func ConfigureCollection() {
-
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets.zero
-        
-        // TODO: quick fix, find a better solution
-        let cellHeight = mcCollection.bounds.height
-        layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
-        
-        mcCollection.collectionViewLayout = layout
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 0
+//        layout.scrollDirection = .horizontal
+//        layout.sectionInset = UIEdgeInsets.zero
+//
+//        // TODO: quick fix, find a better solution
+//        let cellHeight = stablizedView.bounds.height - layout.collectionViewContentSize.height
+//        layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
+//
+//        mcCollection.collectionViewLayout = layout
+        mcCollection.contentInsetAdjustmentBehavior = .automatic
         mcCollection.delegate = self
         mcCollection.dataSource = self
         mcCollection.isPagingEnabled = true
@@ -201,19 +202,20 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return cell
         }
         
+        // TODO: set item size
         cell.receivedCard = card
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
-        cell.cellTableView.backgroundColor = UIColor.white
-        cell.cellTableView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
-        cell.cellTableView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0)
-        cell.cellTableView.sectionHeaderHeight = 0
-        cell.cellTableView.sectionFooterHeight = 0
-        cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
-        cell.topAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.topAnchor, multiplier: 0)
-        cell.bottomAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.bottomAnchor, multiplier: 0)
-        cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
-        cell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
+//        cell.cellTableView.backgroundColor = UIColor.white
+//        cell.cellTableView.topAnchor.constraint(equalTo: stablizedView.topAnchor, constant: 0)
+//        cell.cellTableView.bottomAnchor.constraint(equalTo: stablizedView.bottomAnchor, constant: 0)
+//        cell.cellTableView.sectionHeaderHeight = 0
+//        cell.cellTableView.sectionFooterHeight = 0
+//        cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
+//        cell.topAnchor.constraintLessThanOrEqualToSystemSpacingBelow(stablizedView.topAnchor, multiplier: 0)
+//        cell.bottomAnchor.constraintLessThanOrEqualToSystemSpacingBelow(stablizedView.bottomAnchor, multiplier: 0)
+//        cell.rightAnchor.constraint(equalTo: stablizedView.rightAnchor, constant: 0)
+//        cell.leftAnchor.constraint(equalTo: stablizedView.leftAnchor, constant: 0)
         cell.cellTableView.reloadData()
         
         return cell
