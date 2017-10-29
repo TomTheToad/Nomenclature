@@ -33,7 +33,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ConfigureCollection()
+        configureCollection()
     }
     
     // IBActions
@@ -150,7 +150,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     // MARK: Collection view methods
-    func ConfigureCollection() {
+    func configureCollection() {
 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
