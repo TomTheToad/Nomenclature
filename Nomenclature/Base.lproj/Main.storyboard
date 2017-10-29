@@ -298,7 +298,7 @@
         <!--My Collection-->
         <scene sceneID="2Ek-xi-g2m">
             <objects>
-                <viewController restorationIdentifier="mcCollection" storyboardIdentifier="mcCollection" autoresizesArchivedViewToFullSize="NO" title="My Collection" automaticallyAdjustsScrollViewInsets="NO" id="gTf-3S-TcN" customClass="MCCollectionController" customModule="Nomenclature" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="mcCollection" storyboardIdentifier="mcCollection" title="My Collection" id="gTf-3S-TcN" customClass="MCCollectionController" customModule="Nomenclature" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="09m-BI-qpz"/>
                         <viewControllerLayoutGuide type="bottom" id="gwf-qA-qpm"/>

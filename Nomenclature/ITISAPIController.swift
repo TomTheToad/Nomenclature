@@ -20,7 +20,7 @@ class ITISAPIController: NSObject {
         
         let baseString = "services.itis.gov"
         let method = "vernacular:"
-        let searchString = parseSearchString(searchString: commonName)
+        let searchString = parseSearchString(searchString: commonName).trimmingCharacters(in: .whitespaces)
         
         let queryItems = [
             
