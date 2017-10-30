@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MCCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MCCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // Fields
     let coreData = CoreDataController()
@@ -157,11 +157,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets.zero
-        
-        // TODO: quick fix, find a better solution
-        let cellHeight = mcCollection.bounds.height - mcCollection.contentInset.top - mcCollection.contentInset.bottom
-        layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
-        
+
         mcCollection.collectionViewLayout = layout
         mcCollection.delegate = self
         mcCollection.dataSource = self
@@ -192,6 +188,11 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         return count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: mcCollection.bounds.width, height: mcCollection.bounds.height)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCCollectionViewCell", for: indexPath) as! MCCollectionViewCell
@@ -210,6 +211,8 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cellTableView.sectionHeaderHeight = 0
         cell.cellTableView.sectionFooterHeight = 0
         cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
+        cell.cellTableView.rowHeight = UITableViewAutomaticDimension
+        cell.cellTableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: -20, right: 0)
         cell.topAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.topAnchor, multiplier: 0)
         cell.bottomAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.bottomAnchor, multiplier: 0)
         cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)

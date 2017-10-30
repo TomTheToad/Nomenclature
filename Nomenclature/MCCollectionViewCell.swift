@@ -63,11 +63,15 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return CGFloat(200)
         }
-        return CGFloat(50)
+        return CGFloat(40)
     }
 
 }

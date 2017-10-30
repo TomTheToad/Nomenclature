@@ -345,10 +345,14 @@
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="npY-T9-xlT" secondAttribute="trailing" id="F91-X8-tgC"/>
                                                                     <constraint firstAttribute="trailing" secondItem="npY-T9-xlT" secondAttribute="trailing" id="HE1-do-5ir"/>
                                                                     <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" id="Yhf-Pu-w4k"/>
                                                                     <constraint firstItem="npY-T9-xlT" firstAttribute="leading" secondItem="qmV-wJ-cpb" secondAttribute="leading" id="aEO-Xx-qxq"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" id="hWY-Ce-yCt"/>
                                                                     <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" id="rMD-3e-ejy"/>
+                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" id="tAw-Dk-bZX"/>
+                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="leading" secondItem="qmV-wJ-cpb" secondAttribute="leading" id="ula-4L-lPd"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -364,16 +368,16 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Fia-Qe-X2S">
-                                                                        <rect key="frame" x="13" y="13" width="82" height="22"/>
+                                                                        <rect key="frame" x="8" y="8" width="364" height="76"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hi-TN-rbC">
-                                                                                <rect key="frame" x="0.0" y="1" width="42" height="20.5"/>
+                                                                                <rect key="frame" x="0.0" y="28" width="42" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDS-zz-YGi">
-                                                                                <rect key="frame" x="57" y="0.0" width="25" height="22"/>
+                                                                                <rect key="frame" x="57" y="27" width="307" height="22"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="22" id="RsA-ia-mZH"/>
                                                                                 </constraints>
@@ -385,8 +389,10 @@
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="Fia-Qe-X2S" firstAttribute="leading" secondItem="OgF-EK-4tn" secondAttribute="leadingMargin" constant="5" id="6Ev-es-OMd"/>
-                                                                    <constraint firstItem="Fia-Qe-X2S" firstAttribute="top" secondItem="OgF-EK-4tn" secondAttribute="topMargin" constant="5" id="Ge6-e5-frn"/>
+                                                                    <constraint firstAttribute="trailingMargin" secondItem="Fia-Qe-X2S" secondAttribute="trailing" id="Ewk-xM-y25"/>
+                                                                    <constraint firstAttribute="bottomMargin" secondItem="Fia-Qe-X2S" secondAttribute="bottom" id="GA7-EV-LEi"/>
+                                                                    <constraint firstItem="Fia-Qe-X2S" firstAttribute="leading" secondItem="OgF-EK-4tn" secondAttribute="leadingMargin" id="oUS-MJ-w6O"/>
+                                                                    <constraint firstItem="Fia-Qe-X2S" firstAttribute="top" secondItem="OgF-EK-4tn" secondAttribute="topMargin" id="ppq-Ul-d2V"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <connections>
