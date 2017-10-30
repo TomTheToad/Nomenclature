@@ -63,7 +63,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     func searchITIS() {
-        guard let searchText = searchField.text else {
+        guard let searchText = searchField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             activityIndicator.stopAnimating()
             print("nothing to search")
             GenericAlert(message: "Please enter something to search")
@@ -135,7 +135,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
     func GenericAlert(message: String? = nil) {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
-            let thisMessage = message ?? "Oops, your reguest failed. Please check your connection and try again."
+            let thisMessage = message ?? "Oops, your request failed. Please check your connection and try again."
             let alert = OKAlertGenerator(alertMessage: thisMessage)
             self.present(alert.getAlertToPresent(), animated: false, completion: nil)
         }
