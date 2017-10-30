@@ -37,6 +37,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         activityIndicator.stopAnimating()
         searchField.delegate = self
+        searchField.becomeFirstResponder()
     }
     
     // IBActions

@@ -29,6 +29,7 @@ class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         titleTextField.delegate = self
+        titleTextField.becomeFirstResponder()
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
