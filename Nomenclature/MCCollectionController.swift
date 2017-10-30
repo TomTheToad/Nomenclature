@@ -159,7 +159,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         layout.sectionInset = UIEdgeInsets.zero
         
         // TODO: quick fix, find a better solution
-        let cellHeight = mcCollection.bounds.height - mcCollection.contentSize.height
+        let cellHeight = mcCollection.bounds.height - mcCollection.contentInset.top - mcCollection.contentInset.bottom
         layout.itemSize = CGSize(width: view.bounds.width, height: cellHeight)
         
         mcCollection.collectionViewLayout = layout
