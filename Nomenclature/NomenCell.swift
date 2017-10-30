@@ -11,6 +11,6 @@ import UIKit
 class NomenCell: UITableViewCell {
     
     @IBOutlet var classification: UILabel!
-    @IBOutlet var name: UITextField!
+    @IBOutlet var name: UILabel!
     
 }

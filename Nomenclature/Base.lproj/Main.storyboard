@@ -367,24 +367,21 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="380" height="92"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Fia-Qe-X2S">
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fia-Qe-X2S">
                                                                         <rect key="frame" x="8" y="8" width="364" height="76"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hi-TN-rbC">
-                                                                                <rect key="frame" x="0.0" y="28" width="42" height="20.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="42" height="76"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDS-zz-YGi">
-                                                                                <rect key="frame" x="57" y="27" width="307" height="22"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="22" id="RsA-ia-mZH"/>
-                                                                                </constraints>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-0a-Xfi">
+                                                                                <rect key="frame" x="322" y="0.0" width="42" height="76"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
                                                                         </subviews>
                                                                     </stackView>
                                                                 </subviews>
@@ -397,7 +394,7 @@
                                                             </tableViewCellContentView>
                                                             <connections>
                                                                 <outlet property="classification" destination="9Hi-TN-rbC" id="WnG-5z-B46"/>
-                                                                <outlet property="name" destination="qDS-zz-YGi" id="QxJ-GA-0hX"/>
+                                                                <outlet property="name" destination="Hb2-0a-Xfi" id="EPY-RM-l5c"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
