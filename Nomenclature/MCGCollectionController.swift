@@ -30,13 +30,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var deleteButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let selectedItems = myCollectionGroupsView.indexPathsForSelectedItems else {
-            return
-        }
-        
-        for thisIndex in selectedItems {
-            myCollectionGroupsView.cellForItem(at: thisIndex)?.isSelected = false
-        }
+        deselectAll()
     }
     
     override func viewDidLoad() {
@@ -75,6 +69,17 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBAction func deleteButton(_ sender: Any) {
         deletionAlert()
+    }
+    
+    // Deselect all
+    func deselectAll() {
+        guard let selectedItems = myCollectionGroupsView.indexPathsForSelectedItems else {
+            return
+        }
+        
+        for thisIndex in selectedItems {
+            myCollectionGroupsView.deselectItem(at: thisIndex, animated: true)
+        }
     }
     
     // Deletion alert
@@ -187,6 +192,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isEditing == false {
             if indexPath.section == 1 {
+                deselectAll()
                 createCollection()
             } else {
                 guard let thisCollection = myCollectionGroups?[indexPath.row] else {
@@ -196,6 +202,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
                 }
                 
                 selectedCollection = thisCollection
+                deselectAll()
             }
         } else {
             deleteButton.isEnabled = true

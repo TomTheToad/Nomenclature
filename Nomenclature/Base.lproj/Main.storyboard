@@ -581,11 +581,6 @@
                                     <constraint firstAttribute="height" constant="35" id="ZSR-zZ-ynC"/>
                                 </constraints>
                                 <state key="normal" title="  delete selected" image="trashIcon"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="deleteButton:" destination="Kgg-2r-rjx" eventType="touchUpInside" id="lq1-BL-dew"/>
                                 </connections>
@@ -1012,6 +1007,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z2F-DJ-htY"/>
-        <segue reference="KL9-0u-c2F"/>
+        <segue reference="swv-ub-3QL"/>
     </inferredMetricsTieBreakers>
 </document>
