@@ -208,15 +208,9 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cellTableView.backgroundColor = UIColor.white
         cell.cellTableView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
         cell.cellTableView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0)
-        cell.cellTableView.sectionHeaderHeight = 0
-        cell.cellTableView.sectionFooterHeight = 0
         cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
         cell.cellTableView.rowHeight = UITableViewAutomaticDimension
-        cell.cellTableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: -20, right: 0)
-        cell.topAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.topAnchor, multiplier: 0)
-        cell.bottomAnchor.constraintLessThanOrEqualToSystemSpacingBelow(view.bottomAnchor, multiplier: 0)
-        cell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: 0)
-        cell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 0)
+        cell.cellTableView.contentInset = UIEdgeInsets.zero
         cell.cellTableView.reloadData()
         
         return cell

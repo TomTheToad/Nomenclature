@@ -40,22 +40,23 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! ImageCell
-            cell.contentMode = .center
+            cell.organismImageView.contentMode = .scaleAspectFill
+
             
             guard let photo = card.photo else {
-                cell.imageView?.image = #imageLiteral(resourceName: "cardAdd")
+                cell.organismImageView.image = #imageLiteral(resourceName: "missingImage")
                 return cell
             }
 
             guard let image = photo.image else {
-                cell.imageView?.image = #imageLiteral(resourceName: "cardAdd")
+                cell.organismImageView.image = #imageLiteral(resourceName: "missingImage")
                 return cell
             }
             
-            cell.imageView?.image = image
+            cell.organismImageView.image = image
             return cell
         }
-            
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "nomenCell", for: indexPath) as! NomenCell
         let data = card.dataSource[indexPath.row]
         cell.classification.text = data.cellHeading

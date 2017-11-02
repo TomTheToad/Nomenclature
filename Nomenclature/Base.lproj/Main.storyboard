@@ -332,7 +332,7 @@
                                                     <rect key="frame" x="0.0" y="-0.5" width="380" height="442"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="center" selectionStyle="none" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="135" id="2FR-Yc-1P2" customClass="ImageCell" customModule="Nomenclature" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="135" id="2FR-Yc-1P2" customClass="ImageCell" customModule="Nomenclature" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="55.5" width="380" height="135"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FR-Yc-1P2" id="qmV-wJ-cpb">
@@ -341,21 +341,16 @@
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="npY-T9-xlT">
                                                                         <rect key="frame" x="0.0" y="0.0" width="380" height="135"/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="npY-T9-xlT" secondAttribute="trailing" id="F91-X8-tgC"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="npY-T9-xlT" secondAttribute="trailing" id="HE1-do-5ir"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" id="Yhf-Pu-w4k"/>
-                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="leading" secondItem="qmV-wJ-cpb" secondAttribute="leading" id="aEO-Xx-qxq"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" id="hWY-Ce-yCt"/>
-                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" id="rMD-3e-ejy"/>
-                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" id="tAw-Dk-bZX"/>
-                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="leading" secondItem="qmV-wJ-cpb" secondAttribute="leading" id="ula-4L-lPd"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" id="E26-d1-ZRt"/>
+                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="leading" secondItem="qmV-wJ-cpb" secondAttribute="leading" id="OKy-Sq-RgV"/>
+                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" id="V5H-qN-aLW"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="npY-T9-xlT" secondAttribute="trailing" id="drY-r0-4RS"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
-                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <connections>
                                                                 <outlet property="organismImageView" destination="npY-T9-xlT" id="0j2-qH-H1C"/>
                                                             </connections>

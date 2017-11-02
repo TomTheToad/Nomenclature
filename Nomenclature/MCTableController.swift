@@ -111,7 +111,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
                 if let thumb = photo.thumbImage {
                     cell.cardImage.image = thumb
                 } else {
-                    cell.cardImage.image = #imageLiteral(resourceName: "imageAdd")
+                    cell.cardImage.image = #imageLiteral(resourceName: "defaultImage")
                 }
             }
             
