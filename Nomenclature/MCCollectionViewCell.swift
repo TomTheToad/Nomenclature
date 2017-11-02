@@ -40,9 +40,8 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! ImageCell
-            cell.organismImageView.contentMode = .scaleAspectFill
+            cell.organismImageView.contentMode = .scaleAspectFit
 
-            
             guard let photo = card.photo else {
                 cell.organismImageView.image = #imageLiteral(resourceName: "missingImage")
                 return cell

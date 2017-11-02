@@ -322,13 +322,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82O-OF-oZE" userLabel="stabilizedView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PgH-eA-XIl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j8U-K5-XAf">
                                     <size key="itemSize" width="380" height="442"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -456,15 +452,12 @@
                                 </items>
                             </toolbar>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PgH-eA-XIl" firstAttribute="leading" secondItem="Cn4-fh-uPz" secondAttribute="leading" id="9Kf-mc-flX"/>
-                            <constraint firstItem="82O-OF-oZE" firstAttribute="leading" secondItem="Cn4-fh-uPz" secondAttribute="leading" id="ByA-6N-E2T"/>
                             <constraint firstAttribute="trailing" secondItem="PgH-eA-XIl" secondAttribute="trailing" id="DO2-QR-dfG"/>
                             <constraint firstItem="AVi-q8-dtN" firstAttribute="top" secondItem="PgH-eA-XIl" secondAttribute="bottom" id="EcC-vC-ulZ"/>
-                            <constraint firstItem="82O-OF-oZE" firstAttribute="top" secondItem="09m-BI-qpz" secondAttribute="bottom" id="L5G-jb-Sek"/>
-                            <constraint firstItem="AVi-q8-dtN" firstAttribute="top" secondItem="82O-OF-oZE" secondAttribute="bottom" id="NrV-aW-DDd"/>
                             <constraint firstAttribute="trailing" secondItem="AVi-q8-dtN" secondAttribute="trailing" id="S7R-s7-xgz"/>
-                            <constraint firstAttribute="trailing" secondItem="82O-OF-oZE" secondAttribute="trailing" id="XHT-bv-dPY"/>
                             <constraint firstItem="AVi-q8-dtN" firstAttribute="leading" secondItem="Cn4-fh-uPz" secondAttribute="leading" id="dSo-am-8NZ"/>
                             <constraint firstItem="gwf-qA-qpm" firstAttribute="top" secondItem="AVi-q8-dtN" secondAttribute="bottom" id="uwe-J0-gWJ"/>
                             <constraint firstItem="PgH-eA-XIl" firstAttribute="top" secondItem="09m-BI-qpz" secondAttribute="bottom" id="wTj-ET-c7t"/>
@@ -1008,11 +1001,11 @@
     <resources>
         <image name="addImage" width="375" height="199"/>
         <image name="backIcon" width="15" height="15"/>
-        <image name="cardsIcon" width="100" height="100"/>
+        <image name="cardsIcon" width="50" height="50"/>
         <image name="forwardIcon" width="15" height="15"/>
         <image name="reloadButtonDown" width="141" height="90"/>
         <image name="reloadButtonUp" width="141" height="90"/>
-        <image name="tableIcon" width="100" height="100"/>
+        <image name="tableIcon" width="50" height="50"/>
         <image name="trashIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
