@@ -205,7 +205,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.receivedCard = card
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
-        cell.cellTableView.backgroundColor = UIColor.white
+        cell.cellTableView.backgroundColor = UIColor(white: 1, alpha: 0)
         cell.cellTableView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
         cell.cellTableView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0)
         cell.cellTableView.sectionIndexBackgroundColor = UIColor.white

@@ -339,6 +339,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="380" height="442"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4D-CD-U0h" userLabel="bgView">
+                                                    <rect key="frame" x="5" y="0.0" width="370" height="442"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="59" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NVT-s7-9q1">
                                                     <rect key="frame" x="0.0" y="-0.5" width="380" height="442"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -351,17 +361,17 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="npY-T9-xlT">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="380" height="135"/>
+                                                                        <rect key="frame" x="0.0" y="6" width="380" height="129"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" id="E26-d1-ZRt"/>
                                                                     <constraint firstItem="npY-T9-xlT" firstAttribute="leading" secondItem="qmV-wJ-cpb" secondAttribute="leading" id="OKy-Sq-RgV"/>
-                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" id="V5H-qN-aLW"/>
+                                                                    <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" constant="6" id="V5H-qN-aLW"/>
                                                                     <constraint firstAttribute="trailing" secondItem="npY-T9-xlT" secondAttribute="trailing" id="drY-r0-4RS"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <connections>
                                                                 <outlet property="organismImageView" destination="npY-T9-xlT" id="0j2-qH-H1C"/>
                                                             </connections>
@@ -398,6 +408,7 @@
                                                                     <constraint firstItem="Fia-Qe-X2S" firstAttribute="top" secondItem="OgF-EK-4tn" secondAttribute="topMargin" id="ppq-Ul-d2V"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <connections>
                                                                 <outlet property="classification" destination="9Hi-TN-rbC" id="WnG-5z-B46"/>
                                                                 <outlet property="name" destination="Hb2-0a-Xfi" id="EPY-RM-l5c"/>
@@ -407,10 +418,13 @@
                                                 </tableView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="H4D-CD-U0h" secondAttribute="bottom" id="1tn-B0-2aU"/>
+                                            <constraint firstAttribute="trailing" secondItem="H4D-CD-U0h" secondAttribute="trailing" constant="5" id="2tc-bw-0yY"/>
+                                            <constraint firstItem="H4D-CD-U0h" firstAttribute="top" secondItem="nCz-BM-U0P" secondAttribute="top" id="Cf3-am-3Bs"/>
                                             <constraint firstItem="NVT-s7-9q1" firstAttribute="centerX" secondItem="nCz-BM-U0P" secondAttribute="centerX" id="Ee0-Jp-J1k"/>
                                             <constraint firstItem="NVT-s7-9q1" firstAttribute="height" secondItem="nCz-BM-U0P" secondAttribute="height" id="O9F-pE-wa2"/>
+                                            <constraint firstItem="H4D-CD-U0h" firstAttribute="leading" secondItem="nCz-BM-U0P" secondAttribute="leading" constant="5" id="RtV-ih-Bbt"/>
                                             <constraint firstItem="NVT-s7-9q1" firstAttribute="width" secondItem="nCz-BM-U0P" secondAttribute="width" id="XQi-yo-O0G"/>
                                             <constraint firstItem="NVT-s7-9q1" firstAttribute="centerY" secondItem="nCz-BM-U0P" secondAttribute="centerY" id="sWo-jY-GcY"/>
                                         </constraints>
