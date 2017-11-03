@@ -24,7 +24,7 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
     
     /* Table Methods */
     @IBOutlet weak var cellTableView: UITableView!
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -38,10 +38,10 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! ImageCell
-            cell.organismImageView.contentMode = .scaleAspectFit
-
+            
             guard let photo = card.photo else {
                 cell.organismImageView.image = #imageLiteral(resourceName: "missingImage")
                 return cell
@@ -53,13 +53,18 @@ class MCCollectionViewCell: UICollectionViewCell, UITableViewDataSource, UITable
             }
             
             cell.organismImageView.image = image
+            cell.organismImageView.layer.cornerRadius = 5
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "nomenCell", for: indexPath) as! NomenCell
+        cell.customBGView.layer.cornerRadius = 5
+        cell.customBGView.layer.masksToBounds = true
+        
         let data = card.dataSource[indexPath.row]
         cell.classification.text = data.cellHeading
         cell.name.text = data.cellContent
+        
         return cell
     }
     

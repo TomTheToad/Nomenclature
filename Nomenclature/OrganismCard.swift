@@ -46,9 +46,9 @@ class OrganismCard {
                 ("Phylum", checkForNil(item: phylum)),
                 ("Class", checkForNil(item: sciClass)),
                 ("Order", checkForNil(item: order)),
-                ("family", checkForNil(item: family)),
-                ("genus", checkForNil(item: genus)),
-                ("species", checkForNil(item: species))
+                ("Family", checkForNil(item: family)),
+                ("Genus", checkForNil(item: genus)),
+                ("Species", checkForNil(item: species))
                 
             ]
             return data

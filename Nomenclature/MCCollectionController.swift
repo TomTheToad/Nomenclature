@@ -202,7 +202,10 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
             return cell
         }
         
+        // Organism card
         cell.receivedCard = card
+
+        // Cell table configuration
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
         cell.cellTableView.backgroundColor = UIColor(white: 1, alpha: 0)
@@ -211,9 +214,14 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         cell.cellTableView.sectionIndexBackgroundColor = UIColor.white
         cell.cellTableView.rowHeight = UITableViewAutomaticDimension
         cell.cellTableView.contentInset = UIEdgeInsets.zero
+        
         cell.cellTableView.reloadData()
         
         return cell
+    }
+    
+    func configureTableCell() {
+        
     }
     
 }

@@ -12,5 +12,6 @@ class ImageCell: UITableViewCell {
     
     // IBOutlets
     @IBOutlet var organismImageView: UIImageView!
+    @IBOutlet weak var customBGView: UIView!
     
 }

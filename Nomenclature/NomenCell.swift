@@ -12,5 +12,6 @@ class NomenCell: UITableViewCell {
     
     @IBOutlet var classification: UILabel!
     @IBOutlet var name: UILabel!
+    @IBOutlet weak var customBGView: UIView!
     
 }
