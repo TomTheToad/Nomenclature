@@ -41,12 +41,17 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // IBActions
     @IBAction func saveAction(_ sender: Any) {
-        saveOrganism()
+        if checkForImage() {
+            print("image is present")
+            saveOrganism()
+        } else {
+            print("image is missing")
+            noImageAlertContinue()
+        }
     }
     
     @IBAction func addImageButton(_ sender: Any) {
-        activityIndicator.startAnimating()
-        fetchFlickrImages()
+        addImage()
     }
     
     @IBAction func saveToDetailViewController(_: UIStoryboardSegue) {
@@ -83,6 +88,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             organismImage.addGestureRecognizer(tapGestureRecognizer)
         }
         
+    }
+    
+    // Fetch images from Flickr
+    func addImage() {
+        activityIndicator.startAnimating()
+        fetchFlickrImages()
     }
     
     func setImage(photo: Photo) {
@@ -155,6 +166,31 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } catch {
             return
         }
+    }
+    
+    func checkForImage() -> Bool {
+        if receivedPhoto?.imageData == nil {
+            print("no image found")
+            return false
+        } else {
+            print("image found")
+            return true
+        }
+    }
+    
+    func noImageAlertContinue() {
+        let alertActionYes = UIAlertAction(title: "Add image", style: .default, handler: {
+            (UIAlertAction) in
+            self.addImage()
+        })
+        let alertActionNo = UIAlertAction(title: "No Image", style: .default, handler: {
+            (UIAlertAction) in
+            self.saveOrganism()
+            })
+        let alert = UIAlertController(title: "No image selected", message: "Do you want to add an image before saving?", preferredStyle: .actionSheet)
+        alert.addAction(alertActionNo)
+        alert.addAction(alertActionYes)
+        present(alert, animated: true, completion: nil)
     }
     
     // CoreData methods
