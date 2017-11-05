@@ -109,13 +109,11 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         let isSuccess = coreData.deleteOrganism(id: id)
         
-        var msg = ""
+        let alertGen = OKAlertGenerator(alertMessage: "Oops, Unable to Delete Item. Please try again")
         if isSuccess {
-            msg = "Selection Deleted"
-        } else {
-            msg = "Oops, Unable to Delete Item. Please try again"
+            alertGen.message = "Item deleted"
+            alertGen.title = "Success"
         }
-        let alertGen = OKAlertGenerator(alertMessage: msg)
         present(alertGen.getAlertToPresent(), animated: true, completion: nil)
         
         myCollection?.remove(at: index.row)

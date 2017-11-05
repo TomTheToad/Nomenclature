@@ -114,7 +114,7 @@ class CoreDataController {
                 return false
             }
             managedObjectContext.delete(thisOrganism)
-            return true
+            return saveData()
         } catch {
             return false
         }

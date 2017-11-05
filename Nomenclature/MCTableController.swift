@@ -17,7 +17,9 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var myCollection: [OrganismCard]? {
         didSet {
-            tableView.reloadData()
+            if isEditing == false {
+                tableView.reloadData()
+            }
         }
     }
     
@@ -86,6 +88,38 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             return count
         }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            deleteItemAtIndex(indexPath: indexPath)
+        }
+    }
+    
+    func deleteItemAtIndex(indexPath: IndexPath) {
+        guard let card = myCollection?[indexPath.row] else {
+            print("No card to delete")
+            return
+        }
+        
+        guard let id = card.id else {
+            print("id missing")
+            return
+        }
+        
+        let isSuccess = coreData.deleteOrganism(id: id)
+        isEditing = true
+        let alertGen = OKAlertGenerator(alertMessage: "Oops, Unable to Delete Item. Please try again")
+        if isSuccess {
+            alertGen.message = "Item deleted"
+            alertGen.title = "Success"
+        }
+        present(alertGen.getAlertToPresent(), animated: true, completion: nil)
+        
+        setMyCollection()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        isEditing = false
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
