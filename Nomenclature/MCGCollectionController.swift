@@ -162,7 +162,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MCGCollectionViewCell", for: indexPath) as! MCGCollectionViewCell
         
         if indexPath.section == 1 {
-            cell.collectionImageView.image = #imageLiteral(resourceName: "collectionAdd")
+            cell.collectionImageView.image = #imageLiteral(resourceName: "add")
             cell.titleLabel.isHidden = true
             return cell
         }

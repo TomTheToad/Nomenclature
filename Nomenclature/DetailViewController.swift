@@ -68,6 +68,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         activityIndicator.stopAnimating()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
         
         setImage()
     }

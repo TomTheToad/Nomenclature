@@ -160,6 +160,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         mcCollection.delegate = self
         mcCollection.dataSource = self
         mcCollection.isPagingEnabled = true
+        mcCollection.allowsSelection = false
     }
     
     func setMyCollection() {
@@ -206,6 +207,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         // Cell table configuration
         cell.cellTableView.dataSource = cell.self
         cell.cellTableView.delegate = cell.self
+        cell.cellTableView.allowsSelection = false
         cell.cellTableView.backgroundColor = UIColor(white: 1, alpha: 0)
         cell.cellTableView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0)
         cell.cellTableView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0)

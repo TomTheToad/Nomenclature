@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "collectionAddUniversal-2.pdf",
+      "filename" : "collectionAdd2-1.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "collectionAddUniversal.pdf",
+      "filename" : "collectionAdd2.pdf",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "collectionAddUniversal-1.pdf",
+      "filename" : "collectionAdd2-2.pdf",
       "scale" : "3x"
     }
   ],

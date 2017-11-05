@@ -132,7 +132,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         if indexPath.section == 1 {
             cell.vernacularTextField.text = "Add Organism"
             cell.speciesTextField.isHidden = true
-            cell.cardImage.image = #imageLiteral(resourceName: "cardAdd")
+            cell.cardImage.image = #imageLiteral(resourceName: "add")
             cell.vernacularTextField.textColor = UIColor.orange
             return cell
         } else {
