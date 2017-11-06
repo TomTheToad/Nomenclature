@@ -5,6 +5,8 @@
 //  Created by VICTOR ASSELTA on 9/17/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
+//  Class created to assemble all relevant Organism information in one place.
+//  Accepts multiple init methods
 
 import UIKit
 
@@ -16,10 +18,10 @@ class OrganismCard {
     // Collection this organism belongs to
     var collection: Collection
     
+    // Vernacular (common names) are associated with a language in all instances.
     typealias vernacularTuple = (name: String, language: String)
     
     // Taxonomic structure
-    // TODO: update to type alias
     var vernacular = [vernacularTuple]()
     var kingdom: String?
     var phylum: String?
@@ -29,9 +31,10 @@ class OrganismCard {
     var genus: String?
     var species: String?
     
-    // Images
+    // Images stored in an instance of Photo
     var photo: Photo?
     
+    // Preconfigured data source for ease of use for collections
     var dataSource: [(cellHeading: String, cellContent: String)] {
         get {
             var commonName: String = "\(defaultLanguage.uppercased()) name not found"
@@ -55,8 +58,11 @@ class OrganismCard {
         }
     }
     
+    // Default language for search.
+    // Future release: upgrade to enum
     var defaultLanguage = "english"
     
+    // Init accepting Organism
     init(organism: Organism) {
         self.id = organism.id
         self.collection = organism.withinCollection! // cannot exist without a collection
@@ -88,6 +94,7 @@ class OrganismCard {
         
     }
     
+    // Init accepting associated Collection and data from ITIS
     init(collection: Collection, taxonomicData: NSDictionary) {
         // required field
         self.collection = collection
@@ -129,6 +136,7 @@ class OrganismCard {
         
     }
     
+    // Fetch the first common name, if one exists.
     func fetchFirstCommonName() -> vernacularTuple? {
         guard let first = vernacular.first else {
             return nil
@@ -136,13 +144,14 @@ class OrganismCard {
         return first
     }
     
+    // Fetch the first common name of a particular language, if one exists.
     func fetchFirstCommonName(language: String) -> vernacularTuple? {
         let names = fetchCommonNamesByLanguage(language: language)
         return names?.first
     }
     
+    // Fetch all common names by language, if they exist.
     func fetchCommonNamesByLanguage(language: String) -> [vernacularTuple]? {
-        
         // TODO: This could lead to a nil condition
         // although technically, this should never be nil
         var namesToReturn = [vernacularTuple]()
@@ -154,6 +163,7 @@ class OrganismCard {
         return namesToReturn
     }
     
+    // Helper function to check for nil.
     func checkForNil(item: String?) -> String {
         guard let thisItem = item else {
             return "missing data"

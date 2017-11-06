@@ -5,12 +5,17 @@
 //  Created by VICTOR ASSELTA on 9/16/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
+// Struct created to enable easy assembly of image information.
+// Accepts multiple inits with or without arguments.
+// NOT included in own core data entity as this would be a 1 : 1 relationship.
+// Information for associated image is stored with the Organism entity and
+// built out within this struct.
 
 import UIKit
 
 struct Photo {
 
-    // Thumbnail fields
+    // Thumbnail Data
     var thumbURLString: String?
     var thumbImageURL: URL? {
         guard let thisThumbURL = thumbURLString else {
@@ -24,6 +29,7 @@ struct Photo {
         return thumbURL
     }
 
+    // Image Data
     var thumbImageData: NSData?
     var thumbImage: UIImage? {
         guard let data = thumbImageData else {
@@ -35,7 +41,7 @@ struct Photo {
         return image
     }
 
-    // Image fields
+    // URL Data
     var urlString: String?
     var imageURL: URL? {
         guard let thisString = urlString else {
@@ -49,6 +55,7 @@ struct Photo {
         return url
     }
     
+    // Image Data
     var imageData: NSData?
     var image: UIImage? {
         guard let data = imageData else {
@@ -65,13 +72,13 @@ struct Photo {
         
     }
     
-    // init for return from core data
+    // Init for return from core data
     init(imageData: NSData, thumbImageData: NSData) {
         self.imageData = imageData
         self.thumbImageData = thumbImageData
     }
     
-    // init for flikr return
+    // Init for flikr return
     init(thumbURLString: String, url: String, imageData: NSData? = nil) {
         self.thumbURLString = thumbURLString
         self.urlString = url
