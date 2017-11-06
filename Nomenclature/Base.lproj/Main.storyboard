@@ -915,12 +915,17 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-qU-mRU">
                                                             <rect key="frame" x="0.0" y="0.0" width="181" height="194"/>
                                                         </imageView>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lLC-Kg-c3K">
+                                                            <rect key="frame" x="80" y="87" width="20" height="20"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
+                                                    <constraint firstItem="lLC-Kg-c3K" firstAttribute="centerY" secondItem="ZFd-5p-JK5" secondAttribute="centerY" id="1F6-rj-zHO"/>
                                                     <constraint firstAttribute="trailing" secondItem="0hF-qU-mRU" secondAttribute="trailing" id="3td-8l-Q4E"/>
                                                     <constraint firstItem="0hF-qU-mRU" firstAttribute="leading" secondItem="ZFd-5p-JK5" secondAttribute="leading" id="8jg-64-TLw"/>
                                                     <constraint firstAttribute="bottom" secondItem="0hF-qU-mRU" secondAttribute="bottom" id="RyH-Cz-nhq"/>
+                                                    <constraint firstItem="lLC-Kg-c3K" firstAttribute="centerX" secondItem="ZFd-5p-JK5" secondAttribute="centerX" id="Vbb-h7-lxw"/>
                                                     <constraint firstAttribute="bottom" secondItem="0hF-qU-mRU" secondAttribute="bottom" id="aIq-L5-0Ib"/>
                                                     <constraint firstAttribute="trailing" secondItem="0hF-qU-mRU" secondAttribute="trailing" id="jm6-vj-JOV"/>
                                                     <constraint firstItem="0hF-qU-mRU" firstAttribute="top" secondItem="ZFd-5p-JK5" secondAttribute="top" id="kd2-Vo-SCG"/>
@@ -928,6 +933,7 @@
                                                     <constraint firstItem="0hF-qU-mRU" firstAttribute="top" secondItem="ZFd-5p-JK5" secondAttribute="top" id="uoC-MJ-ucm"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="activityIndicator" destination="lLC-Kg-c3K" id="8gd-8d-b1M"/>
                                                     <outlet property="imageView" destination="0hF-qU-mRU" id="36Q-Kx-EhT"/>
                                                 </connections>
                                             </collectionViewCell>

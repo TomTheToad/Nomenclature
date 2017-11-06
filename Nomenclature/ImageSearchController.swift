@@ -46,7 +46,6 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     // Flickr methods
-    // Only calls when reload is requested.
     func fetchFlickrImages() {
         guard let newSearchString = searchTextField.text else {
             return
@@ -124,6 +123,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             cell.imageView.image = UIImage(data: imageData as Data)
             cell.photo = photo
         } else if let thumbURL = photo.thumbImageURL {
+            cell.activityIndicator.startAnimating()
             flickr.downloadImageFromFlickrURL(url: thumbURL, completionHandler: {
                 (data, response, error) in
                 if error == nil {
@@ -136,6 +136,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
                         cell.imageView.image = UIImage(data: imageData)
                         photo.thumbImageData = imageData as NSData
                         cell.photo = photo
+                        cell.activityIndicator.stopAnimating()
                     }
                     
                 } else {
