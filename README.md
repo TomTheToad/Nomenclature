@@ -36,5 +36,13 @@ My intention with this app is to provide a means by which the user can create ca
 
 I'd like to also enable the creation of blank cards so the user can create their add their own images and taxonomic data. This would eventually allow submission to ITIS and other taxonomic databases.
 
+The design is by no means complete. Colors and images have been, and will continue to be, updated.
+
+Each taxonomic item, especially the higher levels, should include a detail either spelling out a definition of the term or giving some more specific information.
+
+I'd like to add a scroll View to the Organism card layout to replace the lone image with many possible images. I'd also like to give each image a title so that you can identify perhaps a male of the species, or a unique trait or situation pictured.
+
+These are generally the major items I'd like to add.
+
 <h2>Credit</h2>
 Help?, Yes, I had allot of that. I used numerous api references from https://www.itis.gov/solr_examples.html. As always I poured over lessons from https://www.raywenderlich.com, Udacity.com, https://stackoverflow.com, and so many more. The code I put fourth, while uniquely my own (mess?) has been influenced by many people whom I thank profusely.
