@@ -35,3 +35,6 @@
 My intention with this app is to provide a means by which the user can create cards from multiple sources. This to include Wikipedia, using the Wikimedia api, iNaturalist, and Google image searches. This became a large task for this application as some of these items, such as wikimedia, would require data scraping methods. Something I'd prefer not to do. I've removed the api controller I created from this version for submission but would like to add them back to a future version. This way an individual Organism card can show multiple sources of information in various views to include curated web views.
 
 I'd like to also enable the creation of blank cards so the user can create their add their own images and taxonomic data. This would eventually allow submission to ITIS and other taxonomic databases.
+
+<h2>Credit</h2>
+Help?, Yes, I had allot of that. I used numerous api references from https://www.itis.gov/solr_examples.html. As always I poured over lessons from https://www.raywenderlich.com, Udacity.com, https://stackoverflow.com, and so many more. The code I put fourth, while uniquely my own (mess?) has been influenced by many people whom I thank profusely.
