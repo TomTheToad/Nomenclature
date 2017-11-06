@@ -110,6 +110,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Fetch full resolution image from Flickr after chosen from ImageSearch thumbnails.
     func setImage(photo: Photo) {
+        activityIndicator.startAnimating()
         guard let url = photo.imageURL else {
             return
         }
@@ -128,6 +129,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.receivedPhoto = thisPhoto
                     // TODO: remove redundancy
                     self.organismImage.image = UIImage(data: imageData)
+                    self.activityIndicator.stopAnimating()
                 }
             } else {
                 self.stopActivityIndicatorMaineThread()
