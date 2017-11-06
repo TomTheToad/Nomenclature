@@ -5,17 +5,22 @@
 //  Created by VICTOR ASSELTA on 8/1/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
+// Specialized class to handle interaction with ITIS.gov api
 
 import Foundation
 
 class ITISAPIController: NSObject {
 
+    // Fields
     let returnFormat = "json"
     let session = URLSession(configuration: .ephemeral)
     
+    // Base method item defaults
     let baseURL = "https://services.itis.gov/?q="
     let methodCallCommonName = "vernacular:"
     
+    // Search ITIS.gov database by common name.
+    // This search is VERY case and spelling sensitive.
     func commonNameSearch(commonName: String, numberOfRecords: Int, completionHandler: @escaping (Error?, [NSDictionary]?)->Void) {
         
         let baseString = "services.itis.gov"
@@ -42,7 +47,6 @@ class ITISAPIController: NSObject {
         }
         
         // create request
-        // TODO: Handle time out
         let urlRequest = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 10.0)
         
         // create session
@@ -69,6 +73,7 @@ class ITISAPIController: NSObject {
         task.resume()
     }
     
+    // Parse user supplied search string to prepare for submission
     func parseSearchString(searchString: String) -> String {
         var arguments = "*"
         
@@ -88,6 +93,7 @@ class ITISAPIController: NSObject {
         return arguments
     }
     
+    // Convert JSON data to an NSDictionary
     func ConvertJSONToDict(data: Data?) -> [NSDictionary]? {
         guard let data = data else {
             print("missing data")
@@ -181,6 +187,7 @@ class ITISAPIController: NSObject {
 
 }
 
+// Errors
 enum ITISControllerErrors: Error {
     case noDataReturned
 }

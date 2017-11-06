@@ -1,11 +1,13 @@
-    //
-    //  FlickrAPIController.swift
-    //
-    //  Created by VICTOR ASSELTA on 2/27/17.
-    //  Written for VirtualTourist adapted for Nomenclature on 9/12/17
-    //  Copyright © 2017 TomTheToad. All rights reserved.
-    //
+//
+//  FlickrAPIController.swift
+//
+//  Created by VICTOR ASSELTA on 2/27/17.
+//  Written for VirtualTourist adapted for Nomenclature on 9/12/17
+//  Copyright © 2017 TomTheToad. All rights reserved.
+//
+// Custom generic Flickr class created as a gateway to interact with the Flickr API.
 
+// Dependencies
 import Foundation
 import CoreData
 import CoreLocation
@@ -44,6 +46,7 @@ class FlickrAPIController {
     // lat, lon, radius, accuracy, safe_search, unit, radius_units, page, per_page
     // return a dictionary
     
+    // Query for an array of images given a string to search.
     func getImageArray(textToSearch: String, completionHander: @escaping (Error?, [NSDictionary]?) -> Void) throws {
         
         let urlQueryItems: [URLQueryItem] = [
@@ -135,6 +138,7 @@ class FlickrAPIController {
         }).resume()
     }
     
+    // Extract image data and add to a Photo struct.
     func convertNSDictToPhoto(dictionary: NSDictionary) -> Photo {
         var photo = Photo()
         if let farmID = dictionary.value(forKey: "farm"),
@@ -153,6 +157,7 @@ class FlickrAPIController {
         return photo
     }
     
+    // Batch handling of method convertNSDictToPhoto.
     func convertNSDictArraytoPhotoArray(dictionaryArray: [NSDictionary]) -> [Photo] {
         var photoArray = [Photo]()
         for dict in dictionaryArray {
