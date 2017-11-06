@@ -130,7 +130,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.organismImage.image = UIImage(data: imageData)
                 }
             } else {
-                self.GenericAlert()
+                self.stopActivityIndicatorMaineThread()
+                self.genericAlert()
                 return
             }
         })
@@ -144,22 +145,28 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 (error, data) in
                 if error == nil {
                     guard let dict = data else {
+                        self.activityIndicator.stopAnimating()
+                        self.genericAlert(message: "Oops, I might have lost my net connection. Please chekc and try again.")
                         return
                     }
                     
                     let photos = self.flickr.convertNSDictArraytoPhotoArray(dictionaryArray: dict)
                     
                     DispatchQueue.main.async {
-                        self.activityIndicator.stopAnimating()
+                        self.stopActivityIndicatorMaineThread()
                         self.flickrPhotos = photos
                     }
                     
                 } else {
+                    self.genericAlert()
+                    self.stopActivityIndicatorMaineThread()
                     return
                 }
                 
             })
         } catch {
+            self.genericAlert()
+            self.stopActivityIndicatorMaineThread()
             return
         }
     }
@@ -170,6 +177,13 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return false
         } else {
             return true
+        }
+    }
+    
+    // Helper method for closures to stop activity indicator from main thread
+    func stopActivityIndicatorMaineThread() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -239,7 +253,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // Generic OK alerts.
-    func GenericAlert(message: String? = nil) {
+    func genericAlert(message: String? = nil) {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             let thisMessage = message ?? "Oops, your reguest failed. Please check your connection and try again."
