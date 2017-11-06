@@ -48,6 +48,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollection()
+        checkForEmptyCollection()
     }
     
     // Editing
@@ -60,6 +61,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
 
     }
     
+    // Helpers
     func setEditButton() {
         if isEditing {
             editButton.title = "Done"
@@ -84,6 +86,12 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         
         for thisIndex in selectedItems {
             myCollectionGroupsView.deselectItem(at: thisIndex, animated: true)
+        }
+    }
+    
+    func checkForEmptyCollection() {
+        if myCollectionGroupsView.numberOfItems(inSection: 0) == 0 {
+            noCollectionsAlert()
         }
     }
 
@@ -219,7 +227,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
-    // Deletion alert
+    // Alerts
     func deletionAlert() {
         let alertActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -232,6 +240,12 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         alert.addAction(alertActionCancel)
         alert.addAction(alertActionDelete)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func noCollectionsAlert() {
+        let okAlert = OKAlertGenerator(alertMessage: "Hmm it appears that you don't have anything here. Tap the plus icon to create a new collection")
+        okAlert.title = "Oops"
+        present(okAlert.getAlertToPresent(), animated: true, completion: nil)
     }
     
 }
