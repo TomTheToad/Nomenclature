@@ -26,7 +26,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
         
     }
 
-    // TableView Methods
+    // MARK: Table Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return organismCards.count
     }
@@ -47,7 +47,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
         performSegue(withIdentifier: "detailSegue", sender: self)
     }
     
-    // Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             

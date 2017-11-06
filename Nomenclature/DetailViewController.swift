@@ -177,7 +177,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    /* TableView methods */
+    /* MARK: TableView methods */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return organismCard.dataSource.count
     }
@@ -219,7 +219,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    /* Navigation Methods */
+    /* MARK: Navigation Methods */
     func returnToInitialVC() {
         guard let initialVC = storyboard?.instantiateInitialViewController() else {
             // big error goes here
@@ -238,7 +238,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    /* User Alert Methods */
+    /* MARK: User Alert Methods */
     // Alert the user to missing image. Prompt to add image or continue without.
     func noImageAlertContinue() {
         let alertActionYes = UIAlertAction(title: "Add image", style: .default, handler: {

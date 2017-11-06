@@ -114,9 +114,20 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
+        // Check for delete interation and that swipe does not include section for adding an item.
+        // Note this an extra precaution as the below method should prevent editing at all.
+        if editingStyle == .delete && indexPath.section != 1 {
             deleteItemAtIndex(indexPath: indexPath)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Disallow edit of functional "Add Item" cell.
+        if indexPath.section == 1 {
+            return false
+        }
+        
+        return true
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -163,7 +174,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    // Navigation
+    // MARK: Navigation
     func addCard() {
         performSegue(withIdentifier: "tableAddCard", sender: self)
     }

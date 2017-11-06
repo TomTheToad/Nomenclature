@@ -10,8 +10,10 @@ import UIKit
 
 class MCCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    // Fields
+    // Dependencies
     let coreData = CoreDataController()
+    
+    // Fields
     var receivedCollection: Collection?
     var organismCardFactory = OrganismCardFactory()
 
@@ -21,20 +23,12 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    // Used to set offset for paging within collection
     var numberOfPages: Int = 0
     
     // IBOutlets
     @IBOutlet weak var mcCollection: UICollectionView!
     @IBOutlet weak var toolBar: UIToolbar!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        setMyCollection()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureCollection()
-    }
     
     // IBActions
     @IBAction func addCardButton(_ sender: Any) {
@@ -61,6 +55,17 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         mcCollection.scrollToItem(at: nextIndex as IndexPath, at: .right, animated: true)
     }
     
+    // View triggered events
+    override func viewWillAppear(_ animated: Bool) {
+        setMyCollection()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureCollection()
+    }
+    
+    // Helper for forward and back paging buttons
     func getIndex(offset: Int) -> IndexPath? {
         guard let currentIndex = mcCollection.indexPathsForVisibleItems.first else {
             return nil
@@ -78,7 +83,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     // Card deletion
-    // Deletion alert
+    // Deletion alert: make sure the user mean't to delete the item shown
     func deletionAlert() {
         let alertActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -119,21 +124,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         myCollection?.remove(at: index.row)
     }
     
-    // Navigation
-    func addCard() {
-        performSegue(withIdentifier: "collectionAddCard", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "collectionAddCard" {
-            let navVC = segue.destination as! UINavigationController
-            // TODO: determine the next vc
-            let vc = navVC.topViewController as! SearchController
-            vc.receivedCollection = receivedCollection
-        }
-    }
-    
-    // Check for items
+    // Check any items in collection. If none, trigger segue to search after alert.
     func noItemsAlert() {
         let msg = "Nothing to see here! Why don't you go search for something."
         let alert = UIAlertController(title: "No Saved Items", message: msg, preferredStyle: .alert)
@@ -220,8 +211,18 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         return cell
     }
     
-    func configureTableCell() {
-        
+    // MARK: Navigation
+    func addCard() {
+        performSegue(withIdentifier: "collectionAddCard", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "collectionAddCard" {
+            let navVC = segue.destination as! UINavigationController
+            // TODO: determine the next vc
+            let vc = navVC.topViewController as! SearchController
+            vc.receivedCollection = receivedCollection
+        }
     }
     
 }

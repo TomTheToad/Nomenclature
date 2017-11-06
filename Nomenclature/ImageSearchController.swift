@@ -81,7 +81,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         
     }
     
-    /* Collection View Methods */
+    /* MARK: Collection View Methods */
     func configureCollection() {
         let size = UIScreen.main.bounds.width / 4
         
@@ -175,7 +175,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         cell.isSelected = false
     }
 
-    // Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveToDetailVC" {
             let vc = segue.destination as! DetailViewController

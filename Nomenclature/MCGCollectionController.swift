@@ -87,7 +87,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
 
-    // CollectionView methods
+    // MARK: Collection methods
     func deleteSelectedCollections() {
         if isEditing == true {
             guard let indexArray = myCollectionGroupsView.indexPathsForSelectedItems else {
@@ -200,7 +200,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     
-    // Navigation
+    // MARK: Navigation Methods
     func createCollection() {
         performSegue(withIdentifier: "collectionsToCreateCollection", sender: self)
     }

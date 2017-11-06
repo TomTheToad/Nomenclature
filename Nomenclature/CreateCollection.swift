@@ -40,7 +40,7 @@ class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegat
         titleTextField.becomeFirstResponder()
     }
     
-    // Collection methods
+    // MARK: Collection methods
     func createCollection() {
         
         if (titleTextField.text?.isEmpty)! {
@@ -68,7 +68,7 @@ class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegat
         present(alertGen.getAlertToPresent(), animated: true, completion: nil)
     }
     
-    // Navigation
+    // MARK: Navigation
     func presentMyCollection() {
         performSegue(withIdentifier: "createCollectionsToCollection", sender: self)
     }
