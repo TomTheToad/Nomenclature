@@ -5,14 +5,16 @@
 //  Created by VICTOR ASSELTA on 9/19/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
+// Controller responsible for displaying and deleting groups of organism collections.
 
 import UIKit
 
 class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    // Fields
+    // Dependencies
     let coreData = CoreDataController()
 
+    // Fields
     var myCollectionGroups: [Collection]? = {
        let coreData = CoreDataController()
         return coreData.fetchAllCollections()
@@ -29,6 +31,16 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIButton!
     
+    // IBActions
+    @IBAction func addButtonAction(_ sender: Any) {
+        createCollection()
+    }
+    
+    @IBAction func editButtonAction(_ sender: Any) {
+        setEditing(!isEditing, animated: false)
+    }
+    
+    // View triggered events
     override func viewWillAppear(_ animated: Bool) {
         deselectAll()
     }
@@ -38,14 +50,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         configureCollection()
     }
     
-    @IBAction func addButtonAction(_ sender: Any) {
-        createCollection()
-    }
-    
-    @IBAction func editButtonAction(_ sender: Any) {
-        setEditing(!isEditing, animated: false)
-    }
-    
+    // Editing
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         myCollectionGroupsView.allowsMultipleSelection = !myCollectionGroupsView.allowsMultipleSelection
@@ -80,21 +85,6 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         for thisIndex in selectedItems {
             myCollectionGroupsView.deselectItem(at: thisIndex, animated: true)
         }
-    }
-    
-    // Deletion alert
-    func deletionAlert() {
-        let alertActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        let alertActionDelete = UIAlertAction(title: "Delete", style: .destructive, handler: {
-            (alertAction) in
-            self.deleteSelectedCollections()
-        })
-        
-        let alert = UIAlertController(title: "Delete", message: "Delete selected collections?", preferredStyle: .actionSheet)
-        alert.addAction(alertActionCancel)
-        alert.addAction(alertActionDelete)
-        present(alert, animated: true, completion: nil)
     }
 
     // CollectionView methods
@@ -227,6 +217,21 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
             vc1.receivedCollection = selectedCollection
             vc2.receivedCollection = selectedCollection
         }
+    }
+    
+    // Deletion alert
+    func deletionAlert() {
+        let alertActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let alertActionDelete = UIAlertAction(title: "Delete", style: .destructive, handler: {
+            (alertAction) in
+            self.deleteSelectedCollections()
+        })
+        
+        let alert = UIAlertController(title: "Delete", message: "Delete selected collections?", preferredStyle: .actionSheet)
+        alert.addAction(alertActionCancel)
+        alert.addAction(alertActionDelete)
+        present(alert, animated: true, completion: nil)
     }
     
 }

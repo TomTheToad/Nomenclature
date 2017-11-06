@@ -5,18 +5,21 @@
 //  Created by VICTOR ASSELTA on 8/22/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
+// Table View of organisms within a collection.
 
 import UIKit
 
 class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // Fields
+    // Dependencies
     let coreData = CoreDataController()
     let organismCardFactory = OrganismCardFactory()
     var receivedCollection: Collection?
     
+    // Fields
     var myCollection: [OrganismCard]? {
         didSet {
+            // Check for editing to allow for animated removal vs reload.
             if isEditing == false {
                 tableView.reloadData()
             }
@@ -26,6 +29,12 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
+    // IBActions
+    @IBAction func addButton(_ sender: Any) {
+        addCard()
+    }
+    
+    // View triggered events
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -38,20 +47,7 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
-    // IBActions
-    @IBAction func addButton(_ sender: Any) {
-        addCard()
-    }
-    
-    // Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "tableAddCard" {
-            let navVC = segue.destination as! UINavigationController
-            let vc = navVC.viewControllers.first as! SearchController
-            vc.receivedCollection = receivedCollection
-        }
-    }
-    
+    // Data Methods
     func setMyCollection() {
         guard let thisCollection = receivedCollection else {
             print("collection missing")
@@ -63,6 +59,32 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         myCollection = organismCardFactory.createCardArray(organismArray: organisms)
+    }
+    
+    // Delete an item and remove from view
+    func deleteItemAtIndex(indexPath: IndexPath) {
+        guard let card = myCollection?[indexPath.row] else {
+            print("No card to delete")
+            return
+        }
+        
+        guard let id = card.id else {
+            print("id missing")
+            return
+        }
+        
+        let isSuccess = coreData.deleteOrganism(id: id)
+        isEditing = true
+        let alertGen = OKAlertGenerator(alertMessage: "Oops, Unable to Delete Item. Please try again")
+        if isSuccess {
+            alertGen.message = "Item deleted"
+            alertGen.title = "Success"
+        }
+        present(alertGen.getAlertToPresent(), animated: true, completion: nil)
+        
+        setMyCollection()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        isEditing = false
     }
     
     // MARK: Table Methods
@@ -95,31 +117,6 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         if editingStyle == .delete {
             deleteItemAtIndex(indexPath: indexPath)
         }
-    }
-    
-    func deleteItemAtIndex(indexPath: IndexPath) {
-        guard let card = myCollection?[indexPath.row] else {
-            print("No card to delete")
-            return
-        }
-        
-        guard let id = card.id else {
-            print("id missing")
-            return
-        }
-        
-        let isSuccess = coreData.deleteOrganism(id: id)
-        isEditing = true
-        let alertGen = OKAlertGenerator(alertMessage: "Oops, Unable to Delete Item. Please try again")
-        if isSuccess {
-            alertGen.message = "Item deleted"
-            alertGen.title = "Success"
-        }
-        present(alertGen.getAlertToPresent(), animated: true, completion: nil)
-        
-        setMyCollection()
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        isEditing = false
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,5 +166,13 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
     // Navigation
     func addCard() {
         performSegue(withIdentifier: "tableAddCard", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tableAddCard" {
+            let navVC = segue.destination as! UINavigationController
+            let vc = navVC.viewControllers.first as! SearchController
+            vc.receivedCollection = receivedCollection
+        }
     }
 }

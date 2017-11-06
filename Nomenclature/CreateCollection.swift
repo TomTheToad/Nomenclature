@@ -5,13 +5,16 @@
 //  Created by VICTOR ASSELTA on 9/23/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
+// Class responsible for simple collection creation
 
 import UIKit
 
 class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
-    // Fields
+    // Dependencies
     let coreData = CoreDataController()
+    
+    // Fields
     var collection: Collection? {
         didSet {
             presentMyCollection()
@@ -26,14 +29,15 @@ class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegat
         createCollection()
     }
     
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         titleTextField.delegate = self
         titleTextField.becomeFirstResponder()
-    }
-    
-    @IBAction func cancelButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
     // Collection methods
