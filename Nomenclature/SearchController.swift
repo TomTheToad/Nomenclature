@@ -68,7 +68,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        returnToInitialVC()
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func searchButton(_ sender: Any) {
@@ -126,16 +126,6 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     // Navigation
-    func returnToInitialVC() {
-        guard let initialVC = storyboard?.instantiateInitialViewController() else {
-            // big error goes here
-            print("Could not instantiate initial view controller!")
-            return
-        }
-        
-        present(initialVC, animated: true, completion: nil)
-    }
-    
     func performResultsSeque(sender: Any?) {
         performSegue(withIdentifier: "searchResultsSeque", sender: sender)
     }
