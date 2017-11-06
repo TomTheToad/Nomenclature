@@ -34,12 +34,21 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultsTableCell", for: indexPath) as! SearchResultsTableCell
         let card = organismCards[indexPath.row]
-        guard let firstCommonName = card.fetchFirstCommonName(language: "english") else {
-            // TODO: handle error
-            cell.commonNameLabel.text = "missing data"
-            return cell
+        
+        // Test for existing common name
+        // Not all records will have a common name
+        // TODO: find a better way of dealing with this? Possibly display another name
+        // possibly check each taxonomic name and pick the most specific available.
+        var name: String
+        if let firstEnglishName = card.fetchFirstCommonName(language: "english") {
+            name = firstEnglishName.name
+        } else if let firstName = card.fetchFirstCommonName() {
+            name = firstName.name
+        } else {
+            name = "common name missing"
         }
-        cell.commonNameLabel.text = firstCommonName.0
+        
+        cell.commonNameLabel.text = name
         return cell
     }
     
