@@ -235,6 +235,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "imageSearchSegue" {
+            let vc = segue.destination as! ImageSearchController
+            vc.receivedPhotos = flickrPhotos
+            vc.searchString = searchString
+        }
+    }
+    
     /* MARK: User Alert Methods */
     // Alert the user to missing image. Prompt to add image or continue without.
     func noImageAlertContinue() {
