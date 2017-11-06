@@ -53,10 +53,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Save button action
     @IBAction func saveAction(_ sender: Any) {
         if checkForImage() {
-            print("image is present")
             saveOrganism()
         } else {
-            print("image is missing")
             noImageAlertContinue()
         }
     }
@@ -169,10 +167,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Helper to determine if user chosen image is present.
     func checkForImage() -> Bool {
         if receivedPhoto?.imageData == nil {
-            print("no image found")
             return false
         } else {
-            print("image found")
             return true
         }
     }
