@@ -12,9 +12,9 @@
 <p>Our goto site has been <a href="https://www.itis.gov">ITIS</a> for data. The site, however, is hard for a child to use effectively and lacks images for the organisms. We did find other, excellent sites with images but either had no useful api, or an api that would require multiple calls to retrieve the whole taxonomic name. Admittedly, this could be a failure of my ability to fully grasp the associated documentation. Either way, the result is still the same. Since the <a href="https://www.itis.gov">ITIS</a> api lacked image support, I decided to include a general image search using <a href="https://www.flickr.com">flickr</a>. I was required to use them for previous school projects and was already fairly well versed in the usage of their api.
 
 <h2>What do I need to run the code?</h2>
-<p>If your already an ios developer, not much. You'll need Xcode 9 or later and a reliable net connection. Simply build and run the application. There are still some bugs to work out. Namely the complicated card interface tends to have constraint issues on the 5S.
+<p>If your already an ios developer, not much. You'll need Xcode 9 or later and a reliable net connection. Simply build and run the application.
   
-  Step one: Build and run the application.
+  Step one: Clone, build and run the application.
   Step two: You'll be prompted to add a new Collection. Consider this a "deck" for "cards".
   Step three: Enter a name for your collection and continue.
   Step Four: Enter an organism to search ITIS.gov for. This could be a "Panda", "Dolphin" or other such animal.
