@@ -69,7 +69,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     @IBAction func cancelButton(_ sender: Any) {
-        returnToInitialVC()
+        dismissNavigationController()
     }
 
     // IBOutlets
@@ -198,7 +198,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isSuccess {
             let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
                 (UIAlertAction) in
-                self.returnToInitialVC()
+                self.dismissNavigationController()
             })
             let alert = UIAlertController(title: "Success", message: "Organism saved.", preferredStyle: .actionSheet)
             alert.addAction(alertAction1)
@@ -207,7 +207,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
                 (UIAlertAction) in
-                self.returnToInitialVC()
+                self.dismissNavigationController()
             })
             let alert = UIAlertController(title: "Save Failed", message: "Oops, looks like we encoutered an error. Please try again.", preferredStyle: .actionSheet)
             alert.addAction(alertAction1)
@@ -216,22 +216,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     /* MARK: Navigation Methods */
-    func returnToInitialVC() {
-        guard let initialVC = storyboard?.instantiateInitialViewController() else {
-            // big error goes here
-            print("Could not instantiate initial view controller!")
-            return
-        }
-        
-        present(initialVC, animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "imageSearchSegue" {
-            let vc = segue.destination as! ImageSearchController
-            vc.receivedPhotos = flickrPhotos
-            vc.searchString = searchString
-        }
+    // Dismiss current navigation stack
+    func dismissNavigationController() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     /* MARK: User Alert Methods */
