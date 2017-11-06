@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageSearchController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ImageSearchController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
     
     // Dependencies
     let flickr = FlickrAPIController()
@@ -28,14 +28,13 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         configureCollection()
         searchTextField.text = searchString
+        searchTextField.delegate = self
         
     }
     
     // IBActions
     @IBAction func searchAgainButton(_sender: Any) {
-        activityIndicator.startAnimating()
-        fetchFlickrImages()
-        view.endEditing(true)
+        newImageSearch()
     }
     
     @IBAction func addImageButton(_ sender: Any) {
@@ -197,6 +196,19 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
             let alert = OKAlertGenerator(alertMessage: thisMessage)
             self.present(alert.getAlertToPresent(), animated: false, completion: nil)
         }
+    }
+    
+    // Search Flickr Methods
+    func newImageSearch() {
+        activityIndicator.startAnimating()
+        fetchFlickrImages()
+        view.endEditing(true)
+    }
+    
+    // Keyboard: add return key "go" functionality
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        newImageSearch()
+        return true
     }
     
 }

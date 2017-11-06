@@ -146,7 +146,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if error == nil {
                     guard let dict = data else {
                         self.activityIndicator.stopAnimating()
-                        self.genericAlert(message: "Oops, I might have lost my net connection. Please chekc and try again.")
+                        self.genericAlert(message: "Oops, I might have lost my net connection. Please check and try again.")
                         return
                     }
                     
