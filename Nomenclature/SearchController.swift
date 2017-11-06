@@ -6,22 +6,35 @@
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
 
+/*
+ 
+ First, and currently only, means of adding an organism card to the library.
+ The user is prompted to search ITIS.gov database by common name
+ 
+ This search is EXTREMELY case and spelling sensitive.
+ 
+ */
+
 // TODO: list:
 // 1) add cancel [done]
 // 2) update search to include capitalized and noncapitalized query
 // 3) create cards later, eliminate some processing overhead?
+// 4) Add other search methods, i.e. fuzzy, species names, etc.
 
 import UIKit
 
 class SearchController: UIViewController, UITextFieldDelegate {
     
-    // Fields
+    // Dependencies
     let itis = ITISAPIController()
     let coreData = CoreDataController()
     
+    // Fields
+    // Default number of records returned in a search
     var numberOfRecords = 10
     var receivedCollection: Collection?
     
+    // Cards generated for future use.
     var organismCards = [OrganismCard]() {
         didSet {
             performResultsSeque(sender: self)
@@ -63,6 +76,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         searchITIS()
     }
     
+    // Call to ITISAPIController to initiate search.
     func searchITIS() {
         guard let searchText = searchField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             activityIndicator.stopAnimating()
@@ -105,7 +119,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    // Keyboard
+    // Keyboard: add return key "go" functionality
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchITIS()
         return true
@@ -133,6 +147,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Generic user alert
     func GenericAlert(message: String? = nil) {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()

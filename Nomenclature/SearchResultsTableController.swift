@@ -5,6 +5,8 @@
 //  Created by VICTOR ASSELTA on 8/9/17.
 //  Copyright © 2017 TomTheToad. All rights reserved.
 //
+// Table to display results from an ITIS search.
+// TODO: add ability to search results
 
 import UIKit
 
@@ -24,6 +26,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
         
     }
 
+    // TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return organismCards.count
     }
@@ -44,6 +47,7 @@ class SearchResultsTableController: UIViewController, UITableViewDelegate, UITab
         performSegue(withIdentifier: "detailSegue", sender: self)
     }
     
+    // Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             

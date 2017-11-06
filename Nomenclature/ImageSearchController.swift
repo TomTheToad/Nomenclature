@@ -10,9 +10,11 @@ import UIKit
 
 class ImageSearchController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    // Fields
+    // Dependencies
     let flickr = FlickrAPIController()
     var searchString = String()
+    
+    // Fields
     var receivedPhotos: [Photo]?
     var selectedPhoto: Photo?
     
@@ -45,6 +47,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     // Flickr methods
+    // Only calls when reload is requested.
     func fetchFlickrImages() {
         guard let newSearchString = searchTextField.text else {
             return
@@ -78,7 +81,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         
     }
     
-    // CollectionView
+    /* Collection View Methods */
     func configureCollection() {
         let size = UIScreen.main.bounds.width / 4
         
@@ -186,6 +189,7 @@ class ImageSearchController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    // User Alert
     func GenericAlert(message: String? = nil) {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
