@@ -69,7 +69,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     @IBAction func cancelButton(_ sender: Any) {
-        dismissNavigationController()
+        unwindToCollections()
     }
 
     // IBOutlets
@@ -214,7 +214,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isSuccess {
             let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
                 (UIAlertAction) in
-                self.dismissNavigationController()
+                self.unwindToCollections()
             })
             let alert = UIAlertController(title: "Success", message: "Organism saved.", preferredStyle: .actionSheet)
             alert.addAction(alertAction1)
@@ -223,7 +223,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
                 (UIAlertAction) in
-                self.dismissNavigationController()
+                self.unwindToCollections()
             })
             let alert = UIAlertController(title: "Save Failed", message: "Oops, looks like we encoutered an error. Please try again.", preferredStyle: .actionSheet)
             alert.addAction(alertAction1)
@@ -232,16 +232,17 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     /* MARK: Navigation Methods */
-    // Dismiss current navigation stack
-    func dismissNavigationController() {
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "imageSearchSegue" {
             let vc = segue.destination as! ImageSearchController
             vc.receivedPhotos = flickrPhotos
             vc.searchString = searchString
+        }
+    }
+    
+    func unwindToCollections() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "unwindToCollections", sender: self)
         }
     }
     

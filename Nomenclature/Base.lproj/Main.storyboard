@@ -492,6 +492,7 @@
             <objects>
                 <tabBarController autoresizesArchivedViewToFullSize="NO" id="48K-9Z-y5z" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="ThK-73-yb5"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="wwb-jI-SJD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -626,7 +627,7 @@
                         <outlet property="editButton" destination="WV8-R5-HsM" id="NvD-eU-yC1"/>
                         <outlet property="myCollectionGroupsView" destination="Md7-7O-l0r" id="O5S-KN-YyC"/>
                         <segue destination="48K-9Z-y5z" kind="show" identifier="collectionsToSingleCollection" id="swv-ub-3QL"/>
-                        <segue destination="dFp-oh-ZnP" kind="presentation" identifier="collectionsToCreateCollection" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="UmO-dO-V5c"/>
+                        <segue destination="dFp-oh-ZnP" kind="show" identifier="collectionsToCreateCollection" id="UmO-dO-V5c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJE-PV-0hM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -830,9 +831,11 @@
                         <outlet property="organismImage" destination="T6J-xo-bKm" id="RaZ-IN-cpa"/>
                         <outlet property="tableView" destination="H9n-Tk-2ny" id="XPm-61-sfK"/>
                         <segue destination="zKo-4R-Ang" kind="presentation" identifier="imageSearchSegue" id="fxX-uf-ygD"/>
+                        <segue destination="Smn-im-o20" kind="unwind" identifier="unwindToCollections" animates="NO" unwindAction="unwindToCollectionsWithSegue:" id="j2l-B2-irm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rV-lF-RgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Smn-im-o20" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2902" y="985"/>
         </scene>

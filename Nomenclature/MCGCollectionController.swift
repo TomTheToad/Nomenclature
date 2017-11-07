@@ -42,6 +42,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     
     // View triggered events
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         deselectAll()
     }
     
@@ -226,6 +227,9 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
             vc2.receivedCollection = selectedCollection
         }
     }
+    
+    // Unwind segue
+    @IBAction func unwindToCollections(segue:UIStoryboardSegue) { }
     
     // Alerts
     func deletionAlert() {
