@@ -29,7 +29,9 @@
  Thanks for trying out Nomen!
 
 <h2>Known Bugs</h2>
-<p>This is an "in progress" application and, as such, does contain a bug or two ... or more. The most noteable issue the problem with displaying multiple common names properly. I've omitted it from this version for the sake of submission. 
+<p>This is an "in progress" application and, as such, does contain a bug or two ... or more. The most noteable issue the problem with displaying multiple common names properly. I've omitted it from this version for the sake of submission.
+
+There is also a warning I've been struggling with: "Unbalanced calls to begin/end appearance transitions". This occurs when executing an unwind segue in which a UITabController exists between the origin view and the destination view. It may be an xcode bug or it may be that one of the view triggered events animated property is set differently than the rest. Many of the usual forums are debating the meaning. The unwind segue is very necessary so I'll have to live with the warning for the moment. It does not affect the app in any apparent way. In the future I may have to redesign the UI so the Tab Bar View is the initial view.
   
 <h2>Future Revisions</h2>
 My intention with this app is to provide a means by which the user can create cards from multiple sources. This to include Wikipedia, using the Wikimedia api, iNaturalist, and Google image searches. This became a large task for this application as some of these items, such as wikimedia, would require data scraping methods. Something I'd prefer not to do. I've removed the api controller I created from this version for submission but would like to add them back to a future version. This way an individual Organism card can show multiple sources of information in various views to include curated web views.
