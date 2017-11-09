@@ -9,7 +9,7 @@
 
 import UIKit
 
-class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class CreateCollectionController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     // Dependencies
     let coreData = CoreDataController()
