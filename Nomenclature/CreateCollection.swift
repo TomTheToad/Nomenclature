@@ -77,7 +77,9 @@ class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegat
         if segue.identifier == "createCollectionsToCollection" {
             let tabBarVC = segue.destination as! UITabBarController
             let vc = tabBarVC.viewControllers?.first as! MCCollectionController
+            let vc2 = tabBarVC.viewControllers?.last as! MCTableController
             vc.receivedCollection = collection
+            vc2.receivedCollection = collection
         }
     }
 }
