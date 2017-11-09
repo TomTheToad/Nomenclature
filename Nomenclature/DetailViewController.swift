@@ -77,7 +77,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var organismImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    // View did load prep
+    // View triggered Events    
     override func viewDidLoad() {
         
         activityIndicator.stopAnimating()
@@ -94,7 +94,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let image = organismCard.photo?.image {
             organismImage.image = image
         } else {
-            organismImage.image = UIImage(named: "addImage")!
+            organismImage.image = UIImage(named: "missingImage")!
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.addImageButton(_:)))
             organismImage.isUserInteractionEnabled = true
             organismImage.addGestureRecognizer(tapGestureRecognizer)

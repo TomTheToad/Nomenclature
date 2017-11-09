@@ -121,6 +121,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
     
     // Keyboard: add return key "go" functionality
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        activityIndicator.startAnimating()
         searchITIS()
         return true
     }

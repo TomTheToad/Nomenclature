@@ -30,7 +30,7 @@ class CreateCollection: UIViewController, UITextFieldDelegate, UITextViewDelegat
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     // ViewDidLoad
