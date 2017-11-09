@@ -361,12 +361,12 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="npY-T9-xlT">
-                                                                        <rect key="frame" x="10" y="10" width="360" height="115"/>
+                                                                        <rect key="frame" x="10" y="10" width="360" height="125"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" constant="10" id="E26-d1-ZRt"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="npY-T9-xlT" secondAttribute="bottom" id="E26-d1-ZRt"/>
                                                                     <constraint firstItem="npY-T9-xlT" firstAttribute="leading" secondItem="qmV-wJ-cpb" secondAttribute="leading" constant="10" id="OKy-Sq-RgV"/>
                                                                     <constraint firstItem="npY-T9-xlT" firstAttribute="top" secondItem="qmV-wJ-cpb" secondAttribute="top" constant="10" id="V5H-qN-aLW"/>
                                                                     <constraint firstAttribute="trailing" secondItem="npY-T9-xlT" secondAttribute="trailing" constant="10" id="drY-r0-4RS"/>
