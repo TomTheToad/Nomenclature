@@ -25,7 +25,7 @@
 		C7957C641F30E3C700C09528 /* Nomenclature.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7957C621F30E3C700C09528 /* Nomenclature.xcdatamodeld */; };
 		C7957C661F30E3C700C09528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7957C651F30E3C700C09528 /* Assets.xcassets */; };
 		C7957C691F30E3C700C09528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7957C671F30E3C700C09528 /* LaunchScreen.storyboard */; };
-		C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C731F30E43D00C09528 /* ITISAPIController.swift */; };
+		C7957C741F30E43D00C09528 /* ITISAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7957C731F30E43D00C09528 /* ITISAPIHandler.swift */; };
 		C7A9376C1F76AE2A0015A6F2 /* CreateCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9376B1F76AE2A0015A6F2 /* CreateCollection.swift */; };
 		C7B1C8581F86CA9800FE6AA5 /* Organism+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B1C8561F86CA9800FE6AA5 /* Organism+CoreDataClass.swift */; };
 		C7B1C8591F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B1C8571F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift */; };
@@ -66,7 +66,7 @@
 		C7957C651F30E3C700C09528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7957C681F30E3C700C09528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7957C6A1F30E3C700C09528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7957C731F30E43D00C09528 /* ITISAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITISAPIController.swift; sourceTree = "<group>"; };
+		C7957C731F30E43D00C09528 /* ITISAPIHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITISAPIHandler.swift; sourceTree = "<group>"; };
 		C7A9376B1F76AE2A0015A6F2 /* CreateCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollection.swift; sourceTree = "<group>"; };
 		C7B1C8561F86CA9800FE6AA5 /* Organism+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7B1C8571F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Organism+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		C7EE618A1F58E145002B4EC7 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				C7957C731F30E43D00C09528 /* ITISAPIController.swift */,
+				C7957C731F30E43D00C09528 /* ITISAPIHandler.swift */,
 				C7D502E51F68929B00065274 /* FlickrAPIController.swift */,
 				C7D502E71F68931200065274 /* Helpers */,
 			);
@@ -326,7 +326,7 @@
 				C7DE05001F7F0BA60022BA63 /* OrganismCardFactory.swift in Sources */,
 				C7F36EA21F6F55A3002F3900 /* MCCollectionViewCell.swift in Sources */,
 				C78E268A1F69AFB7009828F1 /* ImageSearchController.swift in Sources */,
-				C7957C741F30E43D00C09528 /* ITISAPIController.swift in Sources */,
+				C7957C741F30E43D00C09528 /* ITISAPIHandler.swift in Sources */,
 				C72B37611F71523B00C7FF25 /* MCGCollectionController.swift in Sources */,
 				C7B1C8591F86CA9800FE6AA5 /* Organism+CoreDataProperties.swift in Sources */,
 				C7D99B051F8BE258008CDF7F /* NomenCell.swift in Sources */,

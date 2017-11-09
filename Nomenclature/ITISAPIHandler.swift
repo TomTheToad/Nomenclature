@@ -1,5 +1,5 @@
 //
-//  ITISAPIController.swift
+//  ITISAPIHandler.swift
 //  Nomenclature
 //
 //  Created by VICTOR ASSELTA on 8/1/17.
@@ -9,7 +9,7 @@
 
 import Foundation
 
-class ITISAPIController: NSObject {
+class ITISAPIHandler: NSObject {
 
     // Fields
     let returnFormat = "json"

@@ -69,7 +69,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     @IBAction func cancelButton(_ sender: Any) {
-        unwindToCollections()
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 
     // IBOutlets
@@ -127,7 +127,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.organismCard.photo = thisPhoto
                 DispatchQueue.main.async {
                     self.receivedPhoto = thisPhoto
-                    // TODO: remove redundancy
+                    // TODO: remove redundancy?
                     self.organismImage.image = UIImage(data: imageData)
                     self.activityIndicator.stopAnimating()
                 }
@@ -214,7 +214,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if isSuccess {
             let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
                 (UIAlertAction) in
-                self.unwindToCollections()
+                self.dismssNavigationStack()
             })
             let alert = UIAlertController(title: "Success", message: "Organism saved.", preferredStyle: .actionSheet)
             alert.addAction(alertAction1)
@@ -223,7 +223,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             let alertAction1 = UIAlertAction(title: "OK", style: .default, handler: {
                 (UIAlertAction) in
-                self.unwindToCollections()
+                self.dismssNavigationStack()
             })
             let alert = UIAlertController(title: "Save Failed", message: "Oops, looks like we encoutered an error. Please try again.", preferredStyle: .actionSheet)
             alert.addAction(alertAction1)
@@ -240,10 +240,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func unwindToCollections() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "unwindToCollections", sender: self)
-        }
+    func dismssNavigationStack() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     /* MARK: User Alert Methods */

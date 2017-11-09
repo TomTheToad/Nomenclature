@@ -15,10 +15,11 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     let coreData = CoreDataController()
 
     // Fields
-    var myCollectionGroups: [Collection]? = {
-       let coreData = CoreDataController()
-        return coreData.fetchAllCollections()
-    }()
+    var myCollectionGroups: [Collection]? {
+        didSet {
+            myCollectionGroupsView.reloadData()
+        }
+    }
     
     var selectedCollection: Collection? {
         didSet {
@@ -46,10 +47,14 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
         deselectAll()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setMyCollectionGroups()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollection()
-        checkForEmptyCollection()
     }
     
     // Editing
@@ -97,6 +102,17 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
     }
 
     // MARK: Collection methods
+    func setMyCollectionGroups() {
+        guard let collections = coreData.fetchAllCollections() else {
+            noCollectionsAlert()
+            return
+        }
+        if collections.isEmpty {
+            noCollectionsAlert()
+        }
+        myCollectionGroups = collections
+    }
+    
     func deleteSelectedCollections() {
         if isEditing == true {
             guard let indexArray = myCollectionGroupsView.indexPathsForSelectedItems else {
@@ -172,6 +188,7 @@ class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICol
             return cell
         }
         
+        cell.titleLabel.isHidden = false
         cell.titleLabel.text = thisCollection.title
         
         if let thisOrganism = thisCollection.hasOrganism?.allObjects.first as? Organism {

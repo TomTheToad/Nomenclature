@@ -102,6 +102,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="u1w-bW-M9c">
                             <connections>
                                 <action selector="cancelButton:" destination="BYZ-38-t0r" id="Ma5-my-PJe"/>
+                                <segue destination="fbZ-Vf-RUc" kind="unwind" unwindAction="unwindToCollectionsWithSegue:" id="cgP-hY-HTk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -111,9 +112,11 @@
                         <outlet property="searchField" destination="m7p-PU-PkO" id="TrK-Ol-213"/>
                         <outlet property="segmentedControl" destination="arA-3c-A3j" id="50p-Ds-VvV"/>
                         <segue destination="dfW-ss-8oo" kind="show" identifier="searchResultsSeque" id="TTY-yg-amD"/>
+                        <segue destination="fbZ-Vf-RUc" kind="unwind" identifier="unwindToCollectionsSearch" unwindAction="unwindToCollectionsWithSegue:" id="afw-5M-y6i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="fbZ-Vf-RUc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="906" y="985"/>
         </scene>
@@ -279,6 +282,12 @@
                                             <action selector="addButton:" destination="tou-Be-7tt" id="qdJ-AR-rqT"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xN0-BR-Tzm"/>
+                                    <barButtonItem image="homeIcon" id="1fl-wC-mbi">
+                                        <connections>
+                                            <segue destination="d7u-ps-s6L" kind="unwind" unwindAction="unwindToCollectionsWithSegue:" id="gmE-BG-AxD"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Qu5-Ok-xV6"/>
                                 </items>
                             </toolbar>
@@ -307,6 +316,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMD-EE-uzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="d7u-ps-s6L" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1503.2" y="89.505247376311857"/>
         </scene>
@@ -454,6 +464,12 @@
                                             <action selector="addCardButton:" destination="gTf-3S-TcN" id="MBZ-FI-h5W"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qE1-6e-tU0"/>
+                                    <barButtonItem image="homeIcon" id="KZz-hS-mdt">
+                                        <connections>
+                                            <segue destination="thk-7B-xDZ" kind="unwind" unwindAction="unwindToCollectionsWithSegue:" id="QUQ-f7-UrS"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wis-st-Fxs"/>
                                     <barButtonItem image="forwardIcon" id="IaW-GU-gF3">
                                         <connections>
@@ -476,14 +492,16 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="" image="cardsIcon" id="nGj-Ky-RD5"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="mcCollection" destination="PgH-eA-XIl" id="HVQ-YZ-rck"/>
                         <outlet property="toolBar" destination="AVi-q8-dtN" id="Q7n-D9-1c8"/>
                         <segue destination="D6Q-nL-RoH" kind="show" identifier="collectionAddCard" id="z2F-DJ-htY"/>
+                        <segue destination="thk-7B-xDZ" kind="unwind" identifier="unwindToCollectionsFromTab" unwindAction="unwindToCollectionsWithSegue:" id="KhG-ml-1i4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEe-sd-h0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="thk-7B-xDZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-18.399999999999999" y="76.911544227886068"/>
         </scene>
@@ -711,7 +729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGB-sD-SrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="109.59999999999999" y="-1504.4977511244379"/>
+            <point key="canvasLocation" x="169" y="-1426"/>
         </scene>
         <!--Detail-->
         <scene sceneID="Ogg-Vm-v2u">
@@ -1024,13 +1042,14 @@
         <image name="backIcon" width="15" height="15"/>
         <image name="cardsIcon" width="50" height="50"/>
         <image name="forwardIcon" width="15" height="15"/>
+        <image name="homeIcon" width="25" height="25"/>
         <image name="reloadButtonDown" width="141" height="90"/>
         <image name="reloadButtonUp" width="141" height="90"/>
         <image name="tableIcon" width="50" height="50"/>
         <image name="trashIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z2F-DJ-htY"/>
+        <segue reference="nqz-43-MGB"/>
         <segue reference="swv-ub-3QL"/>
     </inferredMetricsTieBreakers>
 </document>

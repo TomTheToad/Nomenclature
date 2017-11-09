@@ -26,7 +26,7 @@ import UIKit
 class SearchController: UIViewController, UITextFieldDelegate {
     
     // Dependencies
-    let itis = ITISAPIController()
+    let itis = ITISAPIHandler()
     let coreData = CoreDataController()
     
     // Fields
@@ -46,13 +46,6 @@ class SearchController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        activityIndicator.stopAnimating()
-        searchField.delegate = self
-        searchField.becomeFirstResponder()
-    }
-    
     // IBActions
     @IBAction func selectNumberRecordsAction(_ sender: Any) {
         let index = segmentedControl.selectedSegmentIndex
@@ -68,7 +61,8 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        // Changed to unwind Segue
+        // TODO: animation bug Unbalanced calls to begin/end appearance
     }
     
     @IBAction func searchButton(_ sender: Any) {
@@ -76,11 +70,17 @@ class SearchController: UIViewController, UITextFieldDelegate {
         searchITIS()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        activityIndicator.stopAnimating()
+        searchField.delegate = self
+        searchField.becomeFirstResponder()
+    }
+    
     // Call to ITISAPIController to initiate search.
     func searchITIS() {
         guard let searchText = searchField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             activityIndicator.stopAnimating()
-            print("nothing to search")
             GenericAlert(message: "Please enter something to search")
             return
         }

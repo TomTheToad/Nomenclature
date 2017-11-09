@@ -1,5 +1,5 @@
 //
-//  FlickrAPIController.swift
+//  FlickrAPIHandler.swift
 //
 //  Created by VICTOR ASSELTA on 2/27/17.
 //  Written for VirtualTourist adapted for Nomenclature on 9/12/17

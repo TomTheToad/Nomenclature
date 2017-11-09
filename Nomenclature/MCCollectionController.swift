@@ -57,7 +57,7 @@ class MCCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     // View triggered events
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         setMyCollection()
     }
     
