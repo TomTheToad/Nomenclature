@@ -61,8 +61,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        // Changed to unwind Segue
-        // TODO: animation bug Unbalanced calls to begin/end appearance
+        performUnwindSeque(sender: self)
     }
     
     @IBAction func searchButton(_ sender: Any) {
@@ -129,6 +128,10 @@ class SearchController: UIViewController, UITextFieldDelegate {
     // Navigation
     func performResultsSeque(sender: Any?) {
         performSegue(withIdentifier: "searchResultsSeque", sender: sender)
+    }
+    
+    func performUnwindSeque(sender: Any?) {
+        performSegue(withIdentifier: "unwindToCollectionsSearch", sender: sender)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

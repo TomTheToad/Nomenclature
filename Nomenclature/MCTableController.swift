@@ -94,7 +94,6 @@ class MCTableController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.tableHeaderView = nil
         tableView.sectionHeaderHeight = 0
         tableView.sectionFooterHeight = 0
-        tableView.allowsSelection = false
 
     }
     

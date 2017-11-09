@@ -102,7 +102,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="u1w-bW-M9c">
                             <connections>
                                 <action selector="cancelButton:" destination="BYZ-38-t0r" id="Ma5-my-PJe"/>
-                                <segue destination="fbZ-Vf-RUc" kind="unwind" unwindAction="unwindToCollectionsWithSegue:" id="cgP-hY-HTk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -467,7 +466,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qE1-6e-tU0"/>
                                     <barButtonItem image="homeIcon" id="KZz-hS-mdt">
                                         <connections>
-                                            <segue destination="thk-7B-xDZ" kind="unwind" unwindAction="unwindToCollectionsWithSegue:" id="QUQ-f7-UrS"/>
+                                            <segue destination="thk-7B-xDZ" kind="unwind" identifier="unwindFromSearch" unwindAction="unwindToCollectionsWithSegue:" id="QUQ-f7-UrS"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wis-st-Fxs"/>
