@@ -7,6 +7,13 @@
 //
 // Controller responsible for displaying and deleting groups of organism collections.
 
+/*
+ TODO: add blank cards
+ TODO: editable fields
+ TODO: notes section
+ TODO: webView - wikipedia scrape?
+*/
+
 import UIKit
 
 class MCGCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
